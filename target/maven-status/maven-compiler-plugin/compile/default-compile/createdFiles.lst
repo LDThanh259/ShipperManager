@@ -10,7 +10,6 @@ test\ShipperTest$1.class
 model\TableOrder.class
 Dao\ShipperDaoImpl.class
 database\JDBCUtil.class
-view\Homepage.class
 controller\QuanLyShipperController$2.class
 view\UpdateOrDeleteShipperJFrame.class
 model\Shipper.class
@@ -25,7 +24,6 @@ view\LoginJFrame.class
 model\ClassTableModel$1.class
 model\TableOrder$1.class
 controller\AccountController$2.class
-view\LoginView.class
 view\LoginJFrame$2.class
 Dao\AccountDaoImpl.class
 Dao\ShipperDao.class
@@ -35,6 +33,7 @@ controller\QuanLyOrderController.class
 Dao\AccountDao.class
 Dao\ThongkeDaoImpl.class
 controller\ChuyenManHinhController$LabelEvent.class
+view\IncomeByShipper.class
 Dao\OrderServiceDaoImpl.class
 controller\QuanLyShipperController$4.class
 view\ThongKeJPanel.class

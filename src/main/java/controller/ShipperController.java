@@ -1,5 +1,7 @@
 package controller;
 
+import Dao.OrderServiceDao;
+import Dao.OrderServiceDaoImpl;
 import Dao.ShipperServiceDao;
 import Dao.ShipperServiceDaoImpl;
 import com.toedter.calendar.JDateChooser;
@@ -9,6 +11,8 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
@@ -17,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import model.Order;
 import model.Shipper;
 
 public class ShipperController {
@@ -167,7 +172,9 @@ public class ShipperController {
                             jlbMsg.setText("Số điện thoại không hợp lệ VD: +8412345678.");
                         } else if (!validate_email(jtfEmail.getText())) {
                             jlbMsg.setText("Email không hợp lệ VD: user123@example.com.");
-                        } else jlbMsg.setText("Số điện thoại và email không hợp lệ.");
+                        } else {
+                            jlbMsg.setText("Số điện thoại và email không hợp lệ.");
+                        }
                     }
 
                     //kiem tra xem email hop le k
@@ -191,6 +198,28 @@ public class ShipperController {
             btnDelete.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    List<Integer> listShipper_Id = shipperServiceDao.getListId();
+                    int idToRemove = shipper.getShipper_Id();
+                    listShipper_Id.remove(Integer.valueOf(idToRemove));
+                    
+                    OrderServiceDao orderServiceDao = new OrderServiceDaoImpl();
+                    for (int i = 1; i <= 12; i++) {
+                        List<Order> listOrders = orderServiceDao.getOrderListForShipper(shipper, i);
+                        if (!listOrders.isEmpty()) {
+                            for (Order order : listOrders) {
+                                if (order.getReceive_Time() == null) {
+                                    int randomIndex = new Random().nextInt(listShipper_Id.size());
+                                    order.setShipper_ID(listShipper_Id.get(randomIndex));
+                                    orderServiceDao.Update(order);
+                                } else {
+                                    orderServiceDao.Delete(order);
+                                }
+                            }
+
+                        }
+
+                    }
+
                     if (showDialog("xóa")) {
                         int result = shipperServiceDao.Delete(shipper);
                         if (result > 0) {

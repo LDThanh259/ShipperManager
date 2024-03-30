@@ -13,8 +13,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.Month;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
@@ -57,7 +61,6 @@ public class QuanLyOrderController {
     private JButton btnPrint;
     private OrderServiceDao orderServiceDao = null;
     private String[] listColumn = {"ORDERS_ID", "ORDERS_NAME", "ORDERS_DELIVERY_LOCATION", "ORDERS_DELIVERY_TIME", "ORDERS_RECEIVE_LOCATION", "ORDERS_RECEIVE_TIME", "ORDERS_STATUS", "ORDERS_FEEDBACK", "ORDERS_DISTANCE", "ORDERS_PRICE", "SHIPPER_ID"};
-
     private TableRowSorter<TableModel> rowSorter = null;
 
     public QuanLyOrderController(JLabel jlbID, JLabel jlbName, JMonthChooser jmcMonth, JPanel jpnView, JTextField jtfSearch) {
@@ -78,16 +81,42 @@ public class QuanLyOrderController {
         this.orderServiceDao = new OrderServiceDaoImpl();
     }
 
-    public void setDataToTable() {
-
+    public void initTable() {
         List<Order> listOrders = orderServiceDao.getList();
-
         DefaultTableModel model = new TableOrder().setTableOrder(listOrders, listColumn);
         JTable table = new JTable(model);
+        setupTable(table);
+        initSearchListener();
+        initMouseListener(table);
+        //initMonthChooserListener();
+    }
+
+    public void initTable(Shipper shipper) {
+        jlbID.setText("" + shipper.getShipper_Id());
+        jlbName.setText(shipper.getName());
+        int selectedMonthIndex = jmcMonth.getMonth();
+        List<Order> listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex + 1);
+        DefaultTableModel model = new TableOrder().setTableOrder(listOrders, listColumn);
+        JTable table = new JTable(model);
+        setupTable(table);
+        initSearchListener();
+        //initMouseListener(table);
+        initMonthChooserListener(shipper);
+    }
+
+    private void setupTable(JTable table) {
 
         rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
+        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
+        table.setRowHeight(50);
+        table.validate();
+        table.repaint();
+        refreshTable(table);
+    }
 
+    private void initSearchListener() {
         jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -113,7 +142,9 @@ public class QuanLyOrderController {
             public void changedUpdate(DocumentEvent e) {
             }
         });
+    }
 
+    private void initMouseListener(JTable table) {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -162,13 +193,24 @@ public class QuanLyOrderController {
                 }
             }
         });
-        // design
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
-        table.setRowHeight(50);
-        table.validate();
-        table.repaint();
+    }
 
+    private void initMonthChooserListener(Shipper shipper) {
+        jmcMonth.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("month")) {
+                    int selectedMonthIndex = jmcMonth.getMonth();
+                    List<Order> listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex + 1);
+                    DefaultTableModel model = new TableOrder().setTableOrder(listOrders, listColumn);
+                    JTable table = new JTable(model);
+                    setupTable(table);
+                }
+            }
+        });
+    }
+
+    private void refreshTable(JTable table) {
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.setPreferredSize(new Dimension(1350, 400));
@@ -177,17 +219,16 @@ public class QuanLyOrderController {
         jpnView.add(scroll);
         jpnView.validate();
         jpnView.repaint();
-
     }
 
-    public void setEven() {
+    public void initEvents() {
         btnAdd.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Order order = new Order();
 
-                InsertOrderJFrame insertOrderJFrame = new InsertOrderJFrame();  //demo
-                insertOrderJFrame.setTitle("Thong tin Shipper");
+                InsertOrderJFrame insertOrderJFrame = new InsertOrderJFrame();
+                insertOrderJFrame.setTitle("Thong tin Order");
                 insertOrderJFrame.setLocationRelativeTo(null);
                 insertOrderJFrame.setResizable(false);
                 insertOrderJFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -271,64 +312,9 @@ public class QuanLyOrderController {
             }
 
         });
-
     }
 
-    public void setOrderListForShipperTable(Shipper shipper) {
-        jlbID.setText("" + shipper.getShipper_Id());
-        jlbName.setText(shipper.getName());
-
-        List<Order> listOrders = orderServiceDao.getOrderListForShipper(shipper);
-
-        DefaultTableModel model = new TableOrder().setTableOrder(listOrders, listColumn);
-        JTable table = new JTable(model);
-
-        rowSorter = new TableRowSorter<>(table.getModel());
-        table.setRowSorter(rowSorter);
-
-        jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                String text = jtfSearch.getText();
-                if (text.trim().length() == 0) {
-                    rowSorter.setRowFilter(null);
-                } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                String text = jtfSearch.getText();
-                if (text.trim().length() == 0) {
-                    rowSorter.setRowFilter(null);
-                } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
-        table.setRowHeight(50);
-        table.validate();
-        table.repaint();
-
-        JScrollPane scroll = new JScrollPane();
-        scroll.getViewport().add(table);
-        scroll.setPreferredSize(new Dimension(1350, 400));
-        jpnView.removeAll();
-        jpnView.setLayout(new CardLayout());
-        jpnView.add(scroll);
-        jpnView.validate();
-        jpnView.repaint();
-    }
-    
-    public static void showExportSuccessDialog(String s) {
+    private static void showExportSuccessDialog(String s) {
         JOptionPane.showMessageDialog(null, "Xuất file " + s + "thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
 }

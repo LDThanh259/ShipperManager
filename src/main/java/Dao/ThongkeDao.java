@@ -6,6 +6,7 @@ package Dao;
 
 import bean.IncomeBean;
 import java.util.List;
+import model.Shipper;
 
 /**
  *
@@ -13,4 +14,6 @@ import java.util.List;
  */
 public interface ThongkeDao {
     public List<IncomeBean> getListIncome();
+    public List<IncomeBean> getIncomeByShipperAndMonth(Shipper shipper);
+
 }

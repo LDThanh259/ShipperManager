@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import model.Order;
@@ -62,15 +63,19 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public List<Order> getOrderListForShipper(Shipper shipper) {
+    public List<Order> getOrderListForShipper(Shipper shipper, int month) {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "SELECT * FROM [Order] WHERE SHIPPER_ID = ?;";
+            String sql = "SELECT * FROM [Order] \n"
+                    + "WHERE SHIPPER_ID = ? \n"
+                    + "AND MONTH(ORDERS_DELIVERY_TIME) = ?;";
             PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, shipper.getShipper_Id());
-
+            //ps.setInt(2, month.getValue()+1);
+            ps.setInt(2, month);
+            
             List<Order> orders = new ArrayList<>();
 
             ResultSet rs = ps.executeQuery();
@@ -139,7 +144,7 @@ public class OrderDaoImpl implements OrderDao {
             result = ps.executeUpdate();
 
             JDBCUtil.closeConnection(cons);
-            
+
             return result;
         } catch (Exception ex) {
             //System.out.println("loi");
@@ -162,7 +167,7 @@ public class OrderDaoImpl implements OrderDao {
             result = ps.executeUpdate();
 
             JDBCUtil.closeConnection(cons);
-            
+
             return result;
         } catch (Exception ex) {
             //System.out.println("loi");

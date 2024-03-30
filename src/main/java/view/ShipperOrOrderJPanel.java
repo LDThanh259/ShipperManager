@@ -24,8 +24,8 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
             controller.setEvent();
         } else if (s.equalsIgnoreCase("Order")) {
             QuanLyOrderController controller = new QuanLyOrderController(jpnView, btnAdd, jtfSearch, btnPrint);
-            controller.setDataToTable();
-            controller.setEven();
+            controller.initTable();
+            controller.initEvents();
         }
 
     }

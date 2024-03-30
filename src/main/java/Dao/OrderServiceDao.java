@@ -4,6 +4,7 @@
  */
 package Dao;
 
+import java.time.Month;
 import java.util.List;
 import model.Order;
 import model.Shipper;
@@ -18,5 +19,5 @@ public interface OrderServiceDao {
     public int Delete(Order order);
     public int Insert(Order order);
     public int getNumOfOrder();
-    public List<Order> getOrderListForShipper(Shipper shipper);
+    public List<Order> getOrderListForShipper(Shipper shipper,int month);
 }

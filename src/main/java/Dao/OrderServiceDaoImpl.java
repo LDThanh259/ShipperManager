@@ -4,6 +4,7 @@
  */
 package Dao;
 
+import java.time.Month;
 import java.util.List;
 import model.Order;
 import model.Shipper;
@@ -25,8 +26,8 @@ public class OrderServiceDaoImpl implements OrderServiceDao{
     }
 
     @Override
-    public List<Order> getOrderListForShipper(Shipper shipper) {
-        return orderDao.getOrderListForShipper(shipper);
+    public List<Order> getOrderListForShipper(Shipper shipper,int month) {
+        return orderDao.getOrderListForShipper(shipper,month);
     }
 
     @Override

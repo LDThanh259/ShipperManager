@@ -9,19 +9,35 @@ package bean;
  * @author ADMIN
  */
 public class IncomeBean {
+    private int id;
     private String nameShipper;
+    private int month;
     private float income;
 
     public IncomeBean() {
     }
 
-    public IncomeBean(String nameShipper, float income) {
+    public IncomeBean(int id, String nameShipper, float income) {
+        this.id = id;
         this.nameShipper = nameShipper;
         this.income = income;
     }
+    
+    public IncomeBean(int id, String nameShipper,int month, float income) {
+        this.id = id;
+        this.nameShipper = nameShipper;
+        this.month = month;
+        this.income = income;
+    }
 
-    
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNameShipper() {
         return nameShipper;
     }
@@ -30,6 +46,14 @@ public class IncomeBean {
         this.nameShipper = nameShipper;
     }
 
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+    
     public float getIncome() {
         return income;
     }

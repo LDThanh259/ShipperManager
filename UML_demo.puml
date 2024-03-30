@@ -1,0 +1,579 @@
+@startuml
+package Dao {
+    interface AccountDao {
+        {method} + login(username: String, password: String): Account
+    }
+
+    interface AccountServiceDao {
+        {method} + login(username: String, password: String): Account
+    }
+
+    class AccountDaoImpl {
+        + login(username: String, password: String): Account
+    }
+
+    class AccountServiceDaoImpl {
+        - accountDao : AccountDao
+        + AccountServiceDaoImpl()
+        + AccountServiceDaoImpl(accountDao: AccountDao)
+        + login(username: String, password: String): Account
+    }
+}
+
+package controller {
+    class AccountController {
+        - jFrame : JFrame
+        - jtfUsername : JTextField
+        - jpwfPassword : JPasswordField
+        - jllbMsg : JLabel
+        - btnLogin : JButton
+        - accountServiceDao : AccountServiceDao
+        + AccountController()
+        + AccountController(jFrame: JFrame, jtfUsername: JTextField, jpwfPassword: JPasswordField, jllbMsg: JLabel, btnLogin: JButton)
+        + setEvent(): void
+    }
+}
+
+package model {
+    class Account {
+        - id : int
+        - username : String
+        - password : String
+        + Account()
+        + Account(id: int, username: String, password: String)
+        + getId(): int
+        + setId(id: int): void
+        + getUsername(): String
+        + setUsername(username: String): void
+        + getPassword(): String
+        + setPassword(password: String): void
+    }
+}
+
+package database {
+    class JDBCUtil {
+        {static} + getConnection(): Connection
+        {static} + closeConnection(conn: Connection): void
+    }
+}
+
+package view {
+    class LoginJFrame {
+        - jpnRoot : JPanel
+        - jLabel1 : JLabel
+        - jLabel2 : JLabel
+        - jLabel3 : JLabel
+        - jLabel4 : JLabel
+        - jlbMsg : JLabel
+        - jtfUsername : JTextField
+        - jpwfPassword : JPasswordField
+        - btnLogin : JButton
+        + initComponents(): void
+        + LoginJFrame()
+        + jpwfPasswordActionPerformed(evt: ActionEvent): void
+        + btnLoginActionPerformed(evt: ActionEvent): void
+        + jtfUsernameActionPerformed(evt: ActionEvent): void
+    }
+}
+
+AccountServiceDao <|.. AccountServiceDaoImpl : implements
+AccountDao <|.. AccountDaoImpl : implements
+AccountServiceDaoImpl --> AccountDao : uses
+
+AccountController -- AccountServiceDao : uses >
+AccountController --> LoginJFrame : Initializes >
+AccountController --> JTextField : Uses >
+AccountController --> JPasswordField : Uses >
+AccountController --> JLabel : Uses >
+AccountController --> JButton : Uses >
+
+LoginJFrame --> AccountController: Initializes
+note left of AccountController::setEvent
+  Sets button click and mouse listener for the login form.
+end note
+
+package bean {
+    class DanhMucBean {
+        - kind : String
+        - jpn : JPanel
+        - jlb : JLabel
+        + DanhMucBean()
+        + DanhMucBean(kind: String, jpn: JPanel)
+        + DanhMucBean(kind: String, jpn: JPanel, jlb: JLabel)
+        + getKind(): String
+        + setKind(kind: String): void
+        + getJpn(): JPanel
+        + setJpn(jpn: JPanel): void
+        + getJlb(): JLabel
+        + setJlb(jlb: JLabel): void
+    }
+}
+
+package controller {
+    class ChuyenManHinhController {
+        - root : JPanel
+        - kindSelected : String
+        - listItem : List<DanhMucBean>
+        + ChuyenManHinhController(jpnRoot: JPanel)
+        + setView(jpnItem: JPanel, jlbItem: JLabel): void
+        + setEvent(listItem: List<DanhMucBean>): void
+        + {inner} class LabelEvent
+        + setChangeBackground(kind: String): void
+    }
+}
+package view {
+    class MainJFrame {
+        - jpnMenu : JPanel
+        - jbnView : JPanel
+        + MainJFrame()
+        + initComponents(): void
+    }
+    class TrangChuJPanel {
+        + TrangChuJPanel()
+        + initComponents(): void
+        + getNumOfShipper(): JLabel
+        + getNumOfOrder(): JLabel
+    }
+}
+
+view.MainJFrame --> controller.ChuyenManHinhController: uses
+view.TrangChuJPanel --> controller.LoiTatController : uses
+
+
+package Dao {
+    interface OrderDao {
+        + getList(): List<Order>
+        + Update(order: Order): int
+        + Delete(order: Order): int
+        + Insert(order: Order): int
+        + getOrderListForShipper(shipper: Shipper, month: int): List<Order>
+    }
+
+    class OrderDaoImpl {
+        + getList(): List<Order>
+        + getOrderListForShipper(shipper: Shipper, month: int): List<Order>
+        + Update(order: Order): int
+        + Delete(order: Order): int
+        + Insert(order: Order): int
+    }
+
+    interface OrderServiceDao {
+        + getList(): List<Order>
+        + Update(order: Order): int
+        + Delete(order: Order): int
+        + Insert(order: Order): int
+        + getNumOfOrder(): int
+        + getOrderListForShipper(shipper: Shipper, month: int): List<Order>
+    }
+
+    class OrderServiceDaoImpl {
+        - orderDao : OrderDao
+        + OrderServiceDaoImpl()
+        + getList(): List<Order>
+        + getOrderListForShipper(shipper: Shipper, month: int): List<Order>
+        + Update(order: Order): int
+        + Delete(order: Order): int
+        + Insert(order: Order): int
+        + getNumOfOrder(): int
+    }
+}
+
+package controller {
+
+class OrderController {
+    - btnSubmit: JButton
+    - jdcDT: JDateChooser
+    - jdcRT: JDateChooser
+    - jrbPending: JRadioButton
+    - jrbProcessing: JRadioButton
+    - jrbCompleted: JRadioButton
+    - jtaDL: JTextArea
+    - jtaRL: JTextArea
+    - jtaFeedback: JTextArea
+    - jlbID: JLabel
+    - jtfName: JTextField
+    - jtfDistance: JTextField
+    - jtfPrice: JTextField
+    - jlbMsg: JLabel
+    - btnDelete: JButton
+    - jcbList_id: JComboBox<Integer>
+    - btnRandom: JButton
+    - shipperServiceDao: ShipperServiceDao
+    - order: Order
+    - orderServiceDao: OrderServiceDao
+
+    + OrderController(btnSubmit: JButton, jdcDT: JDateChooser, jdcRT: JDateChooser, jrbPending: JRadioButton, jrbProcessing: JRadioButton, jrbCompleted: JRadioButton, jtaDL: JTextArea, jtaRL: JTextArea, jtaFeedback: JTextArea, jtfName: JTextField, jtfDistance: JTextField, jtfPrice: JTextField, jtfShipper_id: JTextField, jlbMsg, JLabel, jcbList_id: JComboBox<Integer>, btnRandom: JButton)
+    + OrderController(btnSubmit: JButton, jdcDT: JDateChooser, jdcRT: JDateChooser, jrbPending: JRadioButton, jrbProcessing: JRadioButton, jrbCompleted: JRadioButton, jtaDL: JTextArea, jtaRL: JTextArea, jtaFeedback: JTextArea, jlbID: JLabel, jtfName: JTextField, jtfDistance: JTextField, jtfPrice: JTextField, jlbMsg: JLabel, btnDelete: JButton, jcbList_id: JComboBox<Integer>, btnRandom: JButton)
+    + setView(order: Order): void
+    + setEvent(s: String): void
+    - showDialog(msg: String): boolean
+    - covertDateToDateSql(d: Date): java.sql.Date
+    - isStatusNull(): boolean
+}
+
+
+class QuanLyOrderController {
+    - jlbID: JLabel
+    - jlbName: JLabel
+    - jmcMonth: JMonthChooser
+    - jpnView: JPanel
+    - btnAdd: JButton
+    - jtfSearch: JTextField
+    - btnPrint: JButton
+    - orderServiceDao: OrderServiceDao
+    - listColumn: String[]
+    - rowSorter: TableRowSorter<TableModel>
+
+    + QuanLyOrderController(jlbID: JLabel, jlbName: JLabel, jmcMonth: JMonthChooser, jpnView: JPanel, jtfSearch: JTextField)
+    + QuanLyOrderController(jpnView: JPanel, btnAdd: JButton, jtfSearch: JTextField, btnPrint: JButton)
+    + initTable(): void
+    + initTable(shipper: Shipper): void
+    - setupTable(table: JTable): void
+    - initSearchListener(): void
+    - initMouseListener(table: JTable): void
+    - initMonthChooserListener(shipper: Shipper): void
+    - refreshTable(table: JTable): void
+    + initEvents(): void
+    {static} - showExportSuccessDialog(s: String): void
+}
+
+
+}
+
+
+
+package view {
+
+    class InsertOrderJFrame {
+        - initComponents(): void
+        + InsertOrderJFrame()
+    }
+
+    class ListOrderJFrame {
+        - initComponents(): void
+        + ListOrderJFrame(shipper: Shipper)
+    }
+
+    class UpdateOrDeleteOrder {
+        - initComponents(): void
+        + UpdateOrDeleteOrder(order: Order)
+    }
+}
+
+package model {
+
+class Order {
+    - Id: int
+    - Name: String
+    - Delivery_Location: String
+    - Delivery_Time: Date
+    - Receive_Location: String
+    - Receive_Time: Date
+    - Status: String
+    - Feedback: String
+    - Distance: double
+    - Price: double
+    - Shipper_ID: int
+
+    + Order()
+    + Order(Id: int, Name: String, Delivery_Location: String, Delivery_Time: Date, Receive_Location: String, Receive_Time: Date, Status: String, Feedback: String, Distance: double, Price: double, Shipper_ID: int)
+    + getId(): int
+    + setId(Id: int): void
+    + getName(): String
+    + setName(Name: String): void
+    + getDelivery_Location(): String
+    + setDelivery_Location(Delivery_Location: String): void
+    + getDelivery_Time(): Date
+    + setDelivery_Time(Delivery_Time: Date): void
+    + getReceive_Location(): String
+    + setReceive_Location(Receive_Location: String): void
+    + getReceive_Time(): Date
+    + setReceive_Time(Receive_Time: Date): void
+    + getStatus(): String
+    + setStatus(Status: String): void
+    + getFeedback(): String
+    + setFeedback(Feedback: String): void
+    + getDistance(): double
+    + setDistance(Distance: double): void
+    + getPrice(): double
+    + setPrice(Price: double): void
+    + getShipper_ID(): int
+    + setShipper_ID(Shipper_ID: int): void
+    + toString(): String
+
+}
+
+}
+
+InsertOrderJFrame --> OrderController : instantiates
+InsertOrderJFrame --> "1" ShipperServiceDaoImpl : uses
+
+ListOrderJFrame --> "1" QuanLyOrderController : uses
+
+UpdateOrDeleteOrder --> OrderController : uses
+UpdateOrDeleteOrder --> "1" ShipperServiceDaoImpl : uses
+
+OrderDaoImpl ..|> OrderDao : implements
+OrderServiceDaoImpl ..|> OrderServiceDao : implements
+OrderServiceDaoImpl --> OrderDao : uses
+
+QuanLyOrderController --> OrderServiceDao : uses
+ShipperServiceDaoImpl ..|> ShipperServiceDao : implements
+QuanLyOrderController --> ShipperServiceDao : uses
+
+
+package Dao {
+    interface ShipperDao {
+        +getList(): List<Shipper>
+        +Update(shipper: Shipper): int
+        +Delete(shipper: Shipper): int
+        +Insert(shipper: Shipper): int
+        +getListId(): List<Integer>
+    }
+
+    class ShipperDaoImpl {
+        -conn: Connection
+        -st: PreparedStatement
+        +getList(): List<Shipper>
+        +Update(shipper: Shipper): int
+        +Delete(shipper: Shipper): int
+        +Insert(shipper: Shipper): int
+        +getListId(): List<Integer>
+    }
+
+    interface ShipperServiceDao {
+        +getList(): List<Shipper>
+        +Update(shipper: Shipper): int
+        +Delete(shipper: Shipper): int
+        +Insert(shipper: Shipper): int
+        +getNumOfShipper(): int
+        +getListId(): List<Integer>
+    }
+
+    class ShipperServiceDaoImpl {
+        -shipperDao: ShipperDao
+        +ShipperServiceDaoImpl()
+        +getList(): List<Shipper>
+        +Update(shipper: Shipper): int
+        +Delete(shipper: Shipper): int
+        +Insert(shipper: Shipper): int
+        +getNumOfShipper(): int
+        +getListId(): List<Integer>
+    }
+
+    ShipperDaoImpl ..> ShipperDao : implements
+    ShipperServiceDaoImpl ..> ShipperServiceDao : implements
+}
+
+package controller {
+    class ShipperController {
+        -btnSubmit: JButton
+        -jdcDob, jdcStartwork: JDateChooser
+        -jrbNam, jrbNu: JRadioButton
+        -jtaAdress, jtaDescription: JTextArea
+        -jlbID, jlbMsg: JLabel
+        -jtfName, jtfPhone, jtfEmail: JTextField
+        -btnDelete: JButton
+        -shipper: Shipper
+        -shipperServiceDao: ShipperServiceDao
+        -pattern_phone, pattern_email: Pattern
+        +setView(shipper: Shipper)
+        +setEvent(s: String)
+        +showDialog(msg: String): boolean 
+        +validate_phone(phoneNumber: String): boolean
+        +validate_email(email: String): boolean
+    }
+
+    class QuanLyShipperController {
+        -jpnView: JPanel
+        -btnAdd, btnPrint: JButton
+        -jpnView: JPanel
+        -jtfSearch: JTextField
+        -rowSorter: TableRowSorter<TableModel>
+        -shipperServiceDao: ShipperServiceDao
+        -listColumn: String[]
+        +setDataToTable()
+        +setEvent()
+    }
+
+    ShipperController "1" -- "1" ShipperServiceDaoImpl : uses >
+    QuanLyShipperController "1" -- "1" ShipperServiceDaoImpl : uses >
+}
+
+package model {
+    class Shipper {
+        - shipper_Id : int
+        - name : String
+        + getShipper_Id() : int
+        + getName() : String
+        .. more methods ..
+    }
+}
+
+package view {
+    class InsertShipperJFrame {
+        -btnSubmit: JButton
+        -jdcDob, jdcStartwork: JDateChooser
+        -jrbNam, jrbNu: JRadioButton
+        -jtaAddress, jtaDescription: JTextArea
+        -jtfName, jtfPhone, jtfEmail: JTextField
+        -jlbMsg: JLabel
+        +InsertShipperJFrame(shipper: Shipper)
+    }
+
+    class UpdateOrDeleteShipperJFrame {
+        -btnSubmit, btnDelete: JButton
+        -jdcDob, jdcStartwork: JDateChooser
+        -jrbNam, jrbNu: JRadioButton
+        -jtaAddress, jtaDescription: JTextArea
+        -jlbID: JLabel
+        -jtfName, jtfPhone, jtfEmail: JTextField
+        -jlbMsg: JLabel
+        +UpdateOrDeleteShipperJFrame(shipper: Shipper)
+    }
+
+    class ShipperOrOrderJPanel {
+        +ShipperOrOrderJPanel(s: String)
+    }
+
+    InsertShipperJFrame --> "1" ShipperController : uses >
+    UpdateOrDeleteShipperJFrame --> "1" ShipperController : uses >
+    ShipperOrOrderJPanel --> "0..1" QuanLyShipperController : uses >
+}
+
+
+package Dao {
+
+    interface ThongkeDao {
+        + getListIncome() : List<IncomeBean>
+        + getIncomeByShipperAndMonth(shipper : Shipper) : List<IncomeBean>
+    }
+
+    class ThongkeDaoImpl {
+        + getListIncome() : List<IncomeBean>
+        + getIncomeByShipperAndMonth(shipper : Shipper) : List<IncomeBean>
+    }
+
+    interface ThongkeServiceDao {
+        + getListIncome() : List<IncomeBean>
+        + getIncomeByShipperAndMonth(shipper : Shipper) : List<IncomeBean>
+    }
+
+    class ThongkeServiceDaoImpl {
+        - thongkeDao : ThongkeDao
+        + ThongkeServiceDaoImpl()
+        + getListIncome() : List<IncomeBean>
+        + getIncomeByShipperAndMonth(shipper : Shipper) : List<IncomeBean>
+    }
+
+    ThongkeDao <|.. ThongkeDaoImpl : implements
+    ThongkeServiceDao <|.. ThongkeServiceDaoImpl : implements
+    ThongkeServiceDaoImpl *-- ThongkeDaoImpl : dependency
+}
+
+
+package bean {
+    class IncomeBean {
+        - id : int
+        - nameShipper : String
+        - income : float
+        - month : int
+        + getId() : int
+        + setId(id : int) : void
+        + getNameShipper() : String
+        + setNameShipper(nameShipper : String) : void
+        + getIncome() : float
+        + setIncome(income : float) : void
+        + getMonth() : int
+        + setMonth(month : int) : void
+    }
+}
+
+package controller {
+    class QuanLyThongKeController {
+        - thongkeServiceDao : ThongkeServiceDao
+        + QuanLyThongKeController()
+        + setDataToChart1(jpnItem : JPanel) : void
+    }
+}
+
+package view {
+
+    class ThongKeJPanel {
+        - jPanel1 : JPanel
+        - jPanel3 : JPanel
+        - jpnChart1 : JPanel
+        + ThongKeJPanel()
+        + initComponents() : void
+    }
+
+}
+
+package model {
+    class ClassTableModel {
+        + setTableShipper(listItem : List<Shipper>, listColumn : String[]) : DefaultTableModel
+    }
+
+    class TableOrder {
+        + setTableOrder(listItem : List<Order>, listColumn : String[]) : DefaultTableModel
+    }
+}
+
+bean.IncomeBean <-- Dao.ThongkeServiceDao : Uses
+Dao.ThongkeServiceDaoImpl o-- controller.QuanLyThongKeController : Uses
+controller.QuanLyThongKeController ..> view.ThongKeJPanel : Data setup
+model.ClassTableModel -- "uses" bean.Shipper : sets data for
+model.TableOrder -- "uses" bean.Order : sets data for
+
+
+package view {
+
+    class IncomeByShipper {
+        - jPanel1 : JPanel
+        - jLabel1 : JLabel
+        - jLabel2 : JLabel
+        - jlbID : JLabel
+        - jlbName : JLabel
+        - jpnView : JPanel
+        + IncomeByShipper(shipper : Shipper)
+        + initComponents() : void
+    }
+}
+
+package controller {
+    class QuanLyThongKeController {
+        + QuanLyThongKeController(shipper : Shipper)
+        + setDataToChart2(jpnItem : JPanel) : void
+    }
+}
+
+package model {
+    class Shipper {
+        - shipper_Id : int
+        - name : String
+        + getShipper_Id() : int
+        + getName() : String
+        .. more methods ..
+    }
+}
+
+IncomeByShipper --|> JFrame : extends
+IncomeByShipper o-- "1" Shipper : has
+
+view.IncomeByShipper ..> controller.QuanLyThongKeController : Uses
+view.IncomeByShipper --|> javax.swing.JFrame
+
+package test {
+
+    class ShipperTest {
+
+        + main(args: String[]) : void
+    }
+
+}
+
+test.ShipperTest -right-> view.LoginJFrame: creates >>
+
+@enduml
+
+

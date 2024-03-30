@@ -5,6 +5,7 @@
 package Dao;
 import bean.IncomeBean;
 import java.util.List;
+import model.Shipper;
 
 /**
  *
@@ -21,6 +22,11 @@ public class ThongkeServiceDaoImpl implements ThongkeServiceDao {
     @Override
     public List<IncomeBean> getListIncome() {
         return thongkeDao.getListIncome();
+    }
+
+    @Override
+    public List<IncomeBean> getIncomeByShipperAndMonth(Shipper shipper) {
+        return thongkeDao.getIncomeByShipperAndMonth(shipper);
     }
 
 }

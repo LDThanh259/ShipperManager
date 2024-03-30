@@ -20,9 +20,10 @@ public class ListOrderJFrame extends javax.swing.JFrame {
     public ListOrderJFrame(Shipper shipper) {
         initComponents();
         QuanLyOrderController orderController = new QuanLyOrderController(jlbID,jlbName,jmcMonth,jpnView,jtfSearch);
+        this.setTitle("Danh sach đơn hang");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        orderController.setOrderListForShipperTable(shipper);
+        orderController.initTable(shipper);
         this.setVisible(true);
     }
 

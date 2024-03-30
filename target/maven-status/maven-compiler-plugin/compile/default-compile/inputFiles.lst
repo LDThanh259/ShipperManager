@@ -14,12 +14,12 @@ F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\AccountDao.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\AccountServiceDaoImpl.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\InsertShipperJFrame.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\model\TableOrder.java
-F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\LoginView.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\UpdateOrDeleteShipperJFrame.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\controller\QuanLyThongKeController.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\ShipperDaoImpl.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\controller\LoiTatController.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\ShipperServiceDao.java
+F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\IncomeByShipper.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\controller\OrderController.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\ThongkeDao.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\model\ClassTableModel.java
@@ -32,7 +32,6 @@ F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\OrderServiceDaoImpl.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\AccountDaoImpl.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\MainJFrame.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\ThongkeServiceDaoImpl.java
-F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\Homepage.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\view\TrangChuJPanel.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\Dao\AccountServiceDao.java
 F:\JAVA\NETBEAN\ShipperMaven\src\main\java\controller\QuanLyShipperController.java

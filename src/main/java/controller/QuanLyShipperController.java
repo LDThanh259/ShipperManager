@@ -39,6 +39,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import view.IncomeByShipper;
 import view.InsertShipperJFrame;
 import view.ListOrderJFrame;
 import view.UpdateOrDeleteShipperJFrame;
@@ -174,7 +175,7 @@ public class QuanLyShipperController {
                         revenueMenuItem.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                // Xử lý sự kiện hiển thị doanh thu
+                                IncomeByShipper incomeByShipper = new IncomeByShipper(shipper);
                             }
                         });
 
