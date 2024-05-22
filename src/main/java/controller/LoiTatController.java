@@ -1,7 +1,7 @@
 package controller;
 
-import Dao.OrderServiceDao;
-import Dao.OrderServiceDaoImpl;
+//import Dao.OrderServiceDao;
+//import Dao.OrderServiceDaoImpl;
 import Dao.ShipperServiceDao;
 import Dao.ShipperServiceDaoImpl;
 import bean.DanhMucBean;
@@ -11,8 +11,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JPanel;
+import view.CustomerJPanel;
 import view.ShipperOrOrderJPanel;
-import view.ThongKeJPanel;
+//import view.ThongKeJPanel;
 import view.TrangChuJPanel;
 
 /**
@@ -20,26 +21,27 @@ import view.TrangChuJPanel;
  * @author ADMIN
  */
 public class LoiTatController {
+
     private TrangChuJPanel root;
     private String kindSelected = "";
     private List<DanhMucBean> listLoiTat;
     private ShipperServiceDao shipperServiceDao = null;
-    private OrderServiceDao orderServiceDao = null;
-    
+    //private OrderServiceDao orderServiceDao = null;
+
     public LoiTatController(TrangChuJPanel root) {
         this.root = root;
         shipperServiceDao = new ShipperServiceDaoImpl();
-        orderServiceDao = new OrderServiceDaoImpl();
+        //orderServiceDao = new OrderServiceDaoImpl();
         this.root.getNumOfShipper().setText("" + shipperServiceDao.getNumOfShipper());
-        this.root.getNumOfOrder().setText("" + orderServiceDao.getNumOfOrder());
+        //this.root.getNumOfOrder().setText("" + orderServiceDao.getNumOfOrder());
     }
-    
+
     public void setEventLoiTat(List<DanhMucBean> listLoiTat) {
         this.listLoiTat = listLoiTat;
         for (DanhMucBean item : listLoiTat) {
             item.getJpn().addMouseListener(new PanelEvent(item.getKind(), item.getJpn()));
         }
-        
+
     }
 
     class PanelEvent implements MouseListener {
@@ -48,7 +50,7 @@ public class LoiTatController {
         private String kind;
         private JPanel jpnItem;
 //        private JLabel jlbItem;
-        
+
         public PanelEvent(String kind, JPanel jpnItem) {
             this.kind = kind;
             this.jpnItem = jpnItem;
@@ -64,9 +66,13 @@ public class LoiTatController {
                 case "Order":
                     node = new ShipperOrOrderJPanel("Order");
                     break;
-                case "ThongKe":
-                    node = new ThongKeJPanel();
+
+                case "Customer":
+                    node = new CustomerJPanel("Customer");
                     break;
+//                case "ThongKe":
+//                    node = new ThongKeJPanel();
+//                    break;
                 default:
                     break;
             }

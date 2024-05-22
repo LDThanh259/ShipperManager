@@ -12,10 +12,10 @@ import model.Shipper;
  * @author ADMIN
  */
 public interface ShipperServiceDao {
-    public List<Shipper> getList();
-    public int Update(Shipper shipper);
-    public int Delete(Shipper shipper);
-    public int Insert(Shipper shipper);
+    public List<Shipper> getList(boolean is_delete);
+    public int update(Shipper shipper);
+    public int delete(Shipper shipper);
+    public int insert(Shipper shipper);
     
     public int getNumOfShipper();
     public List<Integer> getListId();

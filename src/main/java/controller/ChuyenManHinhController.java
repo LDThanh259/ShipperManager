@@ -4,13 +4,16 @@ import bean.DanhMucBean;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import view.CustomerJPanel;
 import view.ShipperOrOrderJPanel;
-import view.ThongKeJPanel;
+//import view.ThongKeJPanel;
 import view.TrangChuJPanel;
 
 public class ChuyenManHinhController {
@@ -18,6 +21,9 @@ public class ChuyenManHinhController {
     private JPanel root;
     private String kindSelected = "";
     private List<DanhMucBean> listItem;
+
+    public ChuyenManHinhController() {
+    }
 
     public ChuyenManHinhController(JPanel jpnRoot) {
         this.root = jpnRoot;
@@ -34,7 +40,7 @@ public class ChuyenManHinhController {
         root.add(trangChuJPanel);
         root.validate();
         root.repaint();
-        
+
     }
 
     public void setEvent(List<DanhMucBean> listItem) {
@@ -42,7 +48,7 @@ public class ChuyenManHinhController {
         for (DanhMucBean item : listItem) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb()));
         }
-        
+
     }
 
     class LabelEvent implements MouseListener {
@@ -51,7 +57,7 @@ public class ChuyenManHinhController {
         private String kind;
         private JPanel jpnItem;
         private JLabel jlbItem;
-        
+
         public LabelEvent(String kind, JPanel jpnItem, JLabel jlbItem) {
             this.kind = kind;
             this.jpnItem = jpnItem;
@@ -70,9 +76,12 @@ public class ChuyenManHinhController {
                 case "Order":
                     node = new ShipperOrOrderJPanel("Order");
                     break;
-                case "ThongKe":
-                    node = new ThongKeJPanel();
+                case "Customer":
+                    node = new CustomerJPanel("Customer");
                     break;
+//                case "ThongKe":
+//                    node = new ThongKeJPanel();
+//                    break;
                 default:
                     break;
             }

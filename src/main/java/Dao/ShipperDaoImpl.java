@@ -4,7 +4,6 @@ import database.JDBCUtil;
 import java.util.List;
 import model.Shipper;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,36 +12,49 @@ import java.util.ArrayList;
 public class ShipperDaoImpl implements ShipperDao {
 
     @Override
-    public List<Shipper> getList() {
+    public List<Shipper> getList(boolean is_delete) {
         try {
             Connection conn = JDBCUtil.getConnection();
-
-            String sql = "SELECT * FROM Shipper;";
+            String sql = "SELECT TOP (1000) [SHIPPER_ID]\n"
+                    + "      ,[SHIPPER_NAME]\n"
+                    + "      ,[SHIPPER_GENDER]\n"
+                    + "      ,[SHIPPER_PHONENUMBER]\n"
+                    + "      ,[SHIPPER_PROVINCE]\n"
+                    + "      ,[SHIPPER_DISTRICT]\n"
+                    + "      ,[SHIPPER_WARD]\n"
+                    + "      ,[SHIPPER_LICENSEPLATE]\n"
+                    + "      ,[SHIPPER_STATUS]\n"
+                    + "      ,[SHIPPER_RANK]\n"
+                    + "      ,[SHIPPER_ISDELETED]\n"
+                    + "  FROM [newDatabaseOOP].[dbo].[SHIPPER]\n"
+                    + " WHERE [SHIPPER_ISDELETED] = ?;";
 
             List<Shipper> shippers = new ArrayList<>();
-
             PreparedStatement st = conn.prepareStatement(sql);
-
+            st.setBoolean(1, is_delete);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-
                 Shipper shipper = new Shipper();
-                shipper.setShipper_Id(rs.getInt("SHIPPER_ID"));
+                shipper.setId(rs.getInt("SHIPPER_ID"));
                 shipper.setName(rs.getString("SHIPPER_NAME"));
-                shipper.setBirthDay(rs.getString("SHIPPER_BIRTHDAY"));
                 shipper.setGender(rs.getString("SHIPPER_GENDER"));
-                shipper.setStartWork(rs.getString("SHIPPER_STARTWORK"));
-                shipper.setPhone(rs.getString("SHIPPER_PHONE"));
-                shipper.setEmail(rs.getString("SHIPPER_EMAIL"));
-                shipper.setAddress(rs.getString("SHIPPER_ADDRESS"));
-                shipper.setDescription(rs.getString("SHIPPER_DESCRIPTION"));
+                shipper.setPhoneNumber(rs.getString("SHIPPER_PHONENUMBER"));
+                shipper.setDistinct(rs.getString("SHIPPER_DISTRICT"));
+                shipper.setProvince(rs.getString("SHIPPER_PROVINCE"));
+                shipper.setWard(rs.getString("SHIPPER_WARD"));
+                shipper.setLicensePlate(rs.getString("SHIPPER_LICENSEPLATE"));
+                shipper.setStatus(rs.getString("SHIPPER_STATUS"));
+                shipper.setRating(rs.getFloat("SHIPPER_RANK"));
+                shipper.setIsDeleted(rs.getBoolean("SHIPPER_ISDELETED"));
 
                 shippers.add(shipper);
-
             }
 
+            rs.close();
+            st.close();
             JDBCUtil.closeConnection(conn);
+
             return shippers;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -51,101 +63,103 @@ public class ShipperDaoImpl implements ShipperDao {
     }
 
     @Override
-    public int Update(Shipper shipper) {
+    public int update(Shipper shipper) {
         int result = 0;
         try {
-
             Connection cons = JDBCUtil.getConnection();
 
-            String sql = "UPDATE Shipper\n"
+            String sql = "UPDATE SHIPPER\n"
                     + "SET \n"
                     + "    SHIPPER_NAME = ?, \n"
-                    + "    SHIPPER_BIRTHDAY = ?, \n"
                     + "    SHIPPER_GENDER = ?, \n"
-                    + "    SHIPPER_STARTWORK = ?, \n"
-                    + "    SHIPPER_PHONE = ?, \n"
-                    + "    SHIPPER_EMAIL = ?, \n"
-                    + "    SHIPPER_ADDRESS = ?, \n"
-                    + "    SHIPPER_DESCRIPTION = ?\n"
+                    + "    SHIPPER_PHONENUMBER = ?, \n"
+                    + "    SHIPPER_DISTRICT = ?, \n"
+                    + "    SHIPPER_PROVINCE = ?, \n"
+                    + "    SHIPPER_WARD = ?, \n"
+                    + "    SHIPPER_LICENSEPLATE = ?, \n"
+                    + "    SHIPPER_STATUS = ?, \n"
+                    + "    SHIPPER_RANK = ?, \n"
+                    + "    SHIPPER_ISDELETED = ? \n"
                     + "WHERE \n"
                     + "    SHIPPER_ID = ?;";
-            PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = cons.prepareStatement(sql);
 
             ps.setString(1, shipper.getName());
-            ps.setString(2, shipper.getBirthDay());
-            ps.setString(3, shipper.getGender());
-            ps.setString(4, shipper.getStartWork());
-            ps.setString(5, shipper.getPhone());
-            ps.setString(6, shipper.getEmail());
-            ps.setString(7, shipper.getAddress());
-            ps.setString(8, shipper.getDescription());
-            ps.setInt(9, shipper.getShipper_Id());
+            ps.setString(2, shipper.isGender());
+            ps.setString(3, shipper.getPhoneNumber());
+            ps.setString(4, shipper.getDistinct());
+            ps.setString(5, shipper.getProvince());
+            ps.setString(6, shipper.getWard());
+            ps.setString(7, shipper.getLicensePlate());
+            ps.setString(8, shipper.getStatus());
+            ps.setFloat(9, (float) shipper.getRating());
+            ps.setBoolean(10, shipper.isIsDeleted());;
+            ps.setInt(11, shipper.getId());
 
             result = ps.executeUpdate();
 
+            ps.close();
             JDBCUtil.closeConnection(cons);
-            //return generatedKey;
             return result;
-        } catch (Exception ex) {
-            //System.out.println("loi");
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return 0;
+        return result;
     }
 
     @Override
-    public int Delete(Shipper shipper) {
+    public int delete(Shipper shipper) {
         int result = 0;
         try {
             Connection cons = JDBCUtil.getConnection();
 
             String sql = "DELETE FROM SHIPPER\n"
                     + "WHERE SHIPPER_ID = ?;";
-            PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = cons.prepareStatement(sql);
 
-            ps.setString(1, "" + shipper.getShipper_Id());
+            ps.setInt(1, shipper.getId());
 
             result = ps.executeUpdate();
+            ps.close();
             JDBCUtil.closeConnection(cons);
 
             return result;
-        } catch (Exception ex) {
-            //System.out.println("loi");
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return 0;
+        return result;
     }
 
     @Override
-    public int Insert(Shipper shipper) {
+    public int insert(Shipper shipper) {
         int result = 0;
         try {
             Connection cons = JDBCUtil.getConnection();
 
-            String sql = "INSERT INTO SHIPPER (SHIPPER_NAME, SHIPPER_BIRTHDAY, "
-                    + "SHIPPER_GENDER, SHIPPER_STARTWORK, SHIPPER_PHONE,"
-                    + " SHIPPER_EMAIL, SHIPPER_ADDRESS, SHIPPER_DESCRIPTION)\n"
-                    + "VALUES (? ,? ,?, ? ,? ,? ,? ,? );";
+            String sql = "INSERT INTO SHIPPER (SHIPPER_NAME,SHIPPER_GENDER, SHIPPER_PHONENUMBER, SHIPPER_DISTRICT, SHIPPER_PROVINCE, SHIPPER_WARD, SHIPPER_LICENSEPLATE, SHIPPER_STATUS, SHIPPER_RANK, SHIPPER_ISDELETED)\n"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, shipper.getName());
-            ps.setString(2, shipper.getBirthDay());
-            ps.setString(3, shipper.getGender());
-            ps.setString(4, shipper.getStartWork());
-            ps.setString(5, shipper.getPhone());
-            ps.setString(6, shipper.getEmail());
-            ps.setString(7, shipper.getAddress());
-            ps.setString(8, shipper.getDescription());
+            ps.setString(2, shipper.isGender());
+            ps.setString(3, shipper.getPhoneNumber());
+            ps.setString(4, shipper.getDistinct());
+            ps.setString(5, shipper.getProvince());
+            ps.setString(6, shipper.getWard());
+            ps.setString(7, shipper.getLicensePlate());
+            ps.setString(8, shipper.getStatus());
+            ps.setFloat(9, (float) shipper.getRating());
+            ps.setBoolean(10, shipper.isIsDeleted());
 
             result = ps.executeUpdate();
+            ps.close();
             JDBCUtil.closeConnection(cons);
 
             return result;
-        } catch (Exception ex) {
-            //System.out.println("loi");
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return 0;
+        return result;
     }
 
     @Override
@@ -153,7 +167,7 @@ public class ShipperDaoImpl implements ShipperDao {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "SELECT SHIPPER_ID FROM Shipper;";
+            String sql = "SELECT SHIPPER_ID FROM SHIPPER;";
 
             List<Integer> shippers = new ArrayList<>();
 
@@ -162,12 +176,12 @@ public class ShipperDaoImpl implements ShipperDao {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-
                 int shipperId = rs.getInt("SHIPPER_ID");
                 shippers.add(shipperId);
-
             }
 
+            st.close();
+            rs.close();
             JDBCUtil.closeConnection(conn);
             return shippers;
         } catch (SQLException ex) {

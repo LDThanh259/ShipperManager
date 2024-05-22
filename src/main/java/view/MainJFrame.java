@@ -19,13 +19,13 @@ public class MainJFrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMucBean("TrangChu", jpnTrangChu, jlbTrangChu));
         listDanhMuc.add(new DanhMucBean("Shipper", jpnShipper, jlbShipper));
         listDanhMuc.add(new DanhMucBean("Order", jpnOrder, jlbOrder));
+        listDanhMuc.add(new DanhMucBean("Customer", jpnCustomer, jlbCustomer));
+        listDanhMuc.add(new DanhMucBean("Service", jpnService, jlbService));
+        listDanhMuc.add(new DanhMucBean("Incident", jpnIncident, jlbIncident));
         listDanhMuc.add(new DanhMucBean("ThongKe", jpnTk, jlbTk));
 
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         controller.setView(jpnTrangChu, jlbTrangChu);
-//        controller.setDashboard(jpnTrangChu, jlbTrangChu);
-//        controller.setEvent(listDanhMuc);
-
         controller.setEvent(listDanhMuc);
     }
 
@@ -49,6 +49,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jlbOrder = new javax.swing.JLabel();
         jpnTk = new javax.swing.JPanel();
         jlbTk = new javax.swing.JLabel();
+        jpnCustomer = new javax.swing.JPanel();
+        jlbCustomer = new javax.swing.JLabel();
+        jpnService = new javax.swing.JPanel();
+        jlbService = new javax.swing.JLabel();
+        jpnIncident = new javax.swing.JPanel();
+        jlbIncident = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,14 +74,14 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addGap(32, 32, 32))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -93,15 +99,15 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnTrangChuLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jlbTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jlbTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         jpnTrangChuLayout.setVerticalGroup(
             jpnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnTrangChuLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jlbTrangChu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jlbTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jpnShipper.setBackground(new java.awt.Color(0, 153, 0));
@@ -118,13 +124,13 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnShipperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnShipperLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jlbShipper, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jlbShipper, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         jpnShipperLayout.setVerticalGroup(
             jpnShipperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnShipperLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(jlbShipper)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -143,15 +149,15 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnOrderLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jlbOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jlbOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         jpnOrderLayout.setVerticalGroup(
             jpnOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnOrderLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jlbOrder)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jpnTk.setBackground(new java.awt.Color(0, 153, 0));
@@ -168,15 +174,90 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnTkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnTkLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jlbTk, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jlbTk, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         jpnTkLayout.setVerticalGroup(
             jpnTkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnTkLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jlbTk)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jlbTk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpnCustomer.setBackground(new java.awt.Color(0, 153, 0));
+        jpnCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jlbCustomer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbCustomer.setForeground(new java.awt.Color(255, 255, 255));
+        jlbCustomer.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbCustomer.setText("Quản lý khách hàng");
+
+        javax.swing.GroupLayout jpnCustomerLayout = new javax.swing.GroupLayout(jpnCustomer);
+        jpnCustomer.setLayout(jpnCustomerLayout);
+        jpnCustomerLayout.setHorizontalGroup(
+            jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnCustomerLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jlbCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        jpnCustomerLayout.setVerticalGroup(
+            jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnCustomerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlbCustomer)
+                .addContainerGap())
+        );
+
+        jpnService.setBackground(new java.awt.Color(0, 153, 0));
+        jpnService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jlbService.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbService.setForeground(new java.awt.Color(255, 255, 255));
+        jlbService.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbService.setText("Quản lý dịch vụ");
+
+        javax.swing.GroupLayout jpnServiceLayout = new javax.swing.GroupLayout(jpnService);
+        jpnService.setLayout(jpnServiceLayout);
+        jpnServiceLayout.setHorizontalGroup(
+            jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnServiceLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jlbService, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        jpnServiceLayout.setVerticalGroup(
+            jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnServiceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpnIncident.setBackground(new java.awt.Color(0, 153, 0));
+        jpnIncident.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jlbIncident.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbIncident.setForeground(new java.awt.Color(255, 255, 255));
+        jlbIncident.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbIncident.setText("Quản lý sự cố");
+
+        javax.swing.GroupLayout jpnIncidentLayout = new javax.swing.GroupLayout(jpnIncident);
+        jpnIncident.setLayout(jpnIncidentLayout);
+        jpnIncidentLayout.setHorizontalGroup(
+            jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnIncidentLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jlbIncident, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        jpnIncidentLayout.setVerticalGroup(
+            jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnIncidentLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbIncident, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jbnMenuLayout = new javax.swing.GroupLayout(jbnMenu);
@@ -190,7 +271,10 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jpnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnShipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnIncident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jbnMenuLayout.setVerticalGroup(
@@ -204,8 +288,14 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jpnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jpnIncident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpnView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -248,11 +338,17 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jbnMenu;
+    private javax.swing.JLabel jlbCustomer;
+    private javax.swing.JLabel jlbIncident;
     private javax.swing.JLabel jlbOrder;
+    private javax.swing.JLabel jlbService;
     private javax.swing.JLabel jlbShipper;
     private javax.swing.JLabel jlbTk;
     private javax.swing.JLabel jlbTrangChu;
+    private javax.swing.JPanel jpnCustomer;
+    private javax.swing.JPanel jpnIncident;
     private javax.swing.JPanel jpnOrder;
+    private javax.swing.JPanel jpnService;
     private javax.swing.JPanel jpnShipper;
     private javax.swing.JPanel jpnTk;
     private javax.swing.JPanel jpnTrangChu;

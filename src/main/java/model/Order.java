@@ -1,135 +1,224 @@
 package model;
 
-import java.util.Date; // Import kiểu dữ liệu Date
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-/**
- *
- * @author ADMIN
- */
 public class Order {
-    private int Id;
-    private String Name;
-    private String Delivery_Location;
-    private Date Delivery_Time; 
-    private String Receive_Location;
-    private Date Receive_Time; 
-    private String Status;
-    private String Feedback;
-    private double Distance;
-    private double Price;
-    private int Shipper_ID;
+    private int id;
+    private String name;
+    private double weight;
+    private double shipFee;
+    private double price;
+    private String ward;
+    private String province;
+    private String distinct;
+    private double distance;
+    private String description;
+    private LocalDateTime orderDate;
+    private LocalDate expectedDeliveryDate;
+    private boolean isDeleted;
+    private boolean respond;
+    private int shipperId;
+    private int cusId;
+    private LocalDateTime shipTime;
+    private int shipCount;
+    private LocalDateTime completedTime;
+    private boolean confirm;
+    private int serviceId;
 
     public Order() {
     }
 
-    public Order(int Id, String Name, String Delivery_Location, Date Delivery_Time, String Receive_Location, Date Receive_Time, String Status, String Feedback, double Distance, double Price, int Shipper_ID) {
-        this.Id = Id;
-        this.Name = Name;
-        this.Delivery_Location = Delivery_Location;
-        this.Delivery_Time = Delivery_Time;
-        this.Receive_Location = Receive_Location;
-        this.Receive_Time = Receive_Time;
-        this.Status = Status;
-        this.Feedback = Feedback;
-        this.Distance = Distance;
-        this.Price = Price;
-        this.Shipper_ID = Shipper_ID;
+    public Order(int id, String name, double weight, double shipFee, double price, String ward, String province, String distinct, double distance, String description, LocalDateTime orderDate, LocalDate expectedDeliveryDate, boolean isDeleted, boolean respond, int shipperId, int cusId, LocalDateTime shipTime, int shipCount, LocalDateTime completedTime, boolean confirm, int serviceId) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        this.shipFee = shipFee;
+        this.price = price;
+        this.ward = ward;
+        this.province = province;
+        this.distinct = distinct;
+        this.distance = distance;
+        this.description = description;
+        this.orderDate = orderDate;
+        this.expectedDeliveryDate = expectedDeliveryDate;
+        this.isDeleted = isDeleted;
+        this.respond = respond;
+        this.shipperId = shipperId;
+        this.cusId = cusId;
+        this.shipTime = shipTime;
+        this.shipCount = shipCount;
+        this.completedTime = completedTime;
+        this.confirm = confirm;
+        this.serviceId = serviceId;
     }
 
+    // Getters and setters
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDelivery_Location() {
-        return Delivery_Location;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setDelivery_Location(String Delivery_Location) {
-        this.Delivery_Location = Delivery_Location;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
-    public String getReceive_Location() {
-        return Receive_Location;
+    public double getShipFee() {
+        return shipFee;
     }
 
-    public void setReceive_Location(String Receive_Location) {
-        this.Receive_Location = Receive_Location;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-
-    public String getFeedback() {
-        return Feedback;
-    }
-
-    public void setFeedback(String Feedback) {
-        this.Feedback = Feedback;
-    }
-
-    public double getDistance() {
-        return Distance;
-    }
-
-    public void setDistance(double Distance) {
-        this.Distance = Distance;
+    public void setShipFee(double shipFee) {
+        this.shipFee = shipFee;
     }
 
     public double getPrice() {
-        return Price;
+        return price;
     }
 
-    public void setPrice(double Price) {
-        this.Price = Price;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public int getShipper_ID() {
-        return Shipper_ID;
+    public String getWard() {
+        return ward;
     }
 
-    public void setShipper_ID(int Shipper_ID) {
-        this.Shipper_ID = Shipper_ID;
+    public void setWard(String ward) {
+        this.ward = ward;
     }
 
-    public Date getDelivery_Time() {
-        return Delivery_Time;
+    public String getProvince() {
+        return province;
     }
 
-    public void setDelivery_Time(Date Delivery_Time) {
-        this.Delivery_Time = Delivery_Time;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
-    public Date getReceive_Time() {
-        return Receive_Time;
+    public String getDistinct() {
+        return distinct;
     }
 
-    public void setReceive_Time(Date Receive_Time) {
-        this.Receive_Time = Receive_Time;
+    public void setDistinct(String distinct) {
+        this.distinct = distinct;
     }
 
-    
-    
-    @Override
-    public String toString() {
-        return "Order{" + "Id=" + Id + ", Name=" + Name + ", Delivery_Location=" + Delivery_Location + ", Receive_Location=" + Receive_Location + ", Status=" + Status + ", Feedback=" + Feedback + ", Distance=" + Distance + ", Price=" + Price + ", Shipper_ID=" + Shipper_ID + '}';
+    public double getDistance() {
+        return distance;
     }
-    
-    
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public LocalDate getExpectedDeliveryDate() {
+        return expectedDeliveryDate;
+    }
+
+    public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
+        this.expectedDeliveryDate = expectedDeliveryDate;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public boolean isRespond() {
+        return respond;
+    }
+
+    public void setRespond(boolean respond) {
+        this.respond = respond;
+    }
+
+    public int getShipperId() {
+        return shipperId;
+    }
+
+    public void setShipperId(int shipperId) {
+        this.shipperId = shipperId;
+    }
+
+    public int getCusId() {
+        return cusId;
+    }
+
+    public void setCusId(int cusId) {
+        this.cusId = cusId;
+    }
+
+    public LocalDateTime getShipTime() {
+        return shipTime;
+    }
+
+    public void setShipTime(LocalDateTime shipTime) {
+        this.shipTime = shipTime;
+    }
+
+    public int getShipCount() {
+        return shipCount;
+    }
+
+    public void setShipCount(int shipCount) {
+        this.shipCount = shipCount;
+    }
+
+    public LocalDateTime getCompletedTime() {
+        return completedTime;
+    }
+
+    public void setCompletedTime(LocalDateTime completedTime) {
+        this.completedTime = completedTime;
+    }
+
+    public boolean isConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(boolean confirm) {
+        this.confirm = confirm;
+    }
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
+    }
 }

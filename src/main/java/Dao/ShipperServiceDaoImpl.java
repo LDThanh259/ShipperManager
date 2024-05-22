@@ -20,28 +20,28 @@ public class ShipperServiceDaoImpl implements ShipperServiceDao{
     }
     
     @Override
-    public List<Shipper> getList() {
-        return shipperDao.getList();
+    public List<Shipper> getList(boolean is_delete) {
+        return shipperDao.getList(is_delete);
     }
 
     @Override
-    public int Update(Shipper shipper) {
-        return shipperDao.Update(shipper);
+    public int update(Shipper shipper) {
+        return shipperDao.update(shipper);
     }
 
     @Override
-    public int Delete(Shipper shipper) {
-        return shipperDao.Delete(shipper);
+    public int delete(Shipper shipper) {
+        return shipperDao.delete(shipper);
     }
 
     @Override
-    public int Insert(Shipper shipper) {
-        return shipperDao.Insert(shipper);
+    public int insert(Shipper shipper) {
+        return shipperDao.insert(shipper);
     }
 
     @Override
     public int getNumOfShipper() {
-        return shipperDao.getList().size();
+        return shipperDao.getList(false).size();
     }
 
     @Override

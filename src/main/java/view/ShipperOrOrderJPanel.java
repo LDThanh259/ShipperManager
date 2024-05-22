@@ -4,8 +4,11 @@
  */
 package view;
 
+//import controller.QuanLyOrderController;
 import controller.QuanLyOrderController;
 import controller.QuanLyShipperController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -19,12 +22,24 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
     public ShipperOrOrderJPanel(String s) {
         initComponents();
         if (s.equalsIgnoreCase("Shipper")) {
-            QuanLyShipperController controller = new QuanLyShipperController(jpnView, btnAdd, jtfSearch, btnPrint);
-            controller.setDataToTable();
+            QuanLyShipperController controller = new QuanLyShipperController(jpnView, btnAdd, jtfSearch, jcbFillter, btnPrint);
+            jcbFillter.removeAllItems();
+
+            jcbFillter.addItem("Chưa xóa");
+            jcbFillter.addItem("Đã xóa");
+            controller.setDataToTable(false);
             controller.setEvent();
         } else if (s.equalsIgnoreCase("Order")) {
-            QuanLyOrderController controller = new QuanLyOrderController(jpnView, btnAdd, jtfSearch, btnPrint);
-            controller.initTable();
+            QuanLyOrderController controller = new QuanLyOrderController(jpnView, btnAdd, jtfSearch, btnPrint, jcbFillter);
+            controller.setDataToTable("Pending");
+
+            jcbFillter.removeAllItems();
+
+            jcbFillter.addItem("Chưa xử lý");
+            jcbFillter.addItem("Đang vận chuyển");
+            jcbFillter.addItem("Thành công");
+            jcbFillter.addItem("Đã xóa");
+
             controller.initEvents();
         }
 
@@ -44,6 +59,7 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
         jtfSearch = new javax.swing.JTextField();
         jpnView = new javax.swing.JPanel();
         btnPrint = new javax.swing.JButton();
+        jcbFillter = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -59,17 +75,20 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 748, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 448, Short.MAX_VALUE)
         );
 
         btnPrint.setBackground(new java.awt.Color(0, 153, 51));
         btnPrint.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnPrint.setText("Print");
         btnPrint.setBorder(null);
+
+        jcbFillter.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jcbFillter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", " " }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,7 +100,9 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
                     .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jcbFillter, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -92,10 +113,11 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfSearch)
+                    .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbFillter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
@@ -118,6 +140,7 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnPrint;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jcbFillter;
     private javax.swing.JPanel jpnView;
     private javax.swing.JTextField jtfSearch;
     // End of variables declaration//GEN-END:variables

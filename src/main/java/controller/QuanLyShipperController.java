@@ -14,11 +14,16 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -31,6 +36,8 @@ import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -39,9 +46,10 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import view.IncomeByShipper;
+//import view.IncomeByShipper;
 import view.InsertShipperJFrame;
 import view.ListOrderJFrame;
+//import view.ListOrderJFrame;
 import view.UpdateOrDeleteShipperJFrame;
 
 public class QuanLyShipperController {
@@ -49,9 +57,10 @@ public class QuanLyShipperController {
     private JPanel jpnView;
     private JButton btnAdd;
     private JTextField jtfSearch;
+    private JComboBox<String> jcbFillter;
     private JButton btnPrint;
     private ShipperServiceDao shipperServiceDao = null;
-    private String[] listColumn = {"SHIPPER_ID", "SHIPPER_NAME", "SHIPPER_BIRTHDAY", "SHIPPER_GENDER", "SHIPPER_STARTWORK", "SHIPPER_PHONE", "SHIPPER_EMAIL", "SHIPPER_ADDRESS", "SHIPPER_DESCRIPTION"};
+    private String[] listColumn = {"SHIPPER_ID", "SHIPPER_NAME", "SHIPPER_GENDER", "SHIPPER_PHONE", "SHIPPER_PROVINCE", "SHIPPER_DISTINCT", "SHIPPER_WARD", "SHIPPER_LICENSEPLATE", "SHIPPER_STATUS", "SHIPPER_RATING", "Edit"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
@@ -59,18 +68,24 @@ public class QuanLyShipperController {
 
     }
 
-    public QuanLyShipperController(JPanel jpnView, JButton btnAdd, JTextField jtfSearch, JButton btnPrint) {
+    public QuanLyShipperController(JPanel jpnView, JButton btnAdd, JTextField jtfSearch, JComboBox<String> jcbFillter, JButton btnPrint) {
         this.jpnView = jpnView;
         this.btnAdd = btnAdd;
         this.jtfSearch = jtfSearch;
+        this.jcbFillter = jcbFillter;
         this.btnPrint = btnPrint;
         this.shipperServiceDao = new ShipperServiceDaoImpl();
     }
 
-    public void setDataToTable() {
-        List<Shipper> listItem = shipperServiceDao.getList();
-        DefaultTableModel model = new ClassTableModel().setTableShipper(listItem, listColumn);
-        JTable table = new JTable(model);
+    public void setDataToTable(boolean isDeleted) {
+        List<Shipper> listItem = shipperServiceDao.getList(isDeleted);
+
+//        DefaultTableModel model = new ClassTableModel().setTableShipper(listItem, listColumn);
+//        JTable table = new JTable(model);
+        JTable table = new JTable();
+        ClassTableModel model = new ClassTableModel();
+        table.setModel(model.setTableShipper(listItem, listColumn, table,"Shipper"));
+// Có thể cần thiết lập kích thước cột, v.v. ở đây
 
         // TableRowSorter<TableModel> cho phep sap xep thu tu cac cot theo comparator
         //https://docs.oracle.com/javase/8/docs/api/javax/swing/table/TableRowSorter.html
@@ -139,16 +154,17 @@ public class QuanLyShipperController {
 
                         //Shipper shipper = getShipperFromSelectedRow(selectedRowIndex, model);
                         Shipper shipper = new Shipper();
-                        shipper.setShipper_Id((int) model.getValueAt(selectedRowIndex, 0));
+                        shipper.setId((int) model.getValueAt(selectedRowIndex, 0));
                         shipper.setName((String) model.getValueAt(selectedRowIndex, 1));
-                        shipper.setBirthDay((String) model.getValueAt(selectedRowIndex, 2));
-                        shipper.setGender((String) model.getValueAt(selectedRowIndex, 3));
-                        shipper.setStartWork((String) model.getValueAt(selectedRowIndex, 4));
-                        shipper.setPhone((String) model.getValueAt(selectedRowIndex, 5));
-                        shipper.setEmail((String) model.getValueAt(selectedRowIndex, 6));
-                        shipper.setAddress((String) model.getValueAt(selectedRowIndex, 7));
-                        shipper.setDescription((String) model.getValueAt(selectedRowIndex, 8) != null
-                                ? (String) model.getValueAt(selectedRowIndex, 8) : "");
+                        shipper.setGender((String) model.getValueAt(selectedRowIndex, 2));
+                        shipper.setPhoneNumber((String) model.getValueAt(selectedRowIndex, 3));
+                        shipper.setProvince((String) model.getValueAt(selectedRowIndex, 4));
+                        shipper.setDistinct((String) model.getValueAt(selectedRowIndex, 5));
+                        shipper.setWard((String) model.getValueAt(selectedRowIndex, 6));
+                        shipper.setLicensePlate((String) model.getValueAt(selectedRowIndex, 7));
+                        shipper.setStatus((String) model.getValueAt(selectedRowIndex, 8));
+                        shipper.setRating((double) model.getValueAt(selectedRowIndex, 9));
+                        //shipper.setIsDeleted((boolean) model.getValueAt(selectedRowIndex, 10));
 
                         editShipperMenuItem.addActionListener(new ActionListener() {
                             @Override
@@ -175,7 +191,7 @@ public class QuanLyShipperController {
                         revenueMenuItem.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                IncomeByShipper incomeByShipper = new IncomeByShipper(shipper);
+                                //IncomeByShipper incomeByShipper = new IncomeByShipper(shipper);
                             }
                         });
 
@@ -207,14 +223,10 @@ public class QuanLyShipperController {
         btnAdd.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Shipper shipper = new Shipper();
-                LocalDate localDate = LocalDate.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                String dateString = localDate.format(formatter);
-                shipper.setBirthDay(dateString);
-                shipper.setStartWork(dateString);
-
-                InsertShipperJFrame shipperJFrame = new InsertShipperJFrame(shipper);
+//                Shipper shipper = new Shipper();
+//
+//                InsertShipperJFrame shipperJFrame = new InsertShipperJFrame(shipper);
+                InsertShipperJFrame shipperJFrame = new InsertShipperJFrame();
                 shipperJFrame.setTitle("Thong tin Shipper");
                 shipperJFrame.setLocationRelativeTo(null);
                 shipperJFrame.setResizable(false);
@@ -234,56 +246,116 @@ public class QuanLyShipperController {
 
         });
 
+        jcbFillter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedValue = (String) jcbFillter.getSelectedItem();
+                if (selectedValue.equals("Chưa xóa")) {
+                    System.out.println("Chưa xóa");
+                    setDataToTable(false);
+                } else {
+                    System.out.println("Đã xóa");
+                    List<Shipper> listItem = shipperServiceDao.getList(true);
+
+                    JTable table = new JTable();
+                    ClassTableModel model = new ClassTableModel();
+                    table.setModel(model.setTableShipper(listItem, listColumn, table,"Shipper"));
+                    rowSorter = new TableRowSorter<>(table.getModel());
+                    table.setRowSorter(rowSorter);
+
+                    // design
+                    table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+                    table.getTableHeader().setPreferredSize(new Dimension(100, 50));
+                    table.setRowHeight(50);
+                    table.validate();
+                    table.repaint();
+
+                    JScrollPane scroll = new JScrollPane();
+                    scroll.getViewport().add(table);
+                    scroll.setPreferredSize(new Dimension(1350, 400));
+                    jpnView.removeAll();
+                    jpnView.setLayout(new CardLayout());
+                    jpnView.add(scroll);
+                    jpnView.validate();
+                    jpnView.repaint();
+
+                }
+            }
+
+        });
+
         btnPrint.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                String filePath = "F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\export\\Danh_sach_shipper.xlsx";
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Chọn nơi lưu tập tin Excel");
 
-                try (XSSFWorkbook workbook = new XSSFWorkbook()) {
-                    XSSFSheet spreadsheet = workbook.createSheet("Shipper");
+                // Tạo một FileFilter để chỉ chấp nhận các tập tin Excel
+                FileFilter filter = new FileNameExtensionFilter("Excel Files", "xlsx");
+                fileChooser.setFileFilter(filter);
 
-                    XSSFRow row = spreadsheet.createRow(2);
-                    row.setHeight((short) 500);
-                    Cell cell = row.createCell(0, CellType.STRING);
-                    cell.setCellValue("DANH SÁCH SHIPPER");
+                int userSelection = fileChooser.showSaveDialog(null);
 
-                    row = spreadsheet.createRow(3);
-                    row.setHeight((short) 500);
-                    String[] headers = {"ID", "Họ và tên", "Ngày sinh", "Giới tính", "Ngày đầu làm việc", "Số điện thoại", "Email", "Địa chỉ", "Mô tả"};
-                    for (int i = 0; i < headers.length; i++) {
-                        cell = row.createCell(i, CellType.STRING);
-                        cell.setCellValue(headers[i]);
+                if (userSelection == JFileChooser.APPROVE_OPTION) {
+                    File fileToSave = fileChooser.getSelectedFile();
+                    String filePath = fileToSave.getAbsolutePath();
+
+                    // Kiểm tra xem tên file có kết thúc bằng .xlsx chưa
+                    if (!filePath.toLowerCase().endsWith(".xlsx")) {
+                        // Nếu không có, thêm đuôi .xlsx vào sau tên file
+                        filePath += ".xlsx";
                     }
 
-                    int rowNum = 4;
+                    try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+                        XSSFSheet spreadsheet = workbook.createSheet("Shipper");
 
-                    ShipperServiceDao shipperServiceDao = new ShipperServiceDaoImpl();
+                        XSSFRow row = spreadsheet.createRow(2);
+                        row.setHeight((short) 500);
+                        Cell cell = row.createCell(0, CellType.STRING);
+                        cell.setCellValue("DANH SÁCH SHIPPER");
 
-                    List<Shipper> shipperList = shipperServiceDao.getList();
+                        row = spreadsheet.createRow(3);
+                        row.setHeight((short) 500);
+                        //String[] headers = {"ID", "Họ và tên", "Ngày sinh", "Giới tính", "Ngày đầu làm việc", "Số điện thoại", "Email", "Địa chỉ", "Mô tả"};
+                        for (int i = 0; i < listColumn.length; i++) {
+                            cell = row.createCell(i, CellType.STRING);
+                            cell.setCellValue(listColumn[i]);
+                            spreadsheet.autoSizeColumn(i);
+                        }
 
-                    for (Shipper shipper : shipperList) {
-                        row = spreadsheet.createRow(rowNum++);
-                        row.setHeight((short) 400);
-                        row.createCell(0).setCellValue(shipper.getShipper_Id());
-                        row.createCell(1).setCellValue(shipper.getName());
-                        row.createCell(2).setCellValue(shipper.getBirthDay());
-                        row.createCell(3).setCellValue(shipper.getGender());
-                        row.createCell(4).setCellValue(shipper.getStartWork());
-                        row.createCell(5).setCellValue(shipper.getPhone());
-                        row.createCell(6).setCellValue(shipper.getEmail());
-                        row.createCell(7).setCellValue(shipper.getAddress());
-                        row.createCell(8).setCellValue(shipper.getDescription());
+                        int rowNum = 4;
+
+                        ShipperServiceDao shipperServiceDao = new ShipperServiceDaoImpl();
+
+                        List<Shipper> shipperList = shipperServiceDao.getList(false);
+
+//                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        for (Shipper shipper : shipperList) {
+                            row = spreadsheet.createRow(rowNum++);
+                            row.setHeight((short) 400);
+                            row.createCell(0).setCellValue(shipper.getId());
+                            row.createCell(1).setCellValue(shipper.getName());
+                            row.createCell(2).setCellValue(shipper.isGender());
+                            row.createCell(3).setCellValue(shipper.getPhoneNumber());
+                            row.createCell(4).setCellValue(shipper.getDistinct());
+                            row.createCell(5).setCellValue(shipper.getProvince());
+                            row.createCell(6).setCellValue(shipper.getWard());
+                            row.createCell(7).setCellValue(shipper.getLicensePlate());
+                            row.createCell(8).setCellValue(shipper.getStatus());
+                            row.createCell(9).setCellValue(shipper.getRating());
+                            //row.createCell(10).setCellValue(shipper.isIsDeleted());
+
+                        }
+                        try (FileOutputStream out = new FileOutputStream(filePath)) {
+                            workbook.write(out);
+                        }
+                        showExportSuccessDialog("");
+
+                    } catch (IOException ex) {
+                        showExportSuccessDialog("không");
+                        ex.printStackTrace();
+                        // Xử lý ngoại lệ tại đây, ví dụ: thông báo cho người dùng, ghi log, vv.
                     }
-
-                    try (FileOutputStream out = new FileOutputStream(filePath)) {
-                        workbook.write(out);
-                    }
-                    showExportSuccessDialog("");
-
-                } catch (IOException ex) {
-                    showExportSuccessDialog("không");
-                    ex.printStackTrace();
-                    // Xử lý ngoại lệ tại đây, ví dụ: thông báo cho người dùng, ghi log, vv.
                 }
             }
 
@@ -298,11 +370,11 @@ public class QuanLyShipperController {
             }
 
         });
+
     }
 
     public static void showExportSuccessDialog(String s) {
         JOptionPane.showMessageDialog(null, "Xuất file " + s + "thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
-
 
 }
