@@ -68,21 +68,30 @@ public class OrderServiceDaoImpl implements OrderServiceDao {
         return orderDao.checkPhoneNumberExists(phoneNumber, customer);
     }
 
-    public void getDataFromID(Order order) {
-        orderDao.getDataFromID(order);
+    public void getDataFromID(Order order)
+    {
+    	orderDao.getDataFromID(order);
     }
     
-    public List<Order> getDeletedOrders(boolean isdeleted) {
-        return orderDao.getDeletedOrders(isdeleted);
+    public List<Order> getDeletedOrders()
+    {
+    	return orderDao.getDeletedOrders();
     }
-    
-    public List<Order> getUnDeliveryOrders() {
-        return orderDao.getUnDeliveryOrders();
-        
+   
+    public List<Order> getUnDeliveryOrders()
+    {
+    	return orderDao.getUnDeliveryOrders();
+
+    }
+    public List<Order> getCompletedOrders() 
+    {
+            return orderDao.getCompletedOrders();
     }
 
-    public List<Order> getCompletedOrders() {
-        return orderDao.getCompletedOrders();
+    @Override
+    public List<Order> getDeliveryOrders() {
+            // TODO Auto-generated method stub
+            return orderDao.getDeliveryOrders();
     }
     
     @Override
@@ -99,5 +108,13 @@ public class OrderServiceDaoImpl implements OrderServiceDao {
     public int UpdateCompleteTime(Order order) {
         return orderDao.UpdateCompleteTime(order);
     }
-    
+
+    @Override
+    public int UpdateShipperID(Order order, int id) {
+        return orderDao.UpdateShipperID(order, id);
+    }
+    @Override
+    public List<Order> getOrderListForCustomer(Customer customer, int month, String type) {
+                return orderDao.getOrderListForCustomer(customer, month, type);
+    }
 }

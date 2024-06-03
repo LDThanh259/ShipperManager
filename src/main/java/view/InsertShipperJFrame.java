@@ -4,7 +4,6 @@
  */
 package view;
 
-import AddressAPI.AddressController;
 import AddressAPI.LocationApp;
 import controller.ShipperController;
 import model.Shipper;
@@ -20,7 +19,7 @@ public class InsertShipperJFrame extends javax.swing.JFrame {
      */
     public InsertShipperJFrame(Shipper shipper) {
         initComponents();
-        AddressController addressController = new AddressController(jcbDistinct, jcbProvince, jcbWard);
+        LocationApp locationApp = new LocationApp(jcbProvince, jcbDistinct, jcbWard);
         ShipperController shipperController = new ShipperController(btnSubmit, jcbDistinct, jcbProvince, jcbWard, jlbMsg, jrbBusy, jrbIdle, jrbNam, jrbNu, jtfLiscensePlate, jtfName, jtfPhone);
         shipperController.setEvent("Insert");
         

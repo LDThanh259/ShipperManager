@@ -9,18 +9,19 @@ import java.util.List;
 
 import database.JDBCUtil;
 import model.Customer;
-import model.Order;
 
 public class CustomerDaoImpl implements CustomerDao {
 
     @Override
-    public List<Customer> getList() {
+    public List<Customer> getList(boolean is_delete) {
         try {
             Connection conn = JDBCUtil.getConnection();
-            String sql = "SELECT TOP (1000) [CUS_ID], [CUS_NAME], [CUS_PHONENUMBER], [CUS_EMAIL], [CUS_GENDER], [CUS_WARD], [CUS_PROVINCE], [CUS_DISTRICT] FROM [newDatabaseOOP].[dbo].[CUSTOMER]";
+            String sql = "SELECT TOP (1000) [CUS_ID], [CUS_NAME], [CUS_PHONENUMBER], [CUS_EMAIL], [CUS_GENDER], [CUS_WARD], [CUS_PROVINCE], [CUS_DISTRICT] FROM [Shipper1].[dbo].[CUSTOMER]"
+                    +"WHERE [isDeleted] = ?";
 
             List<Customer> customers = new ArrayList<>();
             PreparedStatement st = conn.prepareStatement(sql);
+            st.setBoolean(1, is_delete);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
@@ -53,7 +54,7 @@ public class CustomerDaoImpl implements CustomerDao {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "UPDATE [newDatabaseOOP].[dbo].[CUSTOMER]\n"
+            String sql = "UPDATE [Shipper1].[dbo].[CUSTOMER]\n"
                     + "SET \n"
                     + "    [CUS_NAME] = ?,\n"
                     + "    [CUS_PHONENUMBER] = ?,\n"
@@ -92,18 +93,15 @@ public class CustomerDaoImpl implements CustomerDao {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            // Thay đổi câu lệnh DELETE để không gây ra xung đột với ràng buộc tham chiếu
-            // Thực hiện cập nhật các bản ghi trong bảng "dbo.ORDERS" trước khi xóa bản ghi khách hàng
-            String updateOrdersQuery = "UPDATE [newDatabaseOOP].[dbo].[ORDERS] SET CUS_ID = NULL WHERE CUS_ID = ?";
-            PreparedStatement updateOrdersStatement = conn.prepareStatement(updateOrdersQuery);
-            updateOrdersStatement.setInt(1, customer.getId());
-            updateOrdersStatement.executeUpdate();
+            String sql = "UPDATE [Shipper1].[dbo].[CUSTOMER]\n"
+                    + "SET \n"
+                    + " [isDeleted] = 1 "
+                    + "WHERE \n"
+                    + "    [CUS_ID] = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
 
-            // Sau khi cập nhật các bản ghi trong bảng "dbo.ORDERS", tiến hành xóa bản ghi khách hàng
-            String deleteCustomerQuery = "DELETE FROM [newDatabaseOOP].[dbo].[CUSTOMER] WHERE CUS_ID = ?";
-            PreparedStatement deleteCustomerStatement = conn.prepareStatement(deleteCustomerQuery);
-            deleteCustomerStatement.setInt(1, customer.getId());
-            result = deleteCustomerStatement.executeUpdate();
+            ps.setInt(1, customer.getId());
+            result = ps.executeUpdate();
 
             JDBCUtil.closeConnection(conn);
 
@@ -120,7 +118,7 @@ public class CustomerDaoImpl implements CustomerDao {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "INSERT INTO [newDatabaseOOP].[dbo].[CUSTOMER] (CUS_NAME, CUS_PHONENUMBER, CUS_EMAIL, CUS_GENDER, CUS_WARD, CUS_PROVINCE, CUS_DISTRICT)\n"
+            String sql = "INSERT INTO [Shipper1].[dbo].[CUSTOMER] (CUS_NAME, CUS_PHONENUMBER, CUS_EMAIL, CUS_GENDER, CUS_WARD, CUS_PROVINCE, CUS_DISTRICT)\n"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -148,7 +146,7 @@ public class CustomerDaoImpl implements CustomerDao {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "SELECT CUS_ID FROM CUSTOMER;";
+            String sql = "SELECT CUS_ID FROM CUSTOMER WHERE [isDeleted] = 0 ;";
 
             List<Integer> customers = new ArrayList<>();
 
@@ -170,93 +168,57 @@ public class CustomerDaoImpl implements CustomerDao {
         }
         return null;
     }
-    
+
     @Override
-    public List<String> getListPhone()
-    {
-    	 try {
-             Connection conn = JDBCUtil.getConnection();
+    public List<String> getListPhone() {
+        try {
+            Connection conn = JDBCUtil.getConnection();
 
-             String sql = "SELECT CUS_PHONENUMBER FROM CUSTOMER;";
+            String sql = "SELECT CUS_PHONENUMBER FROM CUSTOMER WHERE [isDeleted] = 0 ;";
 
-             List<String> customers = new ArrayList<>();
+            List<String> customers = new ArrayList<>();
 
-             PreparedStatement st = conn.prepareStatement(sql);
+            PreparedStatement st = conn.prepareStatement(sql);
 
-             ResultSet rs = st.executeQuery();
+            ResultSet rs = st.executeQuery();
 
-             while (rs.next()) {
-                 String customerPhone = rs.getString("CUS_PHONENUMBER");
-                 customers.add(customerPhone);
-                 System.out.println(customerPhone);
-             }
+            while (rs.next()) {
+                String customerPhone = rs.getString("CUS_PHONENUMBER");
+                customers.add(customerPhone);
+                System.out.println(customerPhone);
+            }
 
-             st.close();
-             rs.close();
-             JDBCUtil.closeConnection(conn);
-             return customers;
-         } catch (SQLException ex) {
-             ex.printStackTrace();
-         }
-         return null;
+            st.close();
+            rs.close();
+            JDBCUtil.closeConnection(conn);
+            return customers;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
-	public void getDataFromID(Customer customer) {
-		// TODO Auto-generated method stub
-			try {
-				Connection conn = JDBCUtil.getConnection();
+    public void getDataFromID(Customer customer) {
+        // TODO Auto-generated method stub
+        try {
+            Connection conn = JDBCUtil.getConnection();
 
-				String sql = "SELECT  [CUS_ID]\r\n"
-						+ "      ,[CUS_NAME]\r\n"
-						+ "      ,[CUS_PHONENUMBER]\r\n"
-						+ "      ,[CUS_EMAIL]\r\n"
-						+ "      ,[CUS_GENDER]\r\n"
-						+ "      ,[CUS_WARD]\r\n"
-						+ "      ,[CUS_PROVINCE]\r\n"
-						+ "      ,[CUS_DISTRICT] FROM [newDatabaseOOP].[dbo].[CUSTOMER] WHERE [CUS_ID] = ?";
+            String sql = "SELECT  [CUS_ID]\r\n"
+                    + "      ,[CUS_NAME]\r\n"
+                    + "      ,[CUS_PHONENUMBER]\r\n"
+                    + "      ,[CUS_EMAIL]\r\n"
+                    + "      ,[CUS_GENDER]\r\n"
+                    + "      ,[CUS_WARD]\r\n"
+                    + "      ,[CUS_PROVINCE]\r\n"
+                    + "      ,[CUS_DISTRICT] FROM [Shipper1].[dbo].[CUSTOMER] WHERE [CUS_ID] = ?";
 
-				PreparedStatement st = conn.prepareStatement(sql);
-				st.setInt(1, customer.getId());
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, customer.getId());
 
-				ResultSet rs = st.executeQuery();
+            ResultSet rs = st.executeQuery();
 
-				if (rs.next()) {
-					customer.setId(rs.getInt("CUS_ID"));
-	                customer.setName(rs.getString("CUS_NAME"));
-	                customer.setPhoneNumber(rs.getString("CUS_PHONENUMBER"));
-	                customer.setEmail(rs.getString("CUS_EMAIL"));
-	                customer.setGender(rs.getBoolean("CUS_GENDER"));
-	                customer.setWard(rs.getString("CUS_WARD"));
-	                customer.setProvince(rs.getString("CUS_PROVINCE"));
-	                customer.setDistinct(rs.getString("CUS_DISTRICT"));
-				}
-
-				JDBCUtil.closeConnection(conn);
-			} catch (SQLException ex) {
-				System.out.println("loi tai cusimpl_setdata");
-				ex.printStackTrace();
-			}
-			System.out.println();
-	}
-	
-	public int getDataFromCusPhone(String phoneNumber, Customer customer) {
-		int cus_id = 0;
-		try {
-			Connection conn = JDBCUtil.getConnection();
-			String sql = "SELECT  [CUS_ID]\r\n"
-					+ "      ,[CUS_NAME]\r\n"
-					+ "      ,[CUS_PHONENUMBER]\r\n"
-					+ "      ,[CUS_EMAIL]\r\n"
-					+ "      ,[CUS_GENDER]\r\n"
-					+ "      ,[CUS_WARD]\r\n"
-					+ "      ,[CUS_PROVINCE]\r\n"
-					+ "      ,[CUS_DISTRICT] FROM [newDatabaseOOP].[dbo].[CUSTOMER] WHERE [CUS_PHONENUMBER] = ?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, phoneNumber);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				cus_id = rs.getInt("CUS_ID");
-				customer.setId(rs.getInt("CUS_ID"));
+            if (rs.next()) {
+                customer.setId(rs.getInt("CUS_ID"));
                 customer.setName(rs.getString("CUS_NAME"));
                 customer.setPhoneNumber(rs.getString("CUS_PHONENUMBER"));
                 customer.setEmail(rs.getString("CUS_EMAIL"));
@@ -264,15 +226,49 @@ public class CustomerDaoImpl implements CustomerDao {
                 customer.setWard(rs.getString("CUS_WARD"));
                 customer.setProvince(rs.getString("CUS_PROVINCE"));
                 customer.setDistinct(rs.getString("CUS_DISTRICT"));
-                System.out.println(rs.getString("CUS_NAME")+"dsad");
-				return cus_id;
-			}
-			JDBCUtil.closeConnection(conn);
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		System.out.println("loi");
-		return -1;
-	}
+            }
 
+            JDBCUtil.closeConnection(conn);
+        } catch (SQLException ex) {
+            System.out.println("loi tai cusimpl_setdata");
+            ex.printStackTrace();
+        }
+        System.out.println();
+    }
+
+    public int getDataFromCusPhone(String phoneNumber, Customer customer) {
+        int cus_id = 0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "SELECT  [CUS_ID]\r\n"
+                    + "      ,[CUS_NAME]\r\n"
+                    + "      ,[CUS_PHONENUMBER]\r\n"
+                    + "      ,[CUS_EMAIL]\r\n"
+                    + "      ,[CUS_GENDER]\r\n"
+                    + "      ,[CUS_WARD]\r\n"
+                    + "      ,[CUS_PROVINCE]\r\n"
+                    + "      ,[CUS_DISTRICT] FROM [Shipper1].[dbo].[CUSTOMER] WHERE [CUS_PHONENUMBER] = ? AND [isDeleted] = 0 ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, phoneNumber);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                cus_id = rs.getInt("CUS_ID");
+                customer.setId(rs.getInt("CUS_ID"));
+                customer.setName(rs.getString("CUS_NAME"));
+                customer.setPhoneNumber(rs.getString("CUS_PHONENUMBER"));
+                customer.setEmail(rs.getString("CUS_EMAIL"));
+                customer.setGender(rs.getBoolean("CUS_GENDER"));
+                customer.setWard(rs.getString("CUS_WARD"));
+                customer.setProvince(rs.getString("CUS_PROVINCE"));
+                customer.setDistinct(rs.getString("CUS_DISTRICT"));
+                System.out.println(rs.getString("CUS_NAME") + "dsad");
+                return cus_id;
+            }
+            JDBCUtil.closeConnection(conn);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("loi");
+        return -1;
+    }
 }

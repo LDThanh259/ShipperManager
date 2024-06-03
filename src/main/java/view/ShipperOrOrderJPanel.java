@@ -7,6 +7,7 @@ package view;
 //import controller.QuanLyOrderController;
 import controller.QuanLyOrderController;
 import controller.QuanLyShipperController;
+import controller.QuanlyServiceController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,7 +33,7 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
         } else if (s.equalsIgnoreCase("Order")) {
             QuanLyOrderController controller = new QuanLyOrderController(jpnView, btnAdd, jtfSearch, btnPrint, jcbFillter);
             controller.setDataToTable("Pending");
-
+            controller.initEvents();
             jcbFillter.removeAllItems();
 
             jcbFillter.addItem("Chưa xử lý");
@@ -40,7 +41,42 @@ public class ShipperOrOrderJPanel extends javax.swing.JPanel {
             jcbFillter.addItem("Thành công");
             jcbFillter.addItem("Đã xóa");
 
-            controller.initEvents();
+            jcbFillter.addActionListener((ActionListener) new ActionListener() {
+            	@Override
+            	public void actionPerformed(ActionEvent e) {
+            		String selectedItem = (String) jcbFillter.getSelectedItem();
+            		
+            		if (selectedItem.equals("Chưa xử lý")) 
+            		{
+            			
+            			controller.setDataToTable("Pending");
+            		} 
+            		else if (selectedItem.equals("Đang vận chuyển")) 
+            		{
+            			
+            			controller.setDataToTable("Processing");
+            		} 
+            		else if (selectedItem.equals("Thành công")) 
+            		{
+             			
+             			controller.setDataToTable("Completed");
+             		}  
+            		else if (selectedItem.equals("Đã xóa")) 
+            		{
+
+             			controller.setDataToTable("Deleted");
+             		}  
+            	}
+            	
+            	
+            });
+        }
+        else if (s.equalsIgnoreCase("Service")) {
+            jcbFillter.setVisible(false);
+            jcbFillter.removeAll();
+            QuanlyServiceController controller = new QuanlyServiceController(jpnView, btnAdd, jtfSearch, btnPrint);
+            controller.setDataToTable();
+            controller.setEvent();
         }
 
     }

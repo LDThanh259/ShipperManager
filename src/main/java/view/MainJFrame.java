@@ -2,18 +2,54 @@ package view;
 
 import bean.DanhMucBean;
 import controller.ChuyenManHinhController;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 public class MainJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainJFrame
-     */
+    private class GradientPanel extends JPanel {
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        GradientPaint gradient = new GradientPaint(0, 0, Color.decode("#1CB5E0"), 0, getHeight(), Color.decode("#000046"));
+        g2.setPaint(gradient);
+        g2.fillRect(0, 0, getWidth(), getHeight());
+    }
+}
     public MainJFrame() {
         initComponents();
         setTitle("QUẢN LÝ SHIPPER");
+
+        GradientPanel gradientPanel = new GradientPanel();
+        gradientPanel.setBounds(0, 0, jbnMenu.getWidth(), jbnMenu.getHeight());
+        jbnMenu.add(gradientPanel);
+        jbnMenu.setComponentZOrder(gradientPanel, jbnMenu.getComponentCount() - 1);
+        setTransparentBackground(jbnMenu);
+
+        JSeparator jSeparator1 = new JSeparator();
+        jSeparator1.setBounds(10, jPanel3.getHeight() + 10, jbnMenu.getWidth() - 20, 10);
+        jbnMenu.add(jSeparator1);
+        jbnMenu.setComponentZOrder(jSeparator1, jbnMenu.getComponentCount() - 2);
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                gradientPanel.setSize(jbnMenu.getSize());
+                gradientPanel.repaint();
+            }
+        });
 
         List<DanhMucBean> listDanhMuc = new ArrayList<>();
         listDanhMuc.add(new DanhMucBean("TrangChu", jpnTrangChu, jlbTrangChu));
@@ -21,12 +57,19 @@ public class MainJFrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMucBean("Order", jpnOrder, jlbOrder));
         listDanhMuc.add(new DanhMucBean("Customer", jpnCustomer, jlbCustomer));
         listDanhMuc.add(new DanhMucBean("Service", jpnService, jlbService));
-        listDanhMuc.add(new DanhMucBean("Incident", jpnIncident, jlbIncident));
         listDanhMuc.add(new DanhMucBean("ThongKe", jpnTk, jlbTk));
 
         ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
         controller.setView(jpnTrangChu, jlbTrangChu);
         controller.setEvent(listDanhMuc);
+    }
+
+    private void setTransparentBackground(JPanel panel) {
+        for (java.awt.Component comp : panel.getComponents()) {
+            if (comp instanceof JPanel) {
+                ((JPanel) comp).setOpaque(false);
+            }
+        }
     }
 
     /**
@@ -53,8 +96,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jlbCustomer = new javax.swing.JLabel();
         jpnService = new javax.swing.JPanel();
         jlbService = new javax.swing.JLabel();
-        jpnIncident = new javax.swing.JPanel();
-        jlbIncident = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +106,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Group-icon.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logo.png"))); // NOI18N
         jLabel2.setText("Quản lý Shipper");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -74,7 +115,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addGap(32, 32, 32))
         );
         jPanel3Layout.setVerticalGroup(
@@ -90,7 +131,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbTrangChu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbTrangChu.setForeground(new java.awt.Color(255, 255, 255));
-        jlbTrangChu.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/house-blank.png"))); // NOI18N
         jlbTrangChu.setText("Trang chủ");
 
         javax.swing.GroupLayout jpnTrangChuLayout = new javax.swing.GroupLayout(jpnTrangChu);
@@ -115,7 +156,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbShipper.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbShipper.setForeground(new java.awt.Color(255, 255, 255));
-        jlbShipper.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbShipper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/users.png"))); // NOI18N
         jlbShipper.setText("Quản lý Shipper");
 
         javax.swing.GroupLayout jpnShipperLayout = new javax.swing.GroupLayout(jpnShipper);
@@ -140,7 +181,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbOrder.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbOrder.setForeground(new java.awt.Color(255, 255, 255));
-        jlbOrder.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/users.png"))); // NOI18N
         jlbOrder.setText("Quản lý đơn hàng");
 
         javax.swing.GroupLayout jpnOrderLayout = new javax.swing.GroupLayout(jpnOrder);
@@ -165,7 +206,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbTk.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbTk.setForeground(new java.awt.Color(255, 255, 255));
-        jlbTk.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbTk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/stats.png"))); // NOI18N
         jlbTk.setText("Thống kê");
 
         javax.swing.GroupLayout jpnTkLayout = new javax.swing.GroupLayout(jpnTk);
@@ -190,7 +231,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbCustomer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbCustomer.setForeground(new java.awt.Color(255, 255, 255));
-        jlbCustomer.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/users.png"))); // NOI18N
         jlbCustomer.setText("Quản lý khách hàng");
 
         javax.swing.GroupLayout jpnCustomerLayout = new javax.swing.GroupLayout(jpnCustomer);
@@ -199,7 +240,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnCustomerLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jlbCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, Short.MAX_VALUE)
+                .addComponent(jlbCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         jpnCustomerLayout.setVerticalGroup(
@@ -215,7 +256,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbService.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbService.setForeground(new java.awt.Color(255, 255, 255));
-        jlbService.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
+        jlbService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/shipping-fast.png"))); // NOI18N
         jlbService.setText("Quản lý dịch vụ");
 
         javax.swing.GroupLayout jpnServiceLayout = new javax.swing.GroupLayout(jpnService);
@@ -235,31 +276,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpnIncident.setBackground(new java.awt.Color(0, 153, 0));
-        jpnIncident.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jlbIncident.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlbIncident.setForeground(new java.awt.Color(255, 255, 255));
-        jlbIncident.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\Apps-libreoffice-main-icon.png")); // NOI18N
-        jlbIncident.setText("Quản lý sự cố");
-
-        javax.swing.GroupLayout jpnIncidentLayout = new javax.swing.GroupLayout(jpnIncident);
-        jpnIncident.setLayout(jpnIncidentLayout);
-        jpnIncidentLayout.setHorizontalGroup(
-            jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnIncidentLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jlbIncident, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
-        );
-        jpnIncidentLayout.setVerticalGroup(
-            jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnIncidentLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbIncident, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout jbnMenuLayout = new javax.swing.GroupLayout(jbnMenu);
         jbnMenu.setLayout(jbnMenuLayout);
         jbnMenuLayout.setHorizontalGroup(
@@ -267,15 +283,14 @@ public class MainJFrame extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jbnMenuLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jbnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnShipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnIncident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(jbnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnShipper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnTk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jbnMenuLayout.setVerticalGroup(
             jbnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,10 +307,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jpnIncident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jpnView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -332,21 +345,18 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jbnMenu;
     private javax.swing.JLabel jlbCustomer;
-    private javax.swing.JLabel jlbIncident;
     private javax.swing.JLabel jlbOrder;
     private javax.swing.JLabel jlbService;
     private javax.swing.JLabel jlbShipper;
     private javax.swing.JLabel jlbTk;
     private javax.swing.JLabel jlbTrangChu;
     private javax.swing.JPanel jpnCustomer;
-    private javax.swing.JPanel jpnIncident;
     private javax.swing.JPanel jpnOrder;
     private javax.swing.JPanel jpnService;
     private javax.swing.JPanel jpnShipper;

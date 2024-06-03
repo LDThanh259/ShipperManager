@@ -1,0 +1,4245 @@
+[
+    {
+        "Id": "01",
+        "Name": "Thành phố Hà Nội",
+        "Districts": [
+            {
+                "Id": "001",
+                "Name": "Quận Ba Đình",
+                "Wards": [
+                    {
+                        "Id": "00001",
+                        "Name": "Phường Phúc Xá",
+                        "Latitude": 21.0468,
+                        "Longitude": 105.8388,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00004",
+                        "Name": "Phường Trúc Bạch",
+                        "Latitude": 21.0463,
+                        "Longitude": 105.8309,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00006",
+                        "Name": "Phường Vĩnh Phúc",
+                        "Latitude": 21.0416,
+                        "Longitude": 105.8052,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00007",
+                        "Name": "Phường Cống Vị",
+                        "Latitude": 21.0346,
+                        "Longitude": 105.7993,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00008",
+                        "Name": "Phường Liễu Giai",
+                        "Latitude": 21.0375,
+                        "Longitude": 105.8103,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00010",
+                        "Name": "Phường Nguyễn Trung Trực",
+                        "Latitude": 21.0424,
+                        "Longitude": 106.8313,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00013",
+                        "Name": "Phường Quán Thánh",
+                        "Latitude": 21.0399,
+                        "Longitude": 105.8391,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00016",
+                        "Name": "Phường Ngọc Hà",
+                        "Latitude": 21.0386,
+                        "Longitude": 105.8179,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00019",
+                        "Name": "Phường Điện Biên",
+                        "Latitude": 21.0336,
+                        "Longitude": 105.8270,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00022",
+                        "Name": "Phường Đội Cấn",
+                        "Latitude": 21.0351,
+                        "Longitude": 105.8168,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00025",
+                        "Name": "Phường Ngọc Khánh",
+                        "Latitude": 21.0297,
+                        "Longitude": 105.7992,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00028",
+                        "Name": "Phường Kim Mã",
+                        "Latitude": 21.0306,
+                        "Longitude": 105.8138,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00031",
+                        "Name": "Phường Giảng Võ",
+                        "Latitude": 21.0273,
+                        "Longitude": 105.8087,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00034",
+                        "Name": "Phường Thành Công",
+                        "Latitude": 21.0205,
+                        "Longitude": 105.8054,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "002",
+                "Name": "Quận Hoàn Kiếm",
+                "Wards": [
+                    {
+                        "Id": "00037",
+                        "Name": "Phường Phúc Tân",
+                        "Latitude": 21.0373,
+                        "Longitude": 105.8463,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00040",
+                        "Name": "Phường Đồng Xuân",
+                        "Latitude": 21.0387,
+                        "Longitude": 105.8448,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00043",
+                        "Name": "Phường Hàng Mã",
+                        "Latitude": 21.0373,
+                        "Longitude": 105.8418,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00046",
+                        "Name": "Phường Hàng Buồm",
+                        "Latitude": 21.0357,
+                        "Longitude": 105.8472,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00049",
+                        "Name": "Phường Hàng Đào",
+                        "Latitude": 21.0341,
+                        "Longitude": 105.8475,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00052",
+                        "Name": "Phường Hàng Bồ",
+                        "Latitude": 21.0349,
+                        "Longitude": 105.8453,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00055",
+                        "Name": "Phường Cửa Đông",
+                        "Latitude": 21.0326,
+                        "Longitude": 105.8431,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00058",
+                        "Name": "Phường Lý Thái Tổ",
+                        "Latitude": 21.0312,
+                        "Longitude": 105.8551,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00061",
+                        "Name": "Phường Hàng Bạc",
+                        "Latitude": 21.0330,
+                        "Longitude": 105.8497,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00064",
+                        "Name": "Phường Hàng Gai",
+                        "Latitude": 21.0320,
+                        "Longitude": 105.8460,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00067",
+                        "Name": "Phường Chương Dương",
+                        "Latitude": 21.0262,
+                        "Longitude": 105.8514,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00070",
+                        "Name": "Phường Hàng Trống",
+                        "Latitude": 21.0286,
+                        "Longitude": 105.8453,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00073",
+                        "Name": "Phường Cửa Nam",
+                        "Latitude": 21.0248,
+                        "Longitude": 105.8381,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00076",
+                        "Name": "Phường Hàng Bông",
+                        "Latitude": 21.0287,
+                        "Longitude": 105.8402,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00079",
+                        "Name": "Phường Tràng Tiền",
+                        "Latitude": 21.0252,
+                        "Longitude": 105.8445,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00082",
+                        "Name": "Phường Trần Hưng Đạo",
+                        "Latitude": 21.0231,
+                        "Longitude": 105.8415,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00085",
+                        "Name": "Phường Phan Chu Trinh",
+                        "Latitude": 21.0215,
+                        "Longitude": 105.8523,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00088",
+                        "Name": "Phường Hàng Bài",
+                        "Latitude": 21.0213,
+                        "Longitude": 105.8468,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "003",
+                "Name": "Quận Tây Hồ",
+                "Wards": [
+                    {
+                        "Id": "00091",
+                        "Name": "Phường Phú Thượng",
+                        "Latitude": 21.0849,
+                        "Longitude": 105.7882,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00094",
+                        "Name": "Phường Nhật Tân",
+                        "Latitude": 21.0781,
+                        "Longitude": 105.8052,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00097",
+                        "Name": "Phường Tứ Liên",
+                        "Latitude": 21.0681,
+                        "Longitude": 105.8270,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00100",
+                        "Name": "Phường Quảng An",
+                        "Latitude": 21.0609,
+                        "Longitude": 105.8047,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00103",
+                        "Name": "Phường Xuân La",
+                        "Latitude": 21.0605,
+                        "Longitude": 105.7864,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00106",
+                        "Name": "Phường Yên Phụ",
+                        "Latitude": 21.0540,
+                        "Longitude": 105.8296,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00109",
+                        "Name": "Phường Bưởi",
+                        "Latitude": 21.0537,
+                        "Longitude": 105.8028,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00112",
+                        "Name": "Phường Thụy Khuê",
+                        "Latitude": 21.0451,
+                        "Longitude": 105.8043,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "004",
+                "Name": "Quận Long Biên",
+                "Wards": [
+                    {
+                        "Id": "00115",
+                        "Name": "Phường Thượng Thanh",
+                        "Latitude": 21.0646,
+                        "Longitude": 105.8485,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00118",
+                        "Name": "Phường Ngọc Thụy",
+                        "Latitude": 21.0617,
+                        "Longitude": 105.8212,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00121",
+                        "Name": "Phường Giang Biên",
+                        "Latitude": 21.0664,
+                        "Longitude": 105.8890,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00124",
+                        "Name": "Phường Đức Giang",
+                        "Latitude": 21.0664,
+                        "Longitude": 105.8803,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00127",
+                        "Name": "Phường Việt Hưng",
+                        "Latitude": 21.0538,
+                        "Longitude": 105.8823,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00130",
+                        "Name": "Phường Gia Thụy",
+                        "Latitude": 21.0499,
+                        "Longitude": 105.8763,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00133",
+                        "Name": "Phường Ngọc Lâm",
+                        "Latitude": 21.0454,
+                        "Longitude": 105.8612,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00136",
+                        "Name": "Phường Phúc Lợi",
+                        "Latitude": 21.0413,
+                        "Longitude": 105.9256,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00139",
+                        "Name": "Phường Bồ Đề",
+                        "Latitude": 21.0358,
+                        "Longitude": 105.8513,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00142",
+                        "Name": "Phường Sài Đồng",
+                        "Latitude": 21.0343,
+                        "Longitude": 105.8936,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00145",
+                        "Name": "Phường Long Biên",
+                        "Latitude": 21.0194,
+                        "Longitude": 105.8463,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00148",
+                        "Name": "Phường Thạch Bàn",
+                        "Latitude": 21.0209,
+                        "Longitude": 105.8778,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00151",
+                        "Name": "Phường Phúc Đồng",
+                        "Latitude": 21.0404,
+                        "Longitude": 105.8757,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00154",
+                        "Name": "Phường Cự Khối",
+                        "Latitude": 21.0060,
+                        "Longitude": 105.8813,	
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "005",
+                "Name": "Quận Cầu Giấy",
+                "Wards": [
+                    {
+                        "Id": "00157",
+                        "Name": "Phường Nghĩa Đô",
+                        "Latitude": 21.0479,
+                        "Longitude": 105.7911,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00160",
+                        "Name": "Phường Nghĩa Tân",
+                        "Latitude": 21.0467,
+                        "Longitude": 105.7812,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00163",
+                        "Name": "Phường Mai Dịch",
+                        "Latitude": 21.0402,
+                        "Longitude": 105.7644,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00166",
+                        "Name": "Phường Dịch Vọng",
+                        "Latitude": 21.0343,
+                        "Longitude": 105.7828,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00167",
+                        "Name": "Phường Dịch Vọng Hậu",
+                        "Latitude": 21.0354,
+                        "Longitude": 105.7749,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00169",
+                        "Name": "Phường Quan Hoa",
+                        "Latitude": 21.0352,
+                        "Longitude": 105.7904,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00172",
+                        "Name": "Phường Yên Hoà",
+                        "Latitude": 21.0225,
+                        "Longitude": 105.7724,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00175",
+                        "Name": "Phường Trung Hoà",
+                        "Latitude": 21.0091,
+                        "Longitude": 105.7804,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "006",
+                "Name": "Quận Đống Đa",
+                "Wards": [
+                    {
+                        "Id": "00178",
+                        "Name": "Phường Cát Linh",
+                        "Latitude": 21.0275,
+                        "Longitude": 105.8176,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00181",
+                        "Name": "Phường Văn Miếu",
+                        "Latitude": 21.0257,
+                        "Longitude": 105.8327,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00184",
+                        "Name": "Phường Quốc Tử Giám",
+                        "Latitude": 21.0267,
+                        "Longitude": 105.8273,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00187",
+                        "Name": "Phường Láng Thượng",
+                        "Latitude": 21.0221,
+                        "Longitude": 105.7942,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00190",
+                        "Name": "Phường Ô Chợ Dừa",
+                        "Latitude": 21.0211,
+                        "Longitude": 105.8152,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00193",
+                        "Name": "Phường Văn Chương",
+                        "Latitude": 21.0236,
+                        "Longitude": 105.8307,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00196",
+                        "Name": "Phường Hàng Bột",
+                        "Latitude": 21.0225,
+                        "Longitude": 105.8267,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00199",
+                        "Name": "Phường Láng Hạ",
+                        "Latitude": 21.0167,
+                        "Longitude": 105.8018,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00202",
+                        "Name": "Phường Khâm Thiên",
+                        "Latitude": 21.0198,
+                        "Longitude": 105.8334,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00205",
+                        "Name": "Phường Thổ Quan",
+                        "Latitude": 21.0167,
+                        "Longitude": 105.8288,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00208",
+                        "Name": "Phường Nam Đồng",
+                        "Latitude": 21.0139,
+                        "Longitude": 105.8250,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00211",
+                        "Name": "Phường Trung Phụng",
+                        "Latitude": 21.0160,
+                        "Longitude": 105.8328,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00214",
+                        "Name": "Phường Quang Trung",
+                        "Latitude": 21.0117,
+                        "Longitude": 105.8168,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00217",
+                        "Name": "Phường Trung Liệt",
+                        "Latitude": 21.0108,
+                        "Longitude": 105.8129,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00220",
+                        "Name": "Phường Phương Liên",
+                        "Latitude": 21.0112,
+                        "Longitude": 105.8317,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00223",
+                        "Name": "Phường Thịnh Quang",
+                        "Latitude": 21.0088,
+                        "Longitude": 105.8127,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00226",
+                        "Name": "Phường Trung Tự",
+                        "Latitude": 21.0066,
+                        "Longitude": 105.8272,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00229",
+                        "Name": "Phường Kim Liên",
+                        "Latitude": 21.0064,
+                        "Longitude": 105.8299,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00232",
+                        "Name": "Phường Phương Mai",
+                        "Latitude": 21.0031,
+                        "Longitude": 105.8276,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00235",
+                        "Name": "Phường Ngã Tư Sở",
+                        "Latitude": 21.0050,
+                        "Longitude": 105.8162,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00238",
+                        "Name": "Phường Khương Thượng",
+                        "Latitude": 21.0017,
+                        "Longitude": 105.8222,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "007",
+                "Name": "Quận Hai Bà Trưng",
+                "Wards": [
+                    {
+                        "Id": "00241",
+                        "Name": "Phường Nguyễn Du",
+                        "Latitude": 21.0173,
+                        "Longitude": 105.8358,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00244",
+                        "Name": "Phường Bạch Đằng",
+                        "Latitude": 21.0140,
+                        "Longitude": 105.8545,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00247",
+                        "Name": "Phường Phạm Đình Hổ",
+                        "Latitude": 21.0152,
+                        "Longitude": 105.8457,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00256",
+                        "Name": "Phường Lê Đại Hành",
+                        "Latitude": 21.0125,
+                        "Longitude": 105.8359,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00259",
+                        "Name": "Phường Đồng Nhân",
+                        "Latitude": 21.0119,
+                        "Longitude": 105.8538,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00262",
+                        "Name": "Phường Phố Huế",
+                        "Latitude": 21.0113,
+                        "Longitude": 105.8477,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00265",
+                        "Name": "Phường Đống Mác",
+                        "Latitude": 21.0112,
+                        "Longitude": 105.8538,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00268",
+                        "Name": "Phường Thanh Lương",
+                        "Latitude": 21.0061,
+                        "Longitude": 105.8514,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00271",
+                        "Name": "Phường Thanh Nhàn",
+                        "Latitude": 21.0055,
+                        "Longitude": 105.8459,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00274",
+                        "Name": "Phường Cầu Dền",
+                        "Latitude": 21.0059,
+                        "Longitude": 105.8472,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00277",
+                        "Name": "Phường Bách Khoa",
+                        "Latitude": 21.0042,
+                        "Longitude": 105.8407,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00280",
+                        "Name": "Phường Đồng Tâm",
+                        "Latitude": 20.9982,
+                        "Longitude": 105.8345,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00283",
+                        "Name": "Phường Vĩnh Tuy",
+                        "Latitude": 20.9979,
+                        "Longitude": 105.8696,	
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00286",
+                        "Name": "Phường Bạch Mai",
+                        "Latitude": 21.0004,
+                        "Longitude": 105.8468,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00289",
+                        "Name": "Phường Quỳnh Mai",
+                        "Latitude": 21.0041,
+
+                        "Longitude": 105.8573,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00292",
+                        "Name": "Phường Quỳnh Lôi",
+                        "Latitude": 20.9997,
+                        "Longitude": 105.8506,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00295",
+                        "Name": "Phường Minh Khai",
+                        "Latitude": 20.9958,
+                        "Longitude": 105.8462,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00298",
+                        "Name": "Phường Trương Định",
+                        "Latitude": 20.9955,
+                        "Longitude": 105.8484,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "008",
+                "Name": "Quận Hoàng Mai",
+                "Wards": [
+                    {
+                        "Id": "00301",
+                        "Name": "Phường Thanh Trì",
+                        "Latitude": 20.9949,
+                        "Longitude": 105.8718,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00304",
+                        "Name": "Phường Vĩnh Hưng",
+                        "Latitude": 20.9873,
+                        "Longitude": 105.8652,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00307",
+                        "Name": "Phường Định Công",
+                        "Latitude": 20.9839,
+                        "Longitude": 105.8081,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00310",
+                        "Name": "Phường Mai Động",
+                        "Latitude": 20.9911,
+                        "Longitude": 105.8542,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00313",
+                        "Name": "Phường Tương Mai",
+                        "Latitude": 20.9874,
+                        "Longitude": 105.8392,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00316",
+                        "Name": "Phường Đại Kim",
+                        "Latitude": 20.9750,
+                        "Longitude": 105.8031,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00319",
+                        "Name": "Phường Tân Mai",
+                        "Latitude": 20.9772,
+                        "Longitude": 105.8313,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00322",
+                        "Name": "Phường Hoàng Văn Thụ",
+                        "Latitude": 20.9864,
+                        "Longitude": 105.8396,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00325",
+                        "Name": "Phường Giáp Bát",
+                        "Latitude": 20.9840,
+                        "Longitude": 105.8308,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00328",
+                        "Name": "Phường Lĩnh Nam",
+                        "Latitude": 20.9761,
+                        "Longitude": 105.8482,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00331",
+                        "Name": "Phường Thịnh Liệt",
+                        "Latitude": 20.9750,
+                        "Longitude": 105.8289,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00334",
+                        "Name": "Phường Trần Phú",
+                        "Latitude": 20.9685,
+                        "Longitude": 105.8633,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00337",
+                        "Name": "Phường Hoàng Liệt",
+                        "Latitude": 20.9618,
+                        "Longitude": 105.7961,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00340",
+                        "Name": "Phường Yên Sở",
+                        "Latitude": 20.9649,
+                        "Longitude": 105.8313,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "009",
+                "Name": "Quận Thanh Xuân",
+                "Wards": [
+                    {
+                        "Id": "00343",
+                        "Name": "Phường Nhân Chính",
+                        "Latitude": 21.0025,
+                        "Longitude": 105.7831,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00346",
+                        "Name": "Phường Thượng Đình",
+                        "Latitude": 20.9993,
+                        "Longitude": 105.8028,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00349",
+                        "Name": "Phường Khương Trung",
+                        "Latitude": 20.9974,
+                        "Longitude": 105.8112,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00352",
+                        "Name": "Phường Khương Mai",
+                        "Latitude": 20.9941,
+                        "Longitude": 105.8191,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00355",
+                        "Name": "Phường Thanh Xuân Trung",
+                        "Latitude": 20.9956,
+                        "Longitude": 105.7954,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00358",
+                        "Name": "Phường Phương Liệt",
+                        "Latitude": 20.9915,
+                        "Longitude": 105.8276,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00361",
+                        "Name": "Phường Hạ Đình",
+                        "Latitude": 20.9909,
+                        "Longitude": 105.7985,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00364",
+                        "Name": "Phường Khương Đình",
+                        "Latitude": 20.9883,
+                        "Longitude": 105.8100,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00367",
+                        "Name": "Phường Thanh Xuân Bắc",
+                        "Latitude": 21.9935,
+                        "Longitude": 105.7940,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00370",
+                        "Name": "Phường Thanh Xuân Nam",
+                        "Latitude": 20.9874,
+                        "Longitude": 105.7889,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00373",
+                        "Name": "Phường Kim Giang",
+                        "Latitude": 20.9823,
+                        "Longitude": 105.8087,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "016",
+                "Name": "Huyện Sóc Sơn",
+                "Wards": [
+                    {
+                        "Id": "00376",
+                        "Name": "Thị trấn Sóc Sơn",
+                        "Latitude": 21.2544,
+                        "Longitude": 105.8320,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "00379",
+                        "Name": "Xã Bắc Sơn",
+                        "Latitude": 21.3559,
+                        "Longitude": 105.7431,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00382",
+                        "Name": "Xã Minh Trí",
+                        "Latitude": 21.2970,
+                        "Longitude": 105.7252,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00385",
+                        "Name": "Xã Hồng Kỳ",
+                        "Latitude": 21.3078,
+                        "Longitude": 105.8070,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00388",
+                        "Name": "Xã Nam Sơn",
+                        "Latitude": 21.3051,
+                        "Longitude": 105.7742,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00391",
+                        "Name": "Xã Trung Giã",
+                        "Latitude": 21.3113,
+                        "Longitude": 105.8393,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00394",
+                        "Name": "Xã Tân Hưng",
+                        "Latitude": 21.2971,
+                        "Longitude": 105.8637,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00397",
+                        "Name": "Xã Minh Phú",
+                        "Latitude": 21.2813,
+                        "Longitude": 105.7335,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00400",
+                        "Name": "Xã Phù Linh",
+                        "Latitude": 21.2787,
+                        "Longitude": 105.8017,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00403",
+                        "Name": "Xã Bắc Phú",
+                        "Latitude": 21.2781,
+                        "Longitude": 105.8587,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00406",
+                        "Name": "Xã Tân Minh",
+                        "Latitude": 21.2680,
+                        "Longitude": 105.8300,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00409",
+                        "Name": "Xã Quang Tiến",
+                        "Latitude": 21.2514,
+                        "Longitude": 105.7620,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00412",
+                        "Name": "Xã Hiền Ninh",
+                        "Latitude": 21.180000,
+                        "Longitude": 105.816000,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00415",
+                        "Name": "Xã Tân Dân",
+                        "Latitude": 21.2554,
+                        "Longitude": 105.7066,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00418",
+                        "Name": "Xã Tiên Dược",
+                        "Latitude": 21.24833,
+                        "Longitude": 105.8051,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00421",
+                        "Name": "Xã Việt Long",
+                        "Latitude": 21.2524,
+                        "Longitude": 105.9007,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00424",
+                        "Name": "Xã Xuân Giang",
+                        "Latitude": 21.2478,
+                        "Longitude": 105.8571,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00427",
+                        "Name": "Xã Mai Đình",
+                        "Latitude": 21.2249,
+                        "Longitude": 105.7882,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00430",
+                        "Name": "Xã Đức Hoà",
+                        "Latitude": 21.2284,
+                        "Longitude": 105.8419,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00433",
+                        "Name": "Xã Thanh Xuân",
+                        "Latitude": 21.2242,
+                        "Longitude": 105.7165,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00436",
+                        "Name": "Xã Đông Xuân",
+                        "Latitude": 21.2155,
+                        "Longitude": 105.8320,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00439",
+                        "Name": "Xã Kim Lũ",
+                        "Latitude": 21.2104,
+                        "Longitude": 105.8867,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00442",
+                        "Name": "Xã Phú Cường",
+                        "Latitude": 21.2047,
+                        "Longitude": 105.7676,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00445",
+                        "Name": "Xã Phú Minh",
+                        "Latitude": 21.2015,
+                        "Longitude": 105.7984,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00448",
+                        "Name": "Xã Phù Lỗ",
+                        "Latitude": 21.2020,
+                        "Longitude": 105.8112,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00451",
+                        "Name": "Xã Xuân Thu",
+                        "Latitude": 21.1961,
+                        "Longitude": 105.8709,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "017",
+                "Name": "Huyện Đông Anh",
+                "Wards": [
+                    {
+                        "Id": "00454",
+                        "Name": "Thị trấn Đông Anh",
+                        "Latitude": 21.1504,
+                        "Longitude": 105.8266,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "00457",
+                        "Name": "Xã Xuân Nộn",
+                        "Latitude": 21.1820,
+                        "Longitude": 105.8294,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00460",
+                        "Name": "Xã Thuỵ Lâm",
+                        "Latitude": 21.1771,
+                        "Longitude": 105.8558,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00463",
+                        "Name": "Xã Bắc Hồng",
+                        "Latitude": 21.1770,
+                        "Longitude": 105.7844,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00466",
+                        "Name": "Xã Nguyên Khê",
+                        "Latitude": 21.1762,
+                        "Longitude": 105.7947,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00469",
+                        "Name": "Xã Nam Hồng",
+                        "Latitude": 21.1626,
+                        "Longitude": 105.7672,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00472",
+                        "Name": "Xã Tiên Dương",
+                        "Latitude": 21.1476,
+                        "Longitude": 105.8117,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00475",
+                        "Name": "Xã Vân Hà",
+                        "Latitude": 21.1503,
+                        "Longitude": 105.8954,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00478",
+                        "Name": "Xã Uy Nỗ",
+                        "Latitude": 21.1461,
+                        "Longitude": 105.8160,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00481",
+                        "Name": "Xã Vân Nội",
+                        "Latitude": 21.1439,
+                        "Longitude": 105.7911,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00484",
+                        "Name": "Xã Liên Hà",
+                        "Latitude": 21.1449,
+                        "Longitude": 105.8745,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00487",
+                        "Name": "Xã Việt Hùng",
+                        "Latitude": 21.1400,
+                        "Longitude": 105.8594,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00490",
+                        "Name": "Xã Kim Nỗ",
+                        "Latitude": 21.1363,
+                        "Longitude": 105.7778,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00493",
+                        "Name": "Xã Kim Chung",
+                        "Latitude": 21.1336,
+                        "Longitude": 105.7545,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00496",
+                        "Name": "Xã Dục Tú",
+                        "Latitude": 21.1173,
+                        "Longitude": 105.8588,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00499",
+                        "Name": "Xã Đại Mạch",
+                        "Latitude": 21.1174,
+                        "Longitude": 105.7296,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00502",
+                        "Name": "Xã Vĩnh Ngọc",
+                        "Latitude": 21.1107,
+                        "Longitude": 105.7871,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00505",
+                        "Name": "Xã Cổ Loa",
+                        "Latitude": 21.1113,
+                        "Longitude": 105.8454,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00508",
+                        "Name": "Xã Hải Bối",
+                        "Latitude": 21.1094,
+                        "Longitude": 105.7780,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00511",
+                        "Name": "Xã Xuân Canh",
+                        "Latitude": 21.0948,
+                        "Longitude": 105.8300,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00514",
+                        "Name": "Xã Võng La",
+                        "Latitude": 21.1072,
+                        "Longitude": 105.7287,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00517",
+                        "Name": "Xã Tàm Xá",
+                        "Latitude": 21.0934,
+                        "Longitude": 105.8128,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00520",
+                        "Name": "Xã Mai Lâm",
+                        "Latitude": 21.0912,
+                        "Longitude": 105.8687,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00523",
+                        "Name": "Xã Đông Hội",
+                        "Latitude": 21.0860,
+                        "Longitude": 105.8484,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "018",
+                "Name": "Huyện Gia Lâm",
+                "Wards": [
+                    {
+                        "Id": "00526",
+                        "Name": "Thị trấn Yên Viên",
+                        "Latitude": 21.0853,
+                        "Longitude": 105.8948,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "00529",
+                        "Name": "Xã Yên Thường",
+                        "Latitude": 21.1033,
+                        "Longitude": 105.8748,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00532",
+                        "Name": "Xã Yên Viên",
+                        "Latitude": 21.0854,
+                        "Longitude": 105.8967,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00535",
+                        "Name": "Xã Ninh Hiệp",
+                        "Latitude": 21.0791,
+                        "Longitude": 105.9296,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00538",
+                        "Name": "Xã Đình Xuyên",
+                        "Latitude": 21.0766,
+                        "Longitude": 105.9146,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00541",
+                        "Name": "Xã Dương Hà",
+                        "Latitude": 21.0590,
+                        "Longitude": 105.9132,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00544",
+                        "Name": "Xã Phù Đổng",
+                        "Latitude": 21.0549,
+                        "Longitude": 105.9259,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00547",
+                        "Name": "Xã Trung Mầu",
+                        "Latitude": 21.0600,
+                        "Longitude": 105.9700,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00550",
+                        "Name": "Xã Lệ Chi",
+                        "Latitude": 21.0489,
+                        "Longitude": 105.9843,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00553",
+                        "Name": "Xã Cổ Bi",
+                        "Latitude": 21.0270,
+                        "Longitude": 105.9191,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00556",
+                        "Name": "Xã Đặng Xá",
+                        "Latitude": 21.0297,
+                        "Longitude": 105.9447,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00559",
+                        "Name": "Xã Phú Thị",
+                        "Latitude": 21.0252,
+                        "Longitude": 105.9462,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00562",
+                        "Name": "Xã Kim Sơn",
+                        "Latitude": 21.0268,
+                        "Longitude": 105.9725,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00565",
+                        "Name": "Thị trấn Trâu Quỳ",
+                        "Latitude": 21.0088,
+                        "Longitude": 105.9173,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "00568",
+                        "Name": "Xã Dương Quang",
+                        "Latitude": 21.0077,
+                        "Longitude": 105.9491,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00571",
+                        "Name": "Xã Dương Xá",
+                        "Latitude": 21.0007,
+                        "Longitude": 105.9441,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00574",
+                        "Name": "Xã Đông Dư",
+                        "Latitude": 20.9952,
+                        "Longitude": 105.8939,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00577",
+                        "Name": "Xã Đa Tốn",
+                        "Latitude": 20.9850,
+                        "Longitude": 105.9163,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00580",
+                        "Name": "Xã Kiêu Kỵ",
+                        "Latitude": 20.9798,
+                        "Longitude": 105.9308,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00583",
+                        "Name": "Xã Bát Tràng",
+                        "Latitude": 20.9792,
+                        "Longitude": 105.9057,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00586",
+                        "Name": "Xã Kim Lan",
+                        "Latitude": 20.9608,
+                        "Longitude": 105.8822,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00589",
+                        "Name": "Xã Văn Đức",
+                        "Latitude": 20.9397,
+                        "Longitude": 105.8764,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "019",
+                "Name": "Quận Nam Từ Liêm",
+                "Wards": [
+                    {
+                        "Id": "00592",
+                        "Name": "Phường Cầu Diễn",
+                        "Latitude": 21.0367,
+                        "Longitude": 105.7442,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00622",
+                        "Name": "Phường Xuân Phương",
+                        "Latitude": 21.0402,
+                        "Longitude": 105.7219,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00623",
+                        "Name": "Phường Phương Canh",
+                        "Latitude": 21.0443,
+                        "Longitude": 105.7195,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00625",
+                        "Name": "Phường Mỹ Đình 1",
+                        "Latitude": 21.0207,
+                        "Longitude": 105.7484,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00626",
+                        "Name": "Phường Mỹ Đình 2",
+                        "Latitude": 21.0316,
+                        "Longitude": 105.7526,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00628",
+                        "Name": "Phường Tây Mỗ",
+                        "Latitude": 21.0079,
+                        "Longitude": 105.7224,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00631",
+                        "Name": "Phường Mễ Trì",
+                        "Latitude": 21.0065,
+                        "Longitude": 105.7619,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00632",
+                        "Name": "Phường Phú Đô",
+                        "Latitude": 21.0081,
+                        "Longitude": 105.7430,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00634",
+                        "Name": "Phường Đại Mỗ",
+                        "Latitude": 20.9979,
+                        "Longitude": 105.7424,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00637",
+                        "Name": "Phường Trung Văn",
+                        "Latitude": 20.9936,
+                        "Longitude": 105.7602,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "020",
+                "Name": "Huyện Thanh Trì",
+                "Wards": [
+                    {
+                        "Id": "00640",
+                        "Name": "Thị trấn Văn Điển",
+                        "Latitude": 20.9486,
+                        "Longitude": 105.8328,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "00643",
+                        "Name": "Xã Tân Triều",
+                        "Latitude": 20.9726,
+                        "Longitude": 105.7798,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00646",
+                        "Name": "Xã Thanh Liệt",
+                        "Latitude": 20.9623,
+                        "Longitude": 105.7919,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00649",
+                        "Name": "Xã Tả Thanh Oai",
+                        "Latitude": 20.9351,
+                        "Longitude": 105.7846,
+
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00652",
+                        "Name": "Xã Hữu Hoà",
+                        "Latitude": 20.9461,
+                        "Longitude": 105.7883,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00655",
+                        "Name": "Xã Tam Hiệp",
+                        "Latitude": 20.9499,
+                        "Longitude": 105.8099,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00658",
+                        "Name": "Xã Tứ Hiệp",
+                        "Latitude": 20.9466,
+                        "Longitude": 105.8345,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00661",
+                        "Name": "Xã Yên Mỹ",
+                        "Latitude": 20.9416,
+                        "Longitude": 105.8539,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00664",
+                        "Name": "Xã Vĩnh Quỳnh",
+                        "Latitude": 20.9320,
+                        "Longitude": 105.8091,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00667",
+                        "Name": "Xã Ngũ Hiệp",
+                        "Latitude": 20.9277,
+                        "Longitude": 105.8381,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00670",
+                        "Name": "Xã Duyên Hà",
+                        "Latitude": 20.9258,
+                        "Longitude": 105.8587,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00673",
+                        "Name": "Xã Ngọc Hồi",
+                        "Latitude": 20.9190,
+                        "Longitude": 105.8232,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00676",
+                        "Name": "Xã Vạn Phúc",
+                        "Latitude": 20.9170,
+                        "Longitude": 105.8763,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00679",
+                        "Name": "Xã Đại Áng",
+                        "Latitude": 20.9112,
+                        "Longitude": 105.7990,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00682",
+                        "Name": "Xã Liên Ninh",
+                        "Latitude": 20.9097,
+                        "Longitude": 105.8331,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "00685",
+                        "Name": "Xã Đông Mỹ",
+                        "Latitude": 20.9154,
+                        "Longitude": 105.8584,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "021",
+                "Name": "Quận Bắc Từ Liêm",
+                "Wards": [
+                    {
+                        "Id": "00595",
+                        "Name": "Phường Thượng Cát",
+                        "Latitude": 21.0942,
+                        "Longitude": 105.7162,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00598",
+                        "Name": "Phường Liên Mạc",
+                        "Latitude": 21.0867,
+                        "Longitude": 105.7343,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00601",
+                        "Name": "Phường Đông Ngạc",
+                        "Latitude": 21.0895,
+                        "Longitude": 105.7761,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00602",
+                        "Name": "Phường Đức Thắng",
+                        "Latitude": 21.0777,
+                        "Longitude": 105.7669,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00604",
+                        "Name": "Phường Thụy Phương",
+                        "Latitude": 21.0845,
+                        "Longitude": 105.7491,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00607",
+                        "Name": "Phường Tây Tựu",
+                        "Latitude": 21.0695,
+                        "Longitude": 105.7131,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00610",
+                        "Name": "Phường Xuân Đỉnh",
+                        "Latitude": 21.0733,
+                        "Longitude": 105.7791,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00611",
+                        "Name": "Phường Xuân Tảo",
+                        "Latitude": 21.0629,
+                        "Longitude": 105.7850,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00613",
+                        "Name": "Phường Minh Khai",
+                        "Latitude": 21.0596,
+                        "Longitude": 105.7265,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00616",
+                        "Name": "Phường Cổ Nhuế 1",
+                        "Latitude": 21.0541,
+                        "Longitude": 105.7623,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00617",
+                        "Name": "Phường Cổ Nhuế 2",
+                        "Latitude": 21.0645,
+                        "Longitude": 105.7492,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00619",
+                        "Name": "Phường Phú Diễn",
+                        "Latitude": 21.0526,
+                        "Longitude": 105.7536,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "00620",
+                        "Name": "Phường Phúc Diễn",
+                        "Latitude": 21.0483,
+                        "Longitude": 105.7415,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "250",
+                "Name": "Huyện Mê Linh",
+                "Wards": [
+                    {
+                        "Id": "08973",
+                        "Name": "Thị trấn Chi Đông",
+                        "Latitude": 21.2073,
+                        "Longitude": 105.7369,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "08974",
+                        "Name": "Xã Đại Thịnh",
+                        "Latitude": 21.1871,
+                        "Longitude": 105.6885,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08977",
+                        "Name": "Xã Kim Hoa",
+                        "Latitude": 21.2147,
+                        "Longitude": 105.7164,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08980",
+                        "Name": "Xã Thạch Đà",
+                        "Latitude": 21.1750,
+                        "Longitude": 105.6638,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08983",
+                        "Name": "Xã Tiến Thắng",
+                        "Latitude": 21.2237,
+                        "Longitude": 105.6300,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08986",
+                        "Name": "Xã Tự Lập",
+                        "Latitude": 21.2112,
+                        "Longitude": 105.6341,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08989",
+                        "Name": "Thị trấn Quang Minh",
+                        "Latitude": 21.1884,
+                        "Longitude": 105.7501,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "08992",
+                        "Name": "Xã Thanh Lâm",
+                        "Latitude": 21.20336,
+                        "Longitude": 105.6852,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08995",
+                        "Name": "Xã Tam Đồng",
+                        "Latitude": 21.1971,
+                        "Longitude": 105.6660,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "08998",
+                        "Name": "Xã Liên Mạc",
+                        "Latitude": 21.1915,
+                        "Longitude": 105.6366,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09001",
+                        "Name": "Xã Vạn Yên",
+                        "Latitude": 21.2012,
+                        "Longitude": 105.6067,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09004",
+                        "Name": "Xã Chu Phan",
+                        "Latitude": 21.1700,
+                        "Longitude": 105.6366,
+                        "Level": "Xã"
+                    },	
+                    {
+                        "Id": "09007",
+                        "Name": "Xã Tiến Thịnh",
+                        "Latitude": 21.1759,
+                        "Longitude": 105.6153,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09010",
+                        "Name": "Xã Mê Linh",
+                        "Latitude": 21.1651,
+                        "Longitude": 105.7124,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09013",
+                        "Name": "Xã Văn Khê",
+                        "Latitude": 21.1631,
+                        "Longitude": 105.6701,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09016",
+                        "Name": "Xã Hoàng Kim",
+                        "Latitude": 21.1615,			
+                        "Longitude": 105.6638,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09019",
+                        "Name": "Xã Tiền Phong",
+                        "Latitude": 21.1575,
+                        "Longitude": 105.7356,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09022",
+                        "Name": "Xã Tráng Việt",
+                        "Latitude": 21.1390,
+                        "Longitude": 105.7144,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "268",
+                "Name": "Quận Hà Đông",
+                "Wards": [
+                    {
+                        "Id": "09538",
+                        "Name": "Phường Nguyễn Trãi",
+                        "Latitude": 20.9694,
+                        "Longitude": 105.7751,
+                        "Level": "Phường"
+                    },	
+                    {
+                        "Id": "09541",
+                        "Name": "Phường Mộ Lao",
+                        "Latitude": 20.9821,
+                        "Longitude": 105.7749,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09542",
+                        "Name": "Phường Văn Quán",
+                        "Latitude": 20.9785,
+                        "Longitude": 105.7797,
+                        "Level": "Phường"
+                    },
+                    {	
+                        "Id": "09544",
+                        "Name": "Phường Vạn Phúc",
+                        "Latitude": 20.9799,
+                        "Longitude": 105.7614,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09547",
+                        "Name": "Phường Yết Kiêu",
+                        "Latitude": 20.9745,
+                        "Longitude": 105.7726,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09550",
+                        "Name": "Phường Quang Trung",
+                        "Latitude": 20.9660,
+                        "Longitude": 105.7460,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09551",
+                        "Name": "Phường La Khê",
+                        "Latitude": 20.9694,
+                        "Longitude": 105.7491,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09552",
+                        "Name": "Phường Phú La",
+                        "Latitude": 20.9582,
+                        "Longitude": 105.7526,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09553",
+                        "Name": "Phường Phúc La",
+                        "Latitude": 20.9676,
+                        "Longitude": 105.7785,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09556",
+                        "Name": "Phường Hà Cầu",
+                        "Latitude": 20.9647,
+                        "Longitude": 105.7682,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09562",
+                        "Name": "Phường Yên Nghĩa",
+                        "Latitude": 20.9497,
+                        "Longitude": 105.7125,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09565",
+                        "Name": "Phường Kiến Hưng",
+                        "Latitude": 20.9512,
+                        "Longitude": 105.7663,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09568",
+                        "Name": "Phường Phú Lãm",
+                        "Latitude": 20.9425,
+                        "Longitude": 105.7419,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09571",
+                        "Name": "Phường Phú Lương",
+                        "Latitude": 20.9390,
+                        "Longitude": 105.7505,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09886",
+                        "Name": "Phường Dương Nội",
+                        "Latitude": 20.9797,
+                        "Longitude": 105.7239,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "10117",
+                        "Name": "Phường Đồng Mai",
+                        "Latitude": 20.9262,
+                        "Longitude": 105.7179,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "10123",
+                        "Name": "Phường Biên Giang",
+                        "Latitude": 20.9274,
+                        "Longitude": 105.6973,
+                        "Level": "Phường"
+                    }
+                ]
+            },
+            {
+                "Id": "269",
+                "Name": "Thị xã Sơn Tây",
+                "Wards": [
+                    {
+                        "Id": "09574",
+                        "Name": "Phường Lê Lợi",
+                        "Latitude": 21.1472,
+                        "Longitude": 105.4954,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09577",
+                        "Name": "Phường Phú Thịnh",
+                        "Latitude": 21.1537,
+                        "Longitude": 105.4838,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09580",
+                        "Name": "Phường Ngô Quyền",
+                        "Latitude": 21.1424,
+                        "Longitude": 105.4956,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09583",
+                        "Name": "Phường Quang Trung",
+                        "Latitude": 21.1338,
+                        "Longitude": 105.4962,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09586",
+                        "Name": "Phường Sơn Lộc",
+                        "Latitude": 21.1027,
+                        "Longitude": 105.4760,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09589",
+                        "Name": "Phường Xuân Khanh",
+                        "Latitude": 21.1138,
+                        "Longitude": 105.4249,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09592",
+                        "Name": "Xã Đường Lâm",
+                        "Latitude": 21.1543,
+                        "Longitude": 105.4506,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09595",
+                        "Name": "Phường Viên Sơn",
+                        "Latitude": 21.1426,
+                        "Longitude": 105.4940,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09598",
+                        "Name": "Xã Xuân Sơn",
+                        "Latitude": 21.1308,
+                        "Longitude": 105.3958,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09601",
+                        "Name": "Phường Trung Hưng",
+                        "Latitude": 21.1314,
+                        "Longitude": 105.5003,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09604",
+                        "Name": "Xã Thanh Mỹ",
+                        "Latitude": 21.1217,
+                        "Longitude": 105.4528,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09607",
+                        "Name": "Phường Trung Sơn Trầm",
+                        "Latitude": 21.1071,
+                        "Longitude": 105.4729,
+                        "Level": "Phường"
+                    },
+                    {
+                        "Id": "09610",
+                        "Name": "Xã Kim Sơn",
+                        "Latitude": 21.0817,
+                        "Longitude": 105.4220,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09613",
+                        "Name": "Xã Sơn Đông",
+                        "Latitude": 21.0688,
+                        "Longitude": 105.4464,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09616",
+                        "Name": "Xã Cổ Đông",
+                        "Latitude": 21.0560,
+                        "Longitude": 105.4564,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "271",
+                "Name": "Huyện Ba Vì",
+                "Wards": [
+                    {
+                        "Id": "09619",
+                        "Name": "Thị trấn Tây Đằng",
+                        "Latitude": 21.2038,
+                        "Longitude": 105.3842,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "09625",
+                        "Name": "Xã Phú Cường",
+                        "Latitude": 21.2866,
+                        "Longitude": 105.3889,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09628",
+                        "Name": "Xã Cổ Đô",
+                        "Latitude": 21.2834,
+                        "Longitude": 105.3525,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09631",
+                        "Name": "Xã Tản Hồng",
+                        "Latitude": 21.2717,
+                        "Longitude": 105.3995,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09634",
+                        "Name": "Xã Vạn Thắng",
+                        "Latitude": 21.2540,
+                        "Longitude": 105.3751,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09637",
+                        "Name": "Xã Châu Sơn",
+                        "Latitude": 21.2601,
+                        "Longitude": 105.4065,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09640",
+                        "Name": "Xã Phong Vân",
+                        "Latitude": 21.2557,
+                        "Longitude": 105.3434,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09643",
+                        "Name": "Xã Phú Đông",
+                        "Latitude": 21.2540,
+                        "Longitude": 105.3578,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09646",
+                        "Name": "Xã Phú Phương",
+                        "Latitude": 21.2469,
+                        "Longitude": 105.4056,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09649",
+                        "Name": "Xã Phú Châu",
+                        "Latitude": 21.2316,
+                        "Longitude": 105.4089,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09652",
+                        "Name": "Xã Thái Hòa",
+                        "Latitude": 21.2309,
+                        "Longitude": 105.3449,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09655",
+                        "Name": "Xã Đồng Thái",
+                        "Latitude": 21.2257,
+                        "Longitude": 105.3803,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09658",
+                        "Name": "Xã Phú Sơn",
+                        "Latitude": 21.2117,
+                        "Longitude": 105.3223,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09661",
+                        "Name": "Xã Minh Châu",
+                        "Latitude": 21.2007,
+                        "Longitude": 105.4334,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09664",
+                        "Name": "Xã Vật Lại",
+                        "Latitude": 21.1950,
+                        "Longitude": 105.3758,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09667",
+                        "Name": "Xã Chu Minh",
+                        "Latitude": 21.1977,
+                        "Longitude": 105.4218,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09670",
+                        "Name": "Xã Tòng Bạt",
+                        "Latitude": 21.1917,
+                        "Longitude": 105.3120,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09673",
+                        "Name": "Xã Cẩm Lĩnh",
+                        "Latitude": 21.1708,
+                        "Longitude": 105.3162,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09676",
+                        "Name": "Xã Sơn Đà",
+                        "Latitude": 21.1722,
+                        "Longitude": 105.2753,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09679",
+                        "Name": "Xã Đông Quang",
+                        "Latitude": 21.1813,
+                        "Longitude": 105.4308,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09682",
+                        "Name": "Xã Tiên Phong",
+                        "Latitude": 21.1731,
+                        "Longitude": 105.4062,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09685",
+                        "Name": "Xã Thụy An",
+                        "Latitude": 21.1577,
+                        "Longitude": 105.3652,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09688",
+                        "Name": "Xã Cam Thượng",
+                        "Latitude": 21.1609,
+                        "Longitude": 105.4334,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09691",
+                        "Name": "Xã Thuần Mỹ",
+                        "Latitude": 21.1500,
+                        "Longitude": 105.2862,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09694",
+                        "Name": "Xã Tản Lĩnh",
+                        "Latitude": 21.1226,
+                        "Longitude": 105.3791,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09697",
+                        "Name": "Xã Ba Trại",
+                        "Latitude": 21.1257,
+                        "Longitude": 105.3375,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09700",
+                        "Name": "Xã Minh Quang",
+                        "Latitude": 21.0771,
+                        "Longitude": 105.2843,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09703",
+                        "Name": "Xã Ba Vì",
+                        "Latitude": 21.0748,
+                        "Longitude": 105.2617,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09706",
+                        "Name": "Xã Vân Hòa",
+                        "Latitude": 21.0649,
+                        "Longitude": 105.3697,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09709",
+                        "Name": "Xã Yên Bài",
+                        "Latitude": 21.0444,
+                        "Longitude": 105.33874,                        
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09712",
+                        "Name": "Xã Khánh Thượng",
+                        "Latitude": 21.0276,
+                        "Longitude": 105.2997,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "272",
+                "Name": "Huyện Phúc Thọ",
+                "Wards": [
+                    {
+                        "Id": "09715",
+                        "Name": "Thị trấn Phúc Thọ",
+                        "Latitude": 21.1076,
+                        "Longitude": 105.5260,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "09718",
+                        "Name": "Xã Vân Hà",
+                        "Latitude": 21.1593,
+                        "Longitude": 105.5904,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09721",
+                        "Name": "Xã Vân Phúc",
+                        "Latitude": 21.1534,
+                        "Longitude": 105.5694,	
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09724",
+                        "Name": "Xã Vân Nam",
+                        "Latitude": 21.1491,
+                        "Longitude": 105.5894,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09727",
+                        "Name": "Xã Xuân Đình",
+                        "Latitude": 21.1415,
+                        "Longitude": 105.5665,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09733",
+                        "Name": "Xã Sen Phương",
+                        "Latitude": 21.1429,
+                        "Longitude": 105.5101,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09739",
+                        "Name": "Xã Võng Xuyên",
+                        "Latitude": 21.1316,
+                        "Longitude": 105.5353,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09742",
+                        "Name": "Xã Thọ Lộc",
+                        "Latitude": 21.1213,
+                        "Longitude": 105.5104,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09745",
+                        "Name": "Xã Long Xuyên",
+                        "Latitude": 21.1226,
+                        "Longitude": 105.5583,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09748",
+                        "Name": "Xã Thượng Cốc",
+                        "Latitude": 21.1258,
+                        "Longitude": 105.5788,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09751",
+                        "Name": "Xã Hát Môn",
+                        "Latitude": 21.1256,
+                        "Longitude": 105.5970,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09754",
+                        "Name": "Xã Tích Giang",
+                        "Latitude": 21.1118,
+                        "Longitude": 105.4927,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09757",
+                        "Name": "Xã Thanh Đa",
+                        "Latitude": 21.1090,
+                        "Longitude": 105.6001,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09760",
+                        "Name": "Xã Trạch Mỹ Lộc",
+                        "Latitude": 21.1022,
+                        "Longitude": 105.5057,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09763",
+                        "Name": "Xã Phúc Hòa",
+                        "Latitude": 21.1092,
+                        "Longitude": 105.5385,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09766",
+                        "Name": "Xã Ngọc Tảo",
+                        "Latitude": 21.0991,
+                        "Longitude": 105.5825,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09769",
+                        "Name": "Xã Phụng Thượng",
+                        "Latitude": 21.0926,
+                        "Longitude": 105.5621,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09772",
+                        "Name": "Xã Tam Thuấn",
+                        "Latitude": 21.0966,
+                        "Longitude": 105.6031,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09775",
+                        "Name": "Xã Tam Hiệp",
+                        "Latitude": 21.0803,
+                        "Longitude": 105.5910,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09778",
+                        "Name": "Xã Hiệp Thuận",
+                        "Latitude": 21.0734,
+                        "Longitude": 105.5998,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09781",
+                        "Name": "Xã Liên Hiệp",
+                        "Latitude": 21.0540,
+                        "Longitude": 105.6198,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "273",
+                "Name": "Huyện Đan Phượng",
+                "Wards": [
+                    {
+                        "Id": "09784",
+                        "Name": "Thị trấn Phùng",
+                        "Latitude": 21.0910,
+                        "Longitude": 105.6477,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "09787",
+                        "Name": "Xã Trung Châu",
+                        "Latitude": 21.1360,
+                        "Longitude": 105.6444,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09790",
+                        "Name": "Xã Thọ An",
+                        "Latitude": 21.1420,
+                        "Longitude": 105.5962,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09793",
+                        "Name": "Xã Thọ Xuân",
+                        "Latitude": 21.1325,
+                        "Longitude": 105.6306,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09796",
+                        "Name": "Xã Hồng Hà",
+                        "Latitude": 21.1328,
+                        "Longitude": 105.6799,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09799",
+                        "Name": "Xã Liên Hồng",
+                        "Latitude": 21.1232,
+                        "Longitude": 105.6857,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09802",
+                        "Name": "Xã Liên Hà",
+                        "Latitude": 21.1158,
+                        "Longitude": 105.6951,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09805",
+                        "Name": "Xã Hạ Mỗ",
+                        "Latitude": 21.1181,
+                        "Longitude": 105.6738,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09808",
+                        "Name": "Xã Liên Trung",
+                        "Latitude": 21.1108,
+                        "Longitude": 105.7058,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09811",
+                        "Name": "Xã Phương Đình",
+                        "Latitude": 21.1081,
+                        "Longitude": 105.6081,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09814",
+                        "Name": "Xã Thượng Mỗ",
+                        "Latitude": 21.1084,
+                        "Longitude": 105.6545,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09817",
+                        "Name": "Xã Tân Hội",
+                        "Latitude": 21.0963,
+                        "Longitude": 105.6800,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09820",
+                        "Name": "Xã Tân Lập",
+                        "Latitude": 21.0850,
+                        "Longitude": 105.6911,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09823",
+                        "Name": "Xã Đan Phượng",
+                        "Latitude": 21.0978,
+                        "Longitude": 105.6471,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09826",
+                        "Name": "Xã Đồng Tháp",
+                        "Latitude": 21.0842,
+                        "Longitude": 105.6526,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09829",
+                        "Name": "Xã Song Phượng",
+                        "Latitude": 21.0754,
+                        "Longitude": 105.6575,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "274",
+                "Name": "Huyện Hoài Đức",
+                "Wards": [
+                    {
+                        "Id": "09832",
+                        "Name": "Thị trấn Trạm Trôi",
+                        "Latitude": 21.0676,
+                        "Longitude": 105.6990,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "09835",
+                        "Name": "Xã Đức Thượng",
+                        "Latitude": 21.0746,
+                        "Longitude": 105.6664,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09838",
+                        "Name": "Xã Minh Khai",
+                        "Latitude": 21.0671,
+                        "Longitude": 105.6616,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09841",
+                        "Name": "Xã Dương Liễu",
+                        "Latitude": 21.0598,
+                        "Longitude": 105.6467,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09844",
+                        "Name": "Xã Di Trạch",
+                        "Latitude": 21.0448,
+                        "Longitude": 105.7095,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09847",
+                        "Name": "Xã Đức Giang",
+                        "Latitude": 21.0619,
+                        "Longitude": 105.7011,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09850",
+                        "Name": "Xã Cát Quế",
+                        "Latitude": 21.0474,
+                        "Longitude": 105.6699,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09853",
+                        "Name": "Xã Kim Chung",
+                        "Latitude": 21.0457,
+                        "Longitude": 105.6992,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09856",
+                        "Name": "Xã Yên Sở",
+                        "Latitude": 21.0409,
+                        "Longitude": 105.6515,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09859",
+                        "Name": "Xã Sơn Đồng",
+                        "Latitude": 21.0407,
+                        "Longitude": 105.6910,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09862",
+                        "Name": "Xã Vân Canh",
+                        "Latitude": 21.0298,
+                        "Longitude": 105.7084,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09865",
+                        "Name": "Xã Đắc Sở",
+                        "Latitude": 21.0302,
+                        "Longitude": 105.6597,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09868",
+                        "Name": "Xã Lại Yên",
+                        "Latitude": 21.0238,
+                        "Longitude": 105.6904,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09871",
+                        "Name": "Xã Tiền Yên",
+                        "Latitude": 21.0203,
+                        "Longitude": 105.6633,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09874",
+                        "Name": "Xã Song Phương",
+                        "Latitude": 21.0147,
+                        "Longitude": 105.6714,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09877",
+                        "Name": "Xã An Khánh",
+                        "Latitude": 20.9904,
+                        "Longitude": 105.7017,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09880",
+                        "Name": "Xã An Thượng",
+                        "Latitude": 20.9900,
+                        "Longitude": 105.6754,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09883",
+                        "Name": "Xã Vân Côn",
+                        "Latitude": 20.9913,
+                        "Longitude": 105.6585,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09889",
+                        "Name": "Xã La Phù",
+                        "Latitude": 20.9788,
+                        "Longitude": 105.7208,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09892",
+                        "Name": "Xã Đông La",
+                        "Latitude": 20.9683,
+                        "Longitude": 105.7035,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "275",
+                "Name": "Huyện Quốc Oai",
+                "Wards": [
+                    {
+                        "Id": "04939",
+                        "Name": "Xã Đông Xuân",
+                        "Latitude": 20.9542,
+                        "Longitude": 105.4653,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09895",
+                        "Name": "Thị trấn Quốc Oai",
+                        "Latitude": 20.9958,
+                        "Longitude": 105.6240,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "09898",
+                        "Name": "Xã Sài Sơn",
+                        "Latitude": 21.0268,
+                        "Longitude": 105.6275,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09901",
+                        "Name": "Xã Phượng Cách",
+                        "Latitude": 21.0155,
+                        "Longitude": 105.6396,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09904",
+                        "Name": "Xã Yên Sơn",
+                        "Latitude": 20.9958,
+                        "Longitude": 105.6303,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09907",
+                        "Name": "Xã Ngọc Liệp",
+                        "Latitude": 20.9975,
+                        "Longitude": 105.5773,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09910",
+                        "Name": "Xã Ngọc Mỹ",
+                        "Latitude": 20.9982,
+                        "Longitude": 105.6024,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09913",
+                        "Name": "Xã Liệp Tuyết",
+                        "Latitude": 20.9792,
+                        "Longitude": 105.5781,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09916",
+                        "Name": "Xã Thạch Thán",
+                        "Latitude": 20.9812,
+                        "Longitude": 105.6239,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09919",
+                        "Name": "Xã Đồng Quang",
+                        "Latitude": 20.9704,
+                        "Longitude": 105.6121,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09922",
+                        "Name": "Xã Phú Cát",
+                        "Latitude": 20.9719,
+                        "Longitude": 105.5112,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09925",
+                        "Name": "Xã Tuyết Nghĩa",
+                        "Latitude": 20.9711,
+                        "Longitude": 105.5683,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09928",
+                        "Name": "Xã Nghĩa Hương",
+                        "Latitude": 20.9735,
+                        "Longitude": 105.5936,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09931",
+                        "Name": "Xã Cộng Hòa",
+                        "Latitude": 20.9665,
+                        "Longitude": 105.6470,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09934",
+                        "Name": "Xã Tân Phú",
+                        "Latitude": 20.9665,
+                        "Longitude": 105.6837,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09937",
+                        "Name": "Xã Đại Thành",
+                        "Latitude": 20.9638,
+                        "Longitude": 105.9623,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09940",
+                        "Name": "Xã Phú Mãn",
+                        "Latitude": 20.9444,
+                        "Longitude": 105.5002,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09943",
+                        "Name": "Xã Cấn Hữu",
+                        "Latitude": 20.9527,
+                        "Longitude": 105.5923,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09946",
+                        "Name": "Xã Tân Hòa",
+                        "Latitude": 20.9638,
+                        "Longitude": 105.6545,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09949",
+                        "Name": "Xã Hòa Thạch",
+                        "Latitude": 20.9433,
+                        "Longitude": 105.5216,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09952",
+                        "Name": "Xã Đông Yên",
+                        "Latitude": 20.9290,
+                        "Longitude": 105.5492,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "276",
+                "Name": "Huyện Thạch Thất",
+                "Wards": [
+                    {
+                        "Id": "04927",
+                        "Name": "Xã Yên Trung",
+                        "Latitude": 20.9957,
+                        "Longitude": 105.3766,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "04930",
+                        "Name": "Xã Yên Bình",
+                        "Latitude": 20.9886,
+                        "Longitude": 105.4249,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "04936",
+                        "Name": "Xã Tiến Xuân",
+                        "Latitude": 20.9724,
+                        "Longitude": 105.4402,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09955",
+                        "Name": "Thị trấn Liên Quan",
+                        "Latitude": 21.0532,
+                        "Longitude": 105.5582,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "09958",
+                        "Name": "Xã Đại Đồng",
+                        "Latitude": 21.0892,
+                        "Longitude": 105.5431,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09961",
+                        "Name": "Xã Cẩm Yên",
+                        "Latitude": 21.0865,
+                        "Longitude": 105.5180,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09964",
+                        "Name": "Xã Lại Thượng",
+                        "Latitude": 21.0682,
+                        "Longitude": 105.5290,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09967",
+                        "Name": "Xã Phú Kim",
+                        "Latitude": 21.0862,
+                        "Longitude": 105.5556,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09970",
+                        "Name": "Xã Hương Ngải",
+                        "Latitude": 22.0559,
+                        "Longitude": 105.5755,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09973",
+                        "Name": "Xã Canh Nậu",
+                        "Latitude": 21.0561,
+                        "Longitude": 105.5945,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09976",
+                        "Name": "Xã Kim Quan",
+                        "Latitude": 21.0414,
+                        "Longitude": 105.5552,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09979",
+                        "Name": "Xã Dị Nậu",
+                        "Latitude": 21.0476,
+                        "Longitude": 105.6149,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09982",
+                        "Name": "Xã Bình Yên",
+                        "Latitude": 21.0400,
+                        "Longitude": 105.4984,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09985",
+                        "Name": "Xã Chàng Sơn",
+                        "Latitude": 21.0388,
+                        "Longitude": 105.5775,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09988",
+                        "Name": "Xã Thạch Hoà",
+                        "Latitude": 21.0056,
+                        "Longitude": 105.4691,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09991",
+                        "Name": "Xã Cần Kiệm",
+                        "Latitude": 21.0199,
+                        "Longitude": 105.5569,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09994",
+                        "Name": "Xã Hữu Bằng",
+                        "Latitude": 21.0287,
+                        "Longitude": 105.6078,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "09997",
+                        "Name": "Xã Phùng Xá",
+                        "Latitude": 21.0200,
+                        "Longitude": 105.6055,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10000",
+                        "Name": "Xã Tân Xá",
+                        "Latitude": 21.0175,
+                        "Longitude": 105.5249,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10003",
+                        "Name": "Xã Thạch Xá",
+                        "Latitude": 21.0311,
+                        "Longitude": 105.5798,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10006",
+                        "Name": "Xã Bình Phú",
+                        "Latitude": 21.0159,
+                        "Longitude": 105.5851,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10009",
+                        "Name": "Xã Hạ Bằng",
+                        "Latitude": 21.0014,
+                        "Longitude": 105.5511,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10012",
+                        "Name": "Xã Đồng Trúc",
+                        "Latitude": 20.9930,
+                        "Longitude": 105.5483,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "277",
+                "Name": "Huyện Chương Mỹ",
+                "Wards": [
+                    {
+                        "Id": "10015",
+                        "Name": "Thị trấn Chúc Sơn",
+                        "Latitude": 20.9247,
+                        "Longitude": 105.6912,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10018",
+                        "Name": "Thị trấn Xuân Mai",
+                        "Latitude": 20.8971,
+                        "Longitude": 105.5294,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10021",
+                        "Name": "Xã Phụng Châu",
+                        "Latitude": 20.9458,
+                        "Longitude": 105.6850,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10024",
+                        "Name": "Xã Tiên Phương",
+                        "Latitude": 20.9413,
+                        "Longitude": 105.6579,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10027",
+                        "Name": "Xã Đông Sơn",
+                        "Latitude": 20.9289,
+                        "Longitude": 105.5949,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10030",
+                        "Name": "Xã Đông Phương Yên",
+                        "Latitude": 20.9297,
+                        "Longitude": 105.6163,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10033",
+                        "Name": "Xã Phú Nghĩa",
+                        "Latitude": 20.9321,
+                        "Longitude": 105.6598,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10039",
+                        "Name": "Xã Trường Yên",
+                        "Latitude": 20.9136,
+                        "Longitude": 105.6374,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10042",
+                        "Name": "Xã Ngọc Hòa",
+                        "Latitude": 20.9146,
+                        "Longitude": 105.6669,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10045",
+                        "Name": "Xã Thủy Xuân Tiên",
+                        "Latitude": 20.8862,
+                        "Longitude": 105.5453,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10048",
+                        "Name": "Xã Thanh Bình",
+                        "Latitude": 20.9009,
+                        "Longitude": 105.6053,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10051",
+                        "Name": "Xã Trung Hòa",
+                        "Latitude": 20.8977,
+                        "Longitude": 105.6317,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10054",
+                        "Name": "Xã Đại Yên",
+                        "Latitude": 20.8993,
+                        "Longitude": 105.6695,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10057",
+                        "Name": "Xã Thụy Hương",
+                        "Latitude": 20.9073,
+                        "Longitude": 105.6956,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10060",
+                        "Name": "Xã Tốt Động",
+                        "Latitude": 20.8816,
+                        "Longitude": 105.6484,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10063",
+                        "Name": "Xã Lam Điền",
+                        "Latitude": 20.8864,
+                        "Longitude": 105.6991,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10066",
+                        "Name": "Xã Tân Tiến",
+                        "Latitude": 20.8655,
+                        "Longitude": 105.5671,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10069",
+                        "Name": "Xã Nam Phương Tiến",
+                        "Latitude": 20.8610,
+                        "Longitude": 105.5695,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10072",
+                        "Name": "Xã Hợp Đồng",
+                        "Latitude": 20.8779,
+                        "Longitude": 105.6769,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10075",
+                        "Name": "Xã Hoàng Văn Thụ",
+                        "Latitude": 20.8563,
+                        "Longitude": 105.6375,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10078",
+                        "Name": "Xã Hoàng Diệu",
+                        "Latitude": 20.8609,
+                        "Longitude": 106.6898,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10081",
+                        "Name": "Xã Hữu Văn",
+                        "Latitude": 20.8551,
+                        "Longitude": 105.6342,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10084",
+                        "Name": "Xã Quảng Bị",
+                        "Latitude": 20.8580,
+                        "Longitude": 104.6764,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10087",
+                        "Name": "Xã Mỹ Lương",
+                        "Latitude": 20.8452,
+                        "Longitude": 105.6192,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10090",
+                        "Name": "Xã Thượng Vực",
+                        "Latitude": 20.8455,
+                        "Longitude": 105.7000,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10093",
+                        "Name": "Xã Hồng Phong",
+                        "Latitude": 20.8371,
+                        "Longitude": 105.6771,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10096",
+                        "Name": "Xã Đồng Phú",
+                        "Latitude": 20.8350,
+                        "Longitude": 105.6906,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10099",
+                        "Name": "Xã Trần Phú",
+                        "Latitude": 20.8197,
+                        "Longitude": 105.6188,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10102",
+                        "Name": "Xã Văn Võ",
+                        "Latitude": 20.8327,
+                        "Longitude": 105.7229,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10105",
+                        "Name": "Xã Đồng Lạc",
+                        "Latitude": 20.8217,
+                        "Longitude": 10.6578,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10108",
+                        "Name": "Xã Hòa Chính",
+                        "Latitude": 20.8172,
+                        "Longitude": 105.7013,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10111",
+                        "Name": "Xã Phú Nam An",
+                        "Latitude": 20.8165,
+                        "Longitude": 105.7334,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "278",
+                "Name": "Huyện Thanh Oai",
+                "Wards": [
+                    {
+                        "Id": "10114",
+                        "Name": "Thị trấn Kim Bài",
+                        "Latitude": 21.95,
+                        "Longitude": 106.55,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10120",
+                        "Name": "Xã Cự Khê",
+                        "Latitude": 20.9193,
+                        "Longitude": 105.7645,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10126",
+                        "Name": "Xã Bích Hòa",
+                        "Latitude": 20.9186,
+                        "Longitude": 105.7421,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10129",
+                        "Name": "Xã Mỹ Hưng",
+                        "Latitude": 20.9016,
+                        "Longitude": 105.7809,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10132",
+                        "Name": "Xã Cao Viên",
+                        "Latitude": 20.9042,
+                        "Longitude": 105.7226,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10135",
+                        "Name": "Xã Bình Minh",
+                        "Latitude": 20.8905,
+                        "Longitude": 105.7513,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10138",
+                        "Name": "Xã Tam Hưng",
+                        "Latitude": 20.8795,
+                        "Longitude": 105.7643,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10141",
+                        "Name": "Xã Thanh Cao",
+                        "Latitude": 20.8844,
+                        "Longitude": 105.7286,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10144",
+                        "Name": "Xã Thanh Thùy",
+                        "Latitude": 20.8746,
+                        "Longitude": 105.7907,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10147",
+                        "Name": "Xã Thanh Mai",
+                        "Latitude": 20.8662,
+                        "Longitude": 105.7284,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10150",
+                        "Name": "Xã Thanh Văn",
+                        "Latitude": 20.8533,
+                        "Longitude": 105.7848,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10153",
+                        "Name": "Xã Đỗ Động",
+                        "Latitude": 20.8425,
+                        "Longitude": 10.7661,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10156",
+                        "Name": "Xã Kim An",
+                        "Latitude": 20.8453,
+                        "Longitude": 105.7288,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10159",
+                        "Name": "Xã Kim Thư",
+                        "Latitude": 20.8400,
+                        "Longitude": 105.7458,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10162",
+                        "Name": "Xã Phương Trung",
+                        "Latitude": 20.8238,
+                        "Longitude": 105.7483,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10165",
+                        "Name": "Xã Tân Ước",
+                        "Latitude": 20.8271,
+                        "Longitude": 105.7904,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10168",
+                        "Name": "Xã Dân Hòa",
+                        "Latitude": 20.8169,
+                        "Longitude": 105.7677,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10171",
+                        "Name": "Xã Liên Châu",
+                        "Latitude": 20.8090,
+                        "Longitude": 105.7991,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10174",
+                        "Name": "Xã Cao Dương",
+                        "Latitude": 20.8069,
+                        "Longitude": 105.7405,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10177",
+                        "Name": "Xã Xuân Dương",
+                        "Latitude": 20.7997,
+                        "Longitude": 105.7458,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10180",
+                        "Name": "Xã Hồng Dương",
+                        "Latitude": 20.7964,
+                        "Longitude": 105.7833,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "279",
+                "Name": "Huyện Thường Tín",
+                "Wards": [
+                    {
+                        "Id": "10183",
+                        "Name": "Thị trấn Thường Tín",
+                        "Latitude": 20.8715,
+                        "Longitude": 105.8522,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10186",
+                        "Name": "Xã Ninh Sở",
+                        "Latitude": 20.8980,
+                        "Longitude": 105.8659,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10189",
+                        "Name": "Xã Nhị Khê",
+                        "Latitude": 20.8984,
+                        "Longitude": 105.8235,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10192",
+                        "Name": "Xã Duyên Thái",
+                        "Latitude": 20.8987,
+                        "Longitude": 105.8456,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10195",
+                        "Name": "Xã Khánh Hà",
+                        "Latitude": 20.8931,
+                        "Longitude": 105.8042,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10198",
+                        "Name": "Xã Hòa Bình",
+                        "Latitude": 20.8771,
+                        "Longitude": 105.8154,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10201",
+                        "Name": "Xã Văn Bình",
+                        "Latitude": 20.8821,
+                        "Longitude": 105.8404,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10204",
+                        "Name": "Xã Hiền Giang",
+                        "Latitude": 20.8752,
+                        "Longitude": 105.8064,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10207",
+                        "Name": "Xã Hồng Vân",
+                        "Latitude": 20.8778,
+                        "Longitude": 105.8901,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10210",
+                        "Name": "Xã Văn Tảo",
+                        "Latitude": 20.8689,
+                        "Longitude": 105.8730,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10213",
+                        "Name": "Xã Liên Phương",
+                        "Latitude": 20.8781,
+                        "Longitude": 105.8707,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10216",
+                        "Name": "Xã Văn Phú",
+                        "Latitude": 20.8677,
+                        "Longitude": 105.8339,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10219",
+                        "Name": "Xã Tự Nhiên",
+                        "Latitude": 20.8614,
+                        "Longitude": 105.9032,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10222",
+                        "Name": "Xã Tiền Phong",
+                        "Latitude": 20.8523,
+                        "Longitude": 105.8126,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10225",
+                        "Name": "Xã Hà Hồi",
+                        "Latitude": 20.8613,
+                        "Longitude": 105.8560,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10228",
+                        "Name": "Xã Thư Phú",
+                        "Latitude": 20.8607,
+                        "Longitude": 105.8842,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10231",
+                        "Name": "Xã Nguyễn Trãi",
+                        "Latitude": 20.8446,
+                        "Longitude": 105.8555,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10234",
+                        "Name": "Xã Quất Động",
+                        "Latitude": 20.8455,
+                        "Longitude": 105.8572,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10237",
+                        "Name": "Xã Chương Dương",
+                        "Latitude": 20.8467,
+                        "Longitude": 105.8832,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10240",
+                        "Name": "Xã Tân Minh",
+                        "Latitude": 20.8402,
+                        "Longitude": 105.8192,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10243",
+                        "Name": "Xã Lê Lợi",
+                        "Latitude": 20.8291,
+                        "Longitude": 105.8805,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10246",
+                        "Name": "Xã Thắng Lợi",
+                        "Latitude": 20.8255,
+                        "Longitude": 105.8818,
+
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10249",
+                        "Name": "Xã Dũng Tiến",
+                        "Latitude": 20.8211,
+                        "Longitude": 105.8124,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10252",
+                        "Name": "Xã Thống Nhất",
+                        "Latitude": 20.8048,
+                        "Longitude": 105.9037,
+
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10255",
+                        "Name": "Xã Nghiêm Xuyên",
+                        "Latitude": 20.8054,
+                        "Longitude": 105.8125,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10258",
+                        "Name": "Xã Tô Hiệu",
+                        "Latitude": 20.8054,
+                        "Longitude": 105.8862,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10261",
+                        "Name": "Xã Văn Tự",
+                        "Latitude": 20.7850,
+                        "Longitude": 105.8869,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10264",
+                        "Name": "Xã Vạn Điểm",
+                        "Latitude": 20.7819,
+                        "Longitude": 105.8899,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10267",
+                        "Name": "Xã Minh Cường",
+                        "Latitude": 20.7632,
+                        "Longitude": 105.8806,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "280",
+                "Name": "Huyện Phú Xuyên",
+                "Wards": [
+                    {
+                        "Id": "10270",
+                        "Name": "Thị trấn Phú Minh",
+                        "Latitude": 20.7821,
+                        "Longitude": 105.9079,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10273",
+                        "Name": "Thị trấn Phú Xuyên",
+                        "Latitude": 20.7397,
+                        "Longitude": 105.8680,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10276",
+                        "Name": "Xã Hồng Minh",
+                        "Latitude": 20.7928,
+                        "Longitude": 105.8034,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10279",
+                        "Name": "Xã Phượng Dực",
+                        "Latitude": 20.7902,
+                        "Longitude": 105.8145,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10282",
+                        "Name": "Xã Nam Tiến",
+                        "Latitude": 20.7748,
+                        "Longitude": 105.9030,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10288",
+                        "Name": "Xã Tri Trung",
+                        "Latitude": 20.7768,
+                        "Longitude": 105.8085,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10291",
+                        "Name": "Xã Đại Thắng",
+                        "Latitude": 20.7726,
+                        "Longitude": 105.8764,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10294",
+                        "Name": "Xã Phú Túc",
+                        "Latitude": 20.7657,
+                        "Longitude": 105.7861,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10297",
+                        "Name": "Xã Văn Hoàng",
+                        "Latitude": 20.7713,
+                        "Longitude": 105.8322,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10300",
+                        "Name": "Xã Hồng Thái",
+                        "Latitude": 20.7599,
+                        "Longitude": 105.9328,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10303",
+                        "Name": "Xã Hoàng Long",
+                        "Latitude": 20.7555,
+                        "Longitude": 105.8318,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10306",
+                        "Name": "Xã Quang Trung",
+                        "Latitude": 20.7583,
+                        "Longitude": 105.8654,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10309",
+                        "Name": "Xã Nam Phong",
+                        "Latitude": 20.7559,
+                        "Longitude": 105.9029,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10312",
+                        "Name": "Xã Nam Triều",
+                        "Latitude": 20.7488,
+                        "Longitude": 105.9128,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10315",
+                        "Name": "Xã Tân Dân",
+                        "Latitude": 20.7451,
+                        "Longitude": 105.8687,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10318",
+                        "Name": "Xã Sơn Hà",
+                        "Latitude": 20.7420,
+                        "Longitude": 105.8731,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10321",
+                        "Name": "Xã Chuyên Mỹ",
+                        "Latitude": 20.7287,
+                        "Longitude": 105.8209,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10324",
+                        "Name": "Xã Khai Thái",
+                        "Latitude": 20.7200,
+                        "Longitude": 105.9364,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10327",
+                        "Name": "Xã Phúc Tiến",
+                        "Latitude": 20.7182,
+                        "Longitude": 105.8811,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10330",
+                        "Name": "Xã Vân Từ",
+                        "Latitude": 20.7165,
+                        "Longitude": 105.8681,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10333",
+                        "Name": "Xã Tri Thủy",
+                        "Latitude": 20.7024,
+                        "Longitude": 105.9527,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10336",
+                        "Name": "Xã Đại Xuyên",
+                        "Latitude": 20.6966,
+                        "Longitude": 105.8833,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10339",
+                        "Name": "Xã Phú Yên",
+                        "Latitude": 20.7013,
+                        "Longitude": 105.8908,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10342",
+                        "Name": "Xã Bạch Hạ",
+                        "Latitude": 20.6875,
+                        "Longitude": 105.9251,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10345",
+                        "Name": "Xã Quang Lãng",
+                        "Latitude": 20.6913,
+                        "Longitude": 105.9411,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10348",
+                        "Name": "Xã Châu Can",
+                        "Latitude": 20.6817,
+                        "Longitude": 105.8621,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10351",
+                        "Name": "Xã Minh Tân",
+                        "Latitude": 20.6683,
+                        "Longitude": 105.9243,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "281",
+                "Name": "Huyện Ứng Hòa",
+                "Wards": [
+                    {
+                        "Id": "10354",
+                        "Name": "Thị trấn Vân Đình",
+                        "Latitude": 20.7336,
+                        "Longitude": 105.7281,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10357",
+                        "Name": "Xã Viên An",
+                        "Latitude": 20.7987,
+                        "Longitude": 105.6839,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10360",
+                        "Name": "Xã Viên Nội",
+                        "Latitude": 20.7875,
+                        "Longitude": 105.7036,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10363",
+                        "Name": "Xã Hoa Sơn",
+                        "Latitude": 20.7763,
+                        "Longitude": 105.7497,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10366",
+                        "Name": "Xã Quảng Phú Cầu",
+                        "Latitude": 20.7766,
+                        "Longitude": 105.7853,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10369",
+                        "Name": "Xã Trường Thịnh",
+                        "Latitude": 20.7661,
+                        "Longitude": 105.7254,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10372",
+                        "Name": "Xã Cao Thành",
+                        "Latitude": 20.7650,
+                        "Longitude": 105.7138,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10375",
+                        "Name": "Xã Liên Bạt",
+                        "Latitude": 20.7523,
+                        "Longitude": 105.7336,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10378",
+                        "Name": "Xã Sơn Công",
+                        "Latitude": 20.7515,
+                        "Longitude": 105.6744,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10381",
+                        "Name": "Xã Đồng Tiến",
+                        "Latitude": 20.7383,
+                        "Longitude": 105.7489,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10384",
+                        "Name": "Xã Phương Tú",
+                        "Latitude": 20.7297,
+                        "Longitude": 105.7993,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10387",
+                        "Name": "Xã Trung Tú",
+                        "Latitude": 20.7232,
+                        "Longitude": 105.7914,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10390",
+                        "Name": "Xã Đồng Tân",
+                        "Latitude": 20.7130,
+                        "Longitude": 105.8207,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10393",
+                        "Name": "Xã Tảo Dương Văn",
+                        "Latitude": 20.7101,
+                        "Longitude": 105.7934,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10396",
+                        "Name": "Xã Vạn Thái",
+                        "Latitude": 20.7051,
+                        "Longitude": 105.7573,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10399",
+                        "Name": "Xã Minh Đức",
+                        "Latitude": 20.7023,
+                        "Longitude": 105.8685,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10402",
+                        "Name": "Xã Hòa Lâm",
+                        "Latitude": 20.6916,
+                        "Longitude": 105.7675,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10405",
+                        "Name": "Xã Hòa Xá",
+                        "Latitude": 20.6963,
+                        "Longitude": 105.7353,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10408",
+                        "Name": "Xã Trầm Lộng",
+                        "Latitude": 20.6883,
+                        "Longitude": 105.8389,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10411",
+                        "Name": "Xã Kim Đường",
+                        "Latitude": 20.6760,
+                        "Longitude": 105.8486,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10414",
+                        "Name": "Xã Hòa Nam",
+                        "Latitude": 20.6860,
+                        "Longitude": 105.7293,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10417",
+                        "Name": "Xã Hòa Phú",
+                        "Latitude": 20.6758,
+                        "Longitude": 105.7816,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10420",
+                        "Name": "Xã Đội Bình",
+                        "Latitude": 20.6546,
+                        "Longitude": 105.8183,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10423",
+                        "Name": "Xã Đại Hùng",
+                        "Latitude": 20.6687,
+                        "Longitude": 105.8357,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10426",
+                        "Name": "Xã Đông Lỗ",
+                        "Latitude": 20.6617,
+                        "Longitude": 105.8889,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10429",
+                        "Name": "Xã Phù Lưu",
+                        "Latitude": 20.6616,
+                        "Longitude": 105.7933,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10432",
+                        "Name": "Xã Đại Cường",
+                        "Latitude": 20.6581,
+                        "Longitude": 105.8590,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10435",
+                        "Name": "Xã Lưu Hoàng",
+                        "Latitude": 20.6479,
+                        "Longitude": 105.8043,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10438",
+                        "Name": "Xã Hồng Quang",
+                        "Latitude": 20.6229,
+                        "Longitude": 105.7946,
+                        "Level": "Xã"
+                    }
+                ]
+            },
+            {
+                "Id": "282",
+                "Name": "Huyện Mỹ Đức",
+                "Wards": [
+                    {
+                        "Id": "10441",
+                        "Name": "Thị trấn Đại Nghĩa",
+                        "Latitude": 20.6793,
+                        "Longitude": 105.7392,
+                        "Level": "Thị trấn"
+                    },
+                    {
+                        "Id": "10444",
+                        "Name": "Xã Đồng Tâm",
+                        "Latitude": 20.8027,
+                        "Longitude": 105.6738,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10447",
+                        "Name": "Xã Thượng Lâm",
+                        "Latitude": 20.7923,
+                        "Longitude": 105.6702,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10450",
+                        "Name": "Xã Tuy Lai",
+                        "Latitude": 20.7616,
+                        "Longitude": 105.6711,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10453",
+                        "Name": "Xã Phúc Lâm",
+                        "Latitude": 20.8133,
+                        "Longitude": 105.6957,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10456",
+                        "Name": "Xã Mỹ Thành",
+                        "Latitude": 20.7808,
+                        "Longitude": 105.6983,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10459",
+                        "Name": "Xã Bột Xuyên",
+                        "Latitude": 20.7791,
+                        "Longitude": 105.7130,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10462",
+                        "Name": "Xã An Mỹ",
+                        "Latitude": 20.7514,
+                        "Longitude": 105.7001,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10465",
+                        "Name": "Xã Hồng Sơn",
+                        "Latitude": 20.7241,
+                        "Longitude": 105.7033,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10468",
+                        "Name": "Xã Lê Thanh",
+                        "Latitude": 20.7221,
+                        "Longitude": 105.7158,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10471",
+                        "Name": "Xã Xuy Xá",
+                        "Latitude": 20.7130,
+                        "Longitude": 105.7336,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10474",
+                        "Name": "Xã Phùng Xá",
+                        "Latitude": 20.7191,
+                        "Longitude": 105.7561,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10477",
+                        "Name": "Xã Phù Lưu Tế",
+                        "Latitude": 20.6983,
+                        "Longitude": 105.7372,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10480",
+                        "Name": "Xã Đại Hưng",
+                        "Latitude": 20.6625,
+                        "Longitude": 105.7577,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10483",
+                        "Name": "Xã Vạn Kim",
+                        "Latitude": 20.6483,
+                        "Longitude": 105.7833,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10486",
+                        "Name": "Xã Đốc Tín",
+                        "Latitude": 20.6361,
+                        "Longitude": 105.7805,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10489",
+                        "Name": "Xã Hương Sơn",
+                        "Latitude": 20.6025,
+                        "Longitude": 105.7633,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10492",
+                        "Name": "Xã Hùng Tiến",
+                        "Latitude": 20.635,
+                        "Longitude": 105.7552,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10495",
+                        "Name": "Xã An Tiến",
+                        "Latitude": 20.6563,
+                        "Longitude": 105.7305,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10498",
+                        "Name": "Xã Hợp Tiến",
+                        "Latitude": 20.6861,
+                        "Longitude": 105.6933,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10501",
+                        "Name": "Xã Hợp Thanh",
+                        "Latitude": 20.6702,
+                        "Longitude": 105.7011,
+                        "Level": "Xã"
+                    },
+                    {
+                        "Id": "10504",
+                        "Name": "Xã An Phú",
+                        "Latitude": 20.6280,
+                        "Longitude": 105.6933,
+                        "Level": "Xã"
+                    }
+                ]
+            }
+        ]
+    }
+]

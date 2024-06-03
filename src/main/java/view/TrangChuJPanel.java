@@ -10,17 +10,21 @@ import controller.LoiTatController;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class TrangChuJPanel extends javax.swing.JPanel {
 
     public TrangChuJPanel() {
         initComponents();
-        
+
         List<DanhMucBean> listLoiTat = new ArrayList<>();
         listLoiTat.add(new DanhMucBean("Shipper", jpnShipper));
         listLoiTat.add(new DanhMucBean("Order", jpnOrder));
-        listLoiTat.add(new DanhMucBean("ThongKe", jpnCustomer));
+        listLoiTat.add(new DanhMucBean("Customer", jpnCustomer));
+        listLoiTat.add(new DanhMucBean("Service", jpnService));
+        listLoiTat.add(new DanhMucBean("ThongKe", jpnThongke));
+
         List<DanhMucBean> listDanhMuc = new ArrayList<>();
         LoiTatController loiTatController = new LoiTatController(this);
         loiTatController.setEventLoiTat(listLoiTat);
@@ -34,6 +38,15 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         return numOfOrder;
     }
 
+    public JLabel getNumOfCustomer() {
+        return numOfCustomer;
+
+    }
+
+    public JLabel getNumOfService() {
+        return numofService;
+
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,11 +68,7 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         numofService = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jpnIncident = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        numOfIncident = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jpnTk = new javax.swing.JPanel();
+        jpnThongke = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -70,7 +79,7 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 
         jpnShipper.setBackground(new java.awt.Color(76, 175, 80));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\trangchuPlaces-user-identity-icon.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/users_32px.png"))); // NOI18N
 
         numOfShipper.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         numOfShipper.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,19 +94,20 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         jpnShipperLayout.setHorizontalGroup(
             jpnShipperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnShipperLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jpnShipperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jpnShipperLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numOfShipper)))
-                .addGap(15, 15, 15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numOfShipper)
+                .addGap(47, 47, 47))
+            .addGroup(jpnShipperLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnShipperLayout.setVerticalGroup(
             jpnShipperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnShipperLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpnShipperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(numOfShipper))
@@ -107,8 +117,9 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         );
 
         jpnOrder.setBackground(new java.awt.Color(76, 175, 80));
+        jpnOrder.setPreferredSize(new java.awt.Dimension(108, 91));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\trangchuFull-Cart-icon.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/users_32px.png"))); // NOI18N
 
         numOfOrder.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         numOfOrder.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,20 +133,22 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         jpnOrder.setLayout(jpnOrderLayout);
         jpnOrderLayout.setHorizontalGroup(
             jpnOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnOrderLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(jpnOrderLayout.createSequentialGroup()
                 .addGroup(jpnOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
                     .addGroup(jpnOrderLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numOfOrder)))
-                .addGap(15, 15, 15))
+                        .addGap(18, 18, 18)
+                        .addComponent(numOfOrder))
+                    .addGroup(jpnOrderLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel6)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jpnOrderLayout.setVerticalGroup(
             jpnOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnOrderLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpnOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(numOfOrder))
@@ -145,8 +158,9 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         );
 
         jpnCustomer.setBackground(new java.awt.Color(76, 175, 80));
+        jpnCustomer.setPreferredSize(new java.awt.Dimension(108, 91));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\statistic-up-icon.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/users_32px.png"))); // NOI18N
 
         numOfCustomer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         numOfCustomer.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,31 +174,33 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         jpnCustomer.setLayout(jpnCustomerLayout);
         jpnCustomerLayout.setHorizontalGroup(
             jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnCustomerLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(jpnCustomerLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numOfCustomer)))
-                .addGap(15, 15, 15))
+            .addGroup(jpnCustomerLayout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numOfCustomer)
+                .addGap(32, 32, 32))
+            .addGroup(jpnCustomerLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnCustomerLayout.setVerticalGroup(
             jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnCustomerLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jpnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(numOfCustomer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
-                .addGap(20, 20, 20))
+                .addGap(14, 14, 14))
         );
 
         jpnService.setBackground(new java.awt.Color(76, 175, 80));
+        jpnService.setPreferredSize(new java.awt.Dimension(108, 91));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\statistic-up-icon.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/shipping-fast (1).png"))); // NOI18N
 
         numofService.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         numofService.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,20 +214,22 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         jpnService.setLayout(jpnServiceLayout);
         jpnServiceLayout.setHorizontalGroup(
             jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnServiceLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
+            .addGroup(jpnServiceLayout.createSequentialGroup()
+                .addGroup(jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpnServiceLayout.createSequentialGroup()
+                        .addContainerGap(15, Short.MAX_VALUE)
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numofService)))
-                .addGap(15, 15, 15))
+                        .addGap(24, 24, 24)
+                        .addComponent(numofService))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnServiceLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel12)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jpnServiceLayout.setVerticalGroup(
             jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnServiceLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jpnServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(numofService))
@@ -220,47 +238,10 @@ public class TrangChuJPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20))
         );
 
-        jpnIncident.setBackground(new java.awt.Color(76, 175, 80));
+        jpnThongke.setBackground(new java.awt.Color(76, 175, 80));
+        jpnThongke.setPreferredSize(new java.awt.Dimension(108, 91));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\statistic-up-icon.png")); // NOI18N
-
-        numOfIncident.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        numOfIncident.setForeground(new java.awt.Color(255, 255, 255));
-        numOfIncident.setText("100");
-
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Incident");
-
-        javax.swing.GroupLayout jpnIncidentLayout = new javax.swing.GroupLayout(jpnIncident);
-        jpnIncident.setLayout(jpnIncidentLayout);
-        jpnIncidentLayout.setHorizontalGroup(
-            jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnIncidentLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addGroup(jpnIncidentLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numOfIncident)))
-                .addGap(15, 15, 15))
-        );
-        jpnIncidentLayout.setVerticalGroup(
-            jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnIncidentLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jpnIncidentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(numOfIncident))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
-                .addGap(20, 20, 20))
-        );
-
-        jpnTk.setBackground(new java.awt.Color(76, 175, 80));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon("F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\resourse\\statistic-up-icon.png")); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/stats (1).png"))); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,25 +251,25 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Thống kê");
 
-        javax.swing.GroupLayout jpnTkLayout = new javax.swing.GroupLayout(jpnTk);
-        jpnTk.setLayout(jpnTkLayout);
-        jpnTkLayout.setHorizontalGroup(
-            jpnTkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnTkLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jpnTkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jpnThongkeLayout = new javax.swing.GroupLayout(jpnThongke);
+        jpnThongke.setLayout(jpnThongkeLayout);
+        jpnThongkeLayout.setHorizontalGroup(
+            jpnThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnThongkeLayout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addGroup(jpnThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
-                    .addGroup(jpnTkLayout.createSequentialGroup()
+                    .addGroup(jpnThongkeLayout.createSequentialGroup()
                         .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel17)))
                 .addGap(15, 15, 15))
         );
-        jpnTkLayout.setVerticalGroup(
-            jpnTkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnTkLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jpnTkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jpnThongkeLayout.setVerticalGroup(
+            jpnThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnThongkeLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jpnThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -306,7 +287,7 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -316,32 +297,31 @@ public class TrangChuJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpnShipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jpnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jpnIncident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34))
+                        .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(539, 539, 539))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpnShipper, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(jpnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(jpnThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 507, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnIncident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnShipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpnThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnService, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnShipper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
@@ -353,8 +333,6 @@ public class TrangChuJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -364,14 +342,12 @@ public class TrangChuJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jpnCustomer;
-    private javax.swing.JPanel jpnIncident;
     private javax.swing.JPanel jpnOrder;
     private javax.swing.JPanel jpnService;
     private javax.swing.JPanel jpnShipper;
-    private javax.swing.JPanel jpnTk;
+    private javax.swing.JPanel jpnThongke;
     private javax.swing.JPanel jpnView;
     private javax.swing.JLabel numOfCustomer;
-    private javax.swing.JLabel numOfIncident;
     private javax.swing.JLabel numOfOrder;
     private javax.swing.JLabel numOfShipper;
     private javax.swing.JLabel numofService;

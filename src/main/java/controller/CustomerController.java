@@ -1,16 +1,19 @@
 package controller;
 
-import AddressAPI.AddressController;
 import Dao.CustomerServiceDao;
 import Dao.CustomerServiceDaoImpl;
+import Dao.OrderServiceDao;
+import Dao.OrderServiceDaoImpl;
 import model.Customer;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import static java.time.LocalDateTime.now;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,14 +24,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import model.Order;
 
 public class CustomerController {
 
-    private final String PHONE_PATTERN = "^\\+(?:[0-9] ?){6,14}[0-9]$";
+    private final String PHONE_PATTERN = "^(0|\\+84)(3[2-9]|5[689]|7[06-9]|8[1-689]|9[0-46-9])[0-9]{7}$";
     private final Pattern pattern_phone = Pattern.compile(PHONE_PATTERN);
     private final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    
     private final Pattern pattern_email = Pattern.compile(EMAIL_PATTERN);
 
     private JButton btnSubmit;
@@ -49,9 +54,10 @@ public class CustomerController {
 
     private Customer customer = null;
     private CustomerServiceDao customerServiceDao = null;
+    private OrderServiceDao orderServiceDao = new OrderServiceDaoImpl();
 
     // JFrame insert
-    public CustomerController(JButton btnSubmit, JComboBox jcbDistinct, JComboBox jcbProvince, JComboBox jcbWard, JLabel jlbMsg, JRadioButton jrbNam, JRadioButton jrbNu, JTextField jtfName, JTextField jtfPhone, JTextField jtfEmail) {
+    public CustomerController(JButton btnSubmit, JComboBox jcbProvince, JComboBox jcbDistinct, JComboBox jcbWard, JLabel jlbMsg, JRadioButton jrbNam, JRadioButton jrbNu, JTextField jtfName, JTextField jtfPhone, JTextField jtfEmail) {
         this.btnSubmit = btnSubmit;
         this.jcbDistinct = jcbDistinct;
         this.jcbProvince = jcbProvince;
@@ -84,7 +90,7 @@ public class CustomerController {
         this.jtfEmail = jtfEmail;
 
         this.customerServiceDao = new CustomerServiceDaoImpl();
-        this.customer=customer;
+        this.customer = customer;
     }
 
     public void setView(Customer customer) {
@@ -121,10 +127,23 @@ public class CustomerController {
                         || jcbWard.getSelectedItem() == null
                         || jtfEmail.getText().isEmpty()) {
                     jlbMsg.setText("Vui lòng điền đầy đủ thông tin!");
-                } else {
+                } else if (!validate_phone(jtfPhone.getText())) {
+                    jlbMsg.setText("Số điện thoại không đúng định dạng VD: +84383901544");
+                } else if (s.equals("Insert") && orderServiceDao.checkPhoneNumberExists(jtfPhone.getText(), customer) > 0) {
+                    jlbMsg.setText("Số điện thoại đã tồn tại");
+                } else if (!validate_email(jtfEmail.getText())) {
+                    jlbMsg.setText("Email không đúng định dạng");
+                }
+                        
+                    
+                else {
 
                     customer.setName(jtfName.getText());
-                    customer.setGender(jrbNam.isSelected() ? false : true);
+                    if (s.equalsIgnoreCase("UpdateOrDelete")) {
+                        customer.setGender(jrbNam.isSelected() ? true : false);
+                    } else if (s.equalsIgnoreCase("Insert")) {
+                        customer.setGender(jrbNam.isSelected() ? false : true);
+                    }
                     customer.setPhoneNumber(jtfPhone.getText());
                     customer.setEmail(jtfEmail.getText());
                     //LocalDateTime now = LocalDateTime.now();
@@ -158,23 +177,55 @@ public class CustomerController {
             }
 
             @Override
-            public void mouseEntered(MouseEvent e) {
+            public void mouseEntered(MouseEvent e
+            ) {
                 btnSubmit.setBackground(new Color(0, 200, 83));
             }
 
             @Override
-            public void mouseExited(MouseEvent e) {
+            public void mouseExited(MouseEvent e
+            ) {
                 btnSubmit.setBackground(new Color(100, 221, 83));
             }
 
         }
         );
-        if (s.equalsIgnoreCase("UpdateOrDelete")) {
+        if (s.equalsIgnoreCase(
+                "UpdateOrDelete")) {
             btnDelete.addMouseListener(new MouseAdapter() {
                 //int result = shipperServiceDao.delete(shipper);
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (showDialog("xóa")) {
+                        final int selectedMonthIndex = LocalDate.now().getMonthValue() - 1;
+                        OrderServiceDao orderServiceDao = new OrderServiceDaoImpl();
+                        List<Order> orderPending = orderServiceDao.getOrderListForCustomer(customer, selectedMonthIndex + 1, "Pending");
+                        List<Order> orderProcessing = orderServiceDao.getOrderListForCustomer(customer, selectedMonthIndex + 1, "Processing");
+                        List<Order> orderCompleted = orderServiceDao.getOrderListForCustomer(customer, selectedMonthIndex + 1, "Completed");
+
+                        // Gộp hai danh sách lại
+                        List<Order> combinedOrderList = new ArrayList<>();
+                        combinedOrderList.addAll(orderPending);
+                        combinedOrderList.addAll(orderProcessing);
+                        combinedOrderList.addAll(orderCompleted);
+
+                        if (combinedOrderList.size() != 0) {
+                            // Cập nhật ID Shipper cho các đơn hàng trong danh sách đã kết hợp
+                            for (Order order : combinedOrderList) {
+                                orderServiceDao.Delete(order);
+                            }
+
+                            // hieen thị thông báo goomf orderid, ordername, shipperid ra màn hình
+                            StringBuilder message = new StringBuilder();
+                            for (Order order : combinedOrderList) {
+                                message.append("Customer ID: ").append(customer.getId()).append(", ")
+                                        .append("Order ID: ").append(order.getId()).append(", ")
+                                        .append("Order Name: ").append(order.getName()).append("\n");
+
+                            }
+                            JOptionPane.showMessageDialog(null, message.toString());
+                        }
+
                         int result = customerServiceDao.Delete(customer);
                         if (result > 0) {
                             jlbMsg.setText("Xóa dữ liệu thành công!");

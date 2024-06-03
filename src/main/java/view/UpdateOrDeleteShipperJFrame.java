@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
-import AddressAPI.AddressController;
 import AddressAPI.LocationApp;
 import controller.QuanLyShipperController;
 import controller.ShipperController;

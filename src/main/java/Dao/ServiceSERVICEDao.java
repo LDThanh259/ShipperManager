@@ -12,7 +12,8 @@ public interface ServiceSERVICEDao {
     public int Update(Service service);
     public int Delete(Service service);
     public int Insert(Service service);
-
+ 
+    public int getNumOfService();
     public List<Integer> getListID();
     public String getDataFromID(int serviceid);
     public List<Service> selectShipFeeforOrd(double weight, double distance);

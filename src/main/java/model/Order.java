@@ -221,4 +221,11 @@ public class Order {
     public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", name=" + name + ", weight=" + weight + ", shipFee=" + shipFee + ", price=" + price + ", ward=" + ward + ", province=" + province + ", distinct=" + distinct + ", distance=" + distance + ", description=" + description + ", orderDate=" + orderDate + ", expectedDeliveryDate=" + expectedDeliveryDate + ", isDeleted=" + isDeleted + ", respond=" + respond + ", shipperId=" + shipperId + ", cusId=" + cusId + ", shipTime=" + shipTime + ", shipCount=" + shipCount + ", completedTime=" + completedTime + ", confirm=" + confirm + ", serviceId=" + serviceId + '}';
+    }
+    
+    
 }

@@ -26,7 +26,7 @@ public class ShipperDaoImpl implements ShipperDao {
                     + "      ,[SHIPPER_STATUS]\n"
                     + "      ,[SHIPPER_RANK]\n"
                     + "      ,[SHIPPER_ISDELETED]\n"
-                    + "  FROM [newDatabaseOOP].[dbo].[SHIPPER]\n"
+                    + "  FROM [Shipper1].[dbo].[SHIPPER]\n"
                     + " WHERE [SHIPPER_ISDELETED] = ?;";
 
             List<Shipper> shippers = new ArrayList<>();
@@ -87,9 +87,9 @@ public class ShipperDaoImpl implements ShipperDao {
             ps.setString(1, shipper.getName());
             ps.setString(2, shipper.isGender());
             ps.setString(3, shipper.getPhoneNumber());
-            ps.setString(4, shipper.getDistinct());
-            ps.setString(5, shipper.getProvince());
-            ps.setString(6, shipper.getWard());
+            ps.setNString(4, shipper.getDistinct());
+            ps.setNString(5, shipper.getProvince());
+            ps.setNString(6, shipper.getWard());
             ps.setString(7, shipper.getLicensePlate());
             ps.setString(8, shipper.getStatus());
             ps.setFloat(9, (float) shipper.getRating());
@@ -113,8 +113,11 @@ public class ShipperDaoImpl implements ShipperDao {
         try {
             Connection cons = JDBCUtil.getConnection();
 
-            String sql = "DELETE FROM SHIPPER\n"
-                    + "WHERE SHIPPER_ID = ?;";
+            String sql = "UPDATE SHIPPER\n"
+                    + "SET \n"
+                    + "    SHIPPER_ISDELETED = 1 \n"
+                    + "WHERE \n"
+                    + "    SHIPPER_ID = ?;";
             PreparedStatement ps = cons.prepareStatement(sql);
 
             ps.setInt(1, shipper.getId());
@@ -132,6 +135,7 @@ public class ShipperDaoImpl implements ShipperDao {
 
     @Override
     public int insert(Shipper shipper) {
+        shipper.setIsDeleted(false);
         int result = 0;
         try {
             Connection cons = JDBCUtil.getConnection();
@@ -143,9 +147,9 @@ public class ShipperDaoImpl implements ShipperDao {
             ps.setString(1, shipper.getName());
             ps.setString(2, shipper.isGender());
             ps.setString(3, shipper.getPhoneNumber());
-            ps.setString(4, shipper.getDistinct());
-            ps.setString(5, shipper.getProvince());
-            ps.setString(6, shipper.getWard());
+            ps.setNString(4, shipper.getDistinct());
+            ps.setNString(5, shipper.getProvince());
+            ps.setNString(6, shipper.getWard());
             ps.setString(7, shipper.getLicensePlate());
             ps.setString(8, shipper.getStatus());
             ps.setFloat(9, (float) shipper.getRating());
@@ -167,7 +171,7 @@ public class ShipperDaoImpl implements ShipperDao {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "SELECT SHIPPER_ID FROM SHIPPER;";
+            String sql = "SELECT SHIPPER_ID FROM SHIPPER WHERE [SHIPPER_ISDELETED] = 0;";
 
             List<Integer> shippers = new ArrayList<>();
 

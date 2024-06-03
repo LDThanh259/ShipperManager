@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class DistanceAddress {
 
-    private static final String DATA_FILE = "HaNoiJson.json";
+    private static final String DATA_FILE = "Json/HaNoiJson.json";
     private static final Map<String, double[]> coordinatesMap = new HashMap<>();
     private static final Map<String, String> nameMap = new HashMap<>();
 

@@ -1,14 +1,18 @@
 package controller;
 
-import AddressAPI.AddressController;
+import Dao.OrderServiceDao;
+import Dao.OrderServiceDaoImpl;
 import Dao.ShipperServiceDao;
 import Dao.ShipperServiceDaoImpl;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import static java.time.LocalDateTime.now;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import model.Order;
 import model.Shipper;
 
 public class ShipperController {
@@ -71,7 +76,7 @@ public class ShipperController {
     }
 
     // JFrame update and delete
-    public ShipperController(JButton btnSubmit, JButton btnDelete, JComboBox<String> jcbDistinct, JComboBox<String> jcbProvince, JComboBox<String> jcbWard,  JLabel jlbID, JLabel jlbMsg, JRadioButton jrbBusy, JRadioButton jrbFalse, JRadioButton jrbIdle, JRadioButton jrbNam, JRadioButton jrbNu, JRadioButton jrbTrue, JTextField jtfLiscensePlate, JTextField jtfName, JTextField jtfPhone) {
+    public ShipperController(JButton btnSubmit, JButton btnDelete, JComboBox<String> jcbDistinct, JComboBox<String> jcbProvince, JComboBox<String> jcbWard, JLabel jlbID, JLabel jlbMsg, JRadioButton jrbBusy, JRadioButton jrbFalse, JRadioButton jrbIdle, JRadioButton jrbNam, JRadioButton jrbNu, JRadioButton jrbTrue, JTextField jtfLiscensePlate, JTextField jtfName, JTextField jtfPhone) {
         this.btnSubmit = btnSubmit;
         this.btnDelete = btnDelete;
         this.jcbDistinct = jcbDistinct;
@@ -102,16 +107,16 @@ public class ShipperController {
         } else {
             jrbNam.setSelected(true);
             jrbNu.setSelected(false);
-        } 
-        
+        }
+
         if (shipper.getStatus() == "Active") {
             jrbBusy.setSelected(false);
             jrbIdle.setSelected(true);
-        } else  {
+        } else {
             jrbBusy.setSelected(true);
             jrbIdle.setSelected(false);
-        } 
-        
+        }
+
         jtfPhone.setText(shipper.getPhoneNumber() + "");
         jtfLiscensePlate.setText(shipper.getLicensePlate());
 
@@ -139,10 +144,9 @@ public class ShipperController {
                         || jcbProvince.getSelectedItem() == null || jcbWard.getSelectedItem() == null
                         || jtfLiscensePlate.getText().isEmpty()) {
                     jlbMsg.setText("Vui lòng điền đầy đủ thông tin!");
-                } else if( !validate_phone(jtfPhone.getText())){
+                } else if (!validate_phone(jtfPhone.getText())) {
                     jlbMsg.setText("Số điện thoại không đúng định dạng VD: +84383901544");
-                }
-                else {
+                } else {
                     shipper.setName(jtfName.getText());
                     shipper.setGender(jrbNam.isSelected() ? "Male" : "Female");
                     shipper.setStatus(jrbIdle.isSelected() ? "Active" : "Busy");
@@ -197,7 +201,46 @@ public class ShipperController {
                 public void mouseClicked(MouseEvent e) {
                     if (showDialog("xóa")) {
                         shipper.setIsDeleted(true);
-                        int result = shipperServiceDao.update(shipper);
+
+                        // Lấy chỉ số của tháng hiện tại
+                        final int selectedMonthIndex = LocalDate.now().getMonthValue() - 1;
+
+                        // Lấy danh sách đơn hàng đang chờ xử lý và đang xử lý
+                        OrderServiceDao orderServiceDao = new OrderServiceDaoImpl();
+                        List<Order> listOrdersPending = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex + 1, "Pending");
+                        List<Order> listOrdersProcessing = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex + 1, "Processing");
+
+                        // Gộp hai danh sách lại
+                        List<Order> combinedOrderList = new ArrayList<>();
+                        combinedOrderList.addAll(listOrdersPending);
+                        combinedOrderList.addAll(listOrdersProcessing);
+
+                        // Lấy danh sách ID của Shipper
+                        List<Integer> listId = shipperServiceDao.getListId();
+                        listId.remove(Integer.valueOf(shipper.getId()));
+
+                        // Cập nhật ID Shipper cho các đơn hàng trong danh sách đã kết hợp
+                        for (Order order : combinedOrderList) {
+                            // Xáo trộn danh sách ID để chọn một ngẫu nhiên
+                            Collections.shuffle(listId);
+
+                            // Lấy một ID ngẫu nhiên từ danh sách ID
+                            int randomShipperId = listId.get(0); // Lấy ID đầu tiên, có thể thay đổi cách chọn tùy ý
+
+                            orderServiceDao.UpdateShipperID(order, randomShipperId);
+                            order.setShipperId(randomShipperId);
+                        }
+
+                        // hieen thị thông báo goomf orderid, ordername, shipperid ra màn hình
+                        StringBuilder message = new StringBuilder();
+                        for (Order order : combinedOrderList) {
+                            message.append("Order ID: ").append(order.getId()).append(", ")
+                                    .append("Order Name: ").append(order.getName()).append(", ")
+                                    .append("Shipper ID: ").append(order.getShipperId()).append("\n");
+                        }
+                        if(!message.isEmpty()) JOptionPane.showMessageDialog(null, message.toString());
+
+                        int result = shipperServiceDao.delete(shipper);
                         if (result > 0) {
                             jlbMsg.setText("Xóa dữ liệu thành công!");
                         } else {
@@ -239,152 +282,3 @@ public class ShipperController {
         return matcher.matches();
     }
 }
-
-//package controller;
-//
-//import AddressAPI.AddressController;
-//import Dao.ShipperServiceDao;
-//import com.toedter.calendar.JDateChooser;
-//import java.awt.Color;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
-//import javax.swing.JButton;
-//import javax.swing.JComboBox;
-//import javax.swing.JLabel;
-//import javax.swing.JOptionPane;
-//import javax.swing.JRadioButton;
-//import javax.swing.JTextArea;
-//import javax.swing.JTextField;
-//import model.Shipper;
-//
-//public class ShipperController {
-//
-//    private final String PHONE_PATTERN = "^\\+(?:[0-9] ?){6,14}[0-9]$";
-//    private final Pattern pattern_phone = Pattern.compile(PHONE_PATTERN);
-//    private final String EMAIL_PATTERN
-//            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-//            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-//    private final Pattern pattern_email = Pattern.compile(EMAIL_PATTERN);
-//
-//    private JButton btnSubmit;
-//    private JButton btnDelete;
-//    private JComboBox<String> jcbDistinct;
-//    private JComboBox<String> jcbProvince;
-//    private JComboBox<String> jcbWard;
-//    private JDateChooser jdcDob;
-//    private JLabel jlbID;
-//    private JLabel jlbMsg;
-//    private JTextArea jtaUpdate;
-//    private JRadioButton jrbBusy;
-//    private JRadioButton jrbFalse;
-//    private JRadioButton jrbIdle;
-//    private JRadioButton jrbNam;
-//    private JRadioButton jrbNu;
-//    private JRadioButton jrbTrue;
-//    private JTextField jtfLiscensePlate;
-//    private JTextField jtfName;
-//    private JTextField jtfPhone;
-//
-//    private Shipper shipper = null;
-//    private ShipperServiceDao shipperServiceDao = null;
-//
-//    // JFrame insert
-//    public ShipperController(JButton btnSubmit, JComboBox<String> jcbDistinct, JComboBox<String> jcbProvince, JComboBox<String> jcbWard, JDateChooser jdcDob, JLabel jlbMsg, JRadioButton jrbBusy, JRadioButton jrbIdle, JRadioButton jrbNam, JRadioButton jrbNu, JTextField jtfLiscensePlate, JTextField jtfName, JTextField jtfPhone) {
-//        this.btnSubmit = btnSubmit;
-//        //this.btnDelete = btnDelete;
-//        this.jcbDistinct = jcbDistinct;
-//        this.jcbProvince = jcbProvince;
-//        this.jcbWard = jcbWard;
-//        this.jdcDob = jdcDob;
-//        this.jlbMsg = jlbMsg;
-//        this.jrbBusy = jrbBusy;
-//        this.jrbIdle = jrbIdle;
-//        this.jrbNam = jrbNam;
-//        this.jrbNu = jrbNu;
-//        this.jtfLiscensePlate = jtfLiscensePlate;
-//        this.jtfName = jtfName;
-//        this.jtfPhone = jtfPhone;
-//
-//        this.btnSubmit.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                handleSubmitButtonClick();
-//            }
-//        });
-//    }
-//
-//    // JFrame update and delete
-//    public ShipperController(JButton btnSubmit, JButton btnDelete, JComboBox<String> jcbDistinct, JComboBox<String> jcbProvince, JComboBox<String> jcbWard, JDateChooser jdcDob, JLabel jlbID, JLabel jlbMsg, JTextArea jtaUpdate, JRadioButton jrbBusy, JRadioButton jrbFalse, JRadioButton jrbIdle, JRadioButton jrbNam, JRadioButton jrbNu, JRadioButton jrbTrue, JTextField jtfLiscensePlate, JTextField jtfName, JTextField jtfPhone) {
-//        this(btnSubmit, jcbDistinct, jcbProvince, jcbWard, jdcDob, jlbMsg, jrbBusy, jrbIdle, jrbNam, jrbNu, jtfLiscensePlate, jtfName, jtfPhone);
-//        this.btnDelete = btnDelete;
-//        this.jlbID = jlbID;
-//        this.jtaUpdate = jtaUpdate;
-//        this.jrbFalse = jrbFalse;
-//        this.jrbTrue = jrbTrue;
-//
-//        this.btnSubmit.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                handleSubmitButtonClick();
-//            }
-//        });
-//    }
-//
-//    private void handleSubmitButtonClick() {
-//        if (jtfName.getText().isEmpty() || jtfPhone.getText().isEmpty()
-//                || jdcDob.getDate() == null
-//                || (!jrbNam.isSelected() && !jrbNu.isSelected())
-//                || jcbDistinct.getSelectedItem() == null
-//                || jcbProvince.getSelectedItem() == null || jcbWard.getSelectedItem() == null
-//                || jtfLiscensePlate.getText().isEmpty()) {
-//            jlbMsg.setText("Vui lòng điền đầy đủ thông tin!");
-//        } else {
-//            shipper.setName(jtfName.getText());
-//            shipper.setDob(jdcDob.getDate());
-//            shipper.setGender(jrbNam.isSelected() ? "Male" : "Female");
-//            shipper.setStatus(jrbIdle.isSelected() ? "Active" : "Busy");
-//            shipper.setUpdated(jtaUpdate.getText());
-//            shipper.setLicensePlate(jtfLiscensePlate.getText());
-//            shipper.setProvince((String) jcbProvince.getSelectedItem());
-//            shipper.setDistinct((String) jcbDistinct.getSelectedItem());
-//            shipper.setWard((String) jcbWard.getSelectedItem());
-//            shipper.setIsDeleted(jrbTrue.isSelected());
-//            shipper.setPhoneNumber(Integer.parseInt(jtfPhone.getText()));
-//        }
-//    }
-//
-//    public void setView(Shipper shipper) {
-//        this.shipper = shipper;
-//        jlbID.setText(String.valueOf(shipper.getId()));
-//        jtfName.setText(shipper.getName());
-//        jdcDob.setDate(shipper.getDob());
-//        jrbNam.setSelected("Male".equals(shipper.getGender()));
-//        jrbNu.setSelected("Female".equals(shipper.getGender()));
-//        jrbBusy.setSelected("Busy".equals(shipper.getStatus()));
-//        jrbIdle.setSelected("Active".equals(shipper.getStatus()));
-//        jtaUpdate.setText(shipper.getUpdated());
-//        jtfPhone.setText(String.valueOf(shipper.getPhoneNumber()));
-//        jtfLiscensePlate.setText(shipper.getLicensePlate());
-//        //AddressController addressController = new AddressController(jcbDistinct, jcbProvince, jcbWard);
-//        jrbFalse.setSelected(shipper.isIsDeleted());
-//        jrbTrue.setSelected(!shipper.isIsDeleted());
-//    }
-//
-//    public boolean showDialog(String msg) {
-//        int dialogResult = JOptionPane.showConfirmDialog(null,
-//                "Bạn muốn " + msg + " dữ liệu hay không?", "Thông báo", JOptionPane.YES_NO_OPTION);
-//        return dialogResult == JOptionPane.YES_OPTION;
-//    }
-//
-//    public boolean validatePhone(String phoneNumber) {
-//        Matcher matcher = pattern_phone.matcher(phoneNumber);
-//        return matcher.matches();
-//    }
-//
-//    public boolean validateEmail(String email) {
-//        Matcher matcher = pattern_email.matcher(email);
-//        return matcher.matches();
-//    }
-//}

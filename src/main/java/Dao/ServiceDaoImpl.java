@@ -16,15 +16,18 @@ import model.Service;
 * @author ADMIN
 */
 
+
+
 public class ServiceDaoImpl implements ServiceDao {
 
+    
 	@Override
 	public List<Service> getList()
 	{
 	    try {
 	        Connection conn = JDBCUtil.getConnection();
 
-	        String sql = "SELECT TOP(1000) [SV_ID],[SV_NAME], [SV_MAXDISTANCE], [SV_MAXWEIGHT], [SV_PRICE] FROM [newDatabaseOOP].[dbo].[SERVICE];";
+	        String sql = "SELECT TOP(1000) [SV_ID],[SV_NAME], [SV_MAXDISTANCE], [SV_MAXWEIGHT], [SV_PRICE] FROM [Shipper1].[dbo].[SERVICE];";
 
 	        List<Service> services = new ArrayList<>();
 
@@ -170,7 +173,7 @@ public class ServiceDaoImpl implements ServiceDao {
 			Service service = new Service();
 	        Connection conn = JDBCUtil.getConnection();
 
-	        String sql = "SELECT [SV_ID],[SV_NAME], [SV_MAXDISTANCE], [SV_MAXWEIGHT], [SV_PRICE] FROM [newDatabaseOOP].[dbo].[SERVICE] WHERE [SV_ID] = ?";
+	        String sql = "SELECT [SV_ID],[SV_NAME], [SV_MAXDISTANCE], [SV_MAXWEIGHT], [SV_PRICE] FROM [Shipper1].[dbo].[SERVICE] WHERE [SV_ID] = ?";
 
 	        
 	        PreparedStatement st = conn.prepareStatement(sql);
@@ -200,7 +203,7 @@ public class ServiceDaoImpl implements ServiceDao {
 	        List<Service> services = new ArrayList<>();
 	        Connection conn = JDBCUtil.getConnection();
 
-	        String sql = "SELECT [SV_ID],[SV_NAME], [SV_MAXDISTANCE], [SV_MAXWEIGHT], [SV_PRICE] FROM [newDatabaseOOP].[dbo].[SERVICE] WHERE [SV_MAXWEIGHT] > ? AND [SV_MAXDISTANCE] > ?";
+	        String sql = "SELECT [SV_ID],[SV_NAME], [SV_MAXDISTANCE], [SV_MAXWEIGHT], [SV_PRICE] FROM [Shipper1].[dbo].[SERVICE] WHERE [SV_MAXWEIGHT] > ? AND [SV_MAXDISTANCE] > ?";
 
 	        PreparedStatement st = conn.prepareStatement(sql);
 	        st.setDouble(1, weight);
@@ -217,9 +220,6 @@ public class ServiceDaoImpl implements ServiceDao {
 	            System.out.println(service.toString());
 	            services.add(service);
 	        }
-	        for (Service service2 : services) {
-	            System.out.println("ost" + service2.toString());
-	        }
 	        JDBCUtil.closeConnection(conn);
 	        return services;
 	    } catch (SQLException ex) {
@@ -228,6 +228,8 @@ public class ServiceDaoImpl implements ServiceDao {
 	    }
 	    return null;
 	}
+
+   
 
 
 }

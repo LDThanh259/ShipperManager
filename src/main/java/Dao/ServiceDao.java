@@ -17,5 +17,5 @@ public interface ServiceDao {
     public List<Integer> getListID();
     public String getDataFromID(int serviceid);
     public List<Service> selectShipFeeforOrd(double weight, double distance);
-
+    
 }

@@ -19,9 +19,11 @@ public interface OrderServiceDao {
 
     public List<Order> getList();
 
-    public List<Order> getDeletedOrders(boolean isdeleted);
+    public List<Order> getDeletedOrders();
 
     public List<Order> getUnDeliveryOrders();
+
+    public List<Order> getDeliveryOrders();
 
     public int Update(Order order);
 
@@ -39,6 +41,8 @@ public interface OrderServiceDao {
 
     public List<Order> getOrderListForShipper(Shipper shipper, int month, String type);
 
+    public List<Order> getOrderListForCustomer(Customer customer, int month, String type);
+
     public int checkPhoneNumberExists(String phoneNumber, Customer customer);
 
     public int UpdateOrderTime(Order order);
@@ -47,4 +51,5 @@ public interface OrderServiceDao {
 
     public int UpdateCompleteTime(Order order);
 
+    public int UpdateShipperID(Order order, int id);
 }

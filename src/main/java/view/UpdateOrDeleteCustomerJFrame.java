@@ -4,7 +4,6 @@
  */
 package view;
 
-import AddressAPI.AddressController;
 import AddressAPI.LocationApp;
 import controller.QuanLyCustomerController;
 import controller.CustomerController;
@@ -25,7 +24,7 @@ public class UpdateOrDeleteCustomerJFrame extends javax.swing.JFrame {
         initComponents();
 
         LocationApp locationApp = new LocationApp(jcbProvince, jcbDistinct, jcbWard);
-        CustomerController customerController = new CustomerController(btnSubmit, btnDelete, jcbDistinct, jcbProvince, jcbWard, jlbID, jlbMsg, jrbNam,jrbNu,jtfName, jtfEmail,jtfPhone);
+        CustomerController customerController = new CustomerController(btnSubmit, btnDelete, jcbDistinct, jcbProvince, jcbWard, jlbID, jlbMsg, jrbNam,jrbNu,jtfName, jtfPhone, jtfEmail);
 
         customerController.setView(customer);
         customerController.setEvent("UpdateOrDelete");

@@ -6,6 +6,7 @@ package view;
 
 import controller.QuanLyOrderController;
 import javax.swing.JFrame;
+import model.Customer;
 import model.Shipper;
 
 /**
@@ -29,8 +30,8 @@ public class ListOrderJFrame extends javax.swing.JFrame {
         jcbFillter.addItem("Đang vận chuyển");
         jcbFillter.addItem("Thành công");
         jcbFillter.addItem("Đã xóa");
-        
-        orderController.initFilter(shipper);
+        Customer customer = new Customer();
+        orderController.initFilter(shipper,customer,"Shipper");
         this.setVisible(true);
     }
 

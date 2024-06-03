@@ -6,7 +6,6 @@ import model.ClassTableModel;
 import model.Customer;
 import model.Order;
 import model.Shipper;
-import model.ButtonColumn;
 
 import com.toedter.calendar.JMonthChooser;
 import java.awt.CardLayout;
@@ -19,17 +18,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -43,6 +44,8 @@ import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -65,9 +68,9 @@ public class QuanLyOrderController {
     private JButton btnAdd;
     private JTextField jtfSearch;
     private JButton btnPrint;
-    private JComboBox<String> jcbFillter;
-
     private OrderServiceDao orderServiceDao = null;
+    private JComboBox<String> jcbFillter;
+    static String changeordertoshipper;
 
     private String[] listColumnPending = {
         "ORD_ID",
@@ -80,10 +83,7 @@ public class QuanLyOrderController {
         "CUS_ID",
         "ORD_IS_DELETED",
         "SV_ID",
-        "ORD_SHIPFEE",
-        "Vận chuyển"
-
-    };
+        "ORD_SHIPFEE",};
 
     private String[] listColumnProcessing = {
         "ORD_ID",
@@ -98,11 +98,7 @@ public class QuanLyOrderController {
         "CUS_RESPOND",
         "ORD_TIME",
         "ORD_SHIP_COUNT",
-        "SV_ID",
-        "Vận chuyển",
-        "Xóa",
-        "Hoàn Thành"
-    };
+        "SV_ID",};
 
     private String[] listColumnDeleted = {
         "ORD_ID",
@@ -173,35 +169,46 @@ public class QuanLyOrderController {
         setDataToTable("Deleted"); // Mặc định hiển thị danh sách đơn hàng chưa vận chuyển
     }
 
-    public void setDataToTable(String s) {
+    public String[] AddColumn(String[] oldList, List<String> columns) {
+        List<String> tempList = new ArrayList<>(Arrays.asList(oldList));
+        for (String column : columns) {
+            if (!tempList.contains(column)) {
+                tempList.add(column);
+            }
+        }
+        return tempList.toArray(new String[0]);
+    }
+
+    public void setDataToTable(String status) {
+        String shipperororder = "Order";
         List<Order> listOrders = null;
         String[] listColumn = null;
-        JTable table = null;
-        if (s == "Pending") {
-            listColumn = listColumnPending;
-            System.out.println("Pending1 " + listColumn.length);
+        JTable table = new JTable();
+
+        if (status.equals("Pending")) {
+            String[] listColumnPendingshipper = listColumnPending;
+            List<String> newColumns = Arrays.asList("EDIT");
+            listColumnPendingshipper = AddColumn(listColumnPendingshipper, newColumns);
+
+            listColumn = listColumnPendingshipper;
             listOrders = orderServiceDao.getUnDeliveryOrders();
-            table = new JTable();
-            DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, s);
-        } else if (s == "Processing") {
+            initMouseListener(table);
+        } else if (status.equals("Processing")) {
             listColumn = listColumnProcessing;
-            listOrders = orderServiceDao.getDeletedOrders(false);
-            table = new JTable();
-            DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, s);
-        } else if (s == "Deleted") {
+            listOrders = orderServiceDao.getDeliveryOrders();
+            initMouseListener(table);
+        } else if (status.equals("Deleted")) {
             listColumn = listColumnDeleted;
-            listOrders = orderServiceDao.getDeletedOrders(true);
-            DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, null, s);
-            table = new JTable(model);
-        } else if (s == "Completed") {
-            table = new JTable();
+            listOrders = orderServiceDao.getDeletedOrders();
+
+        } else if (status.equals("Completed")) {
             listColumn = listColumnCompleted;
             listOrders = orderServiceDao.getCompletedOrders();
-            DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, s);
         }
+
+        DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, status, shipperororder);
         setupTable(table);
         initSearchListener();
-        initMouseListener(table);
     }
 
     private void initMouseListener(JTable table) {
@@ -214,15 +221,12 @@ public class QuanLyOrderController {
                     selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
                     if (SwingUtilities.isRightMouseButton(e) && e.getClickCount() == 1) {
                         JPopupMenu popupMenu = new JPopupMenu();
+
                         JMenuItem editOrderMenuItem = new JMenuItem("Chỉnh sửa thông tin đơn hàng");
-                        JMenuItem processingOrders = new JMenuItem("Danh sách đơn hàng đang vận chuyển");
-                        JMenuItem pendingOrders = new JMenuItem("Danh sách đơn hàng chưa vận chuyển");
-                        JMenuItem listDeleteOrderMenuItem = new JMenuItem("Danh sách đơn hàng đã xóa");
+                        JMenuItem DeleteOrderMenuItem = new JMenuItem("Xóa đơn hàng");
 
                         popupMenu.add(editOrderMenuItem);
-                        popupMenu.add(processingOrders);
-                        popupMenu.add(pendingOrders);
-                        popupMenu.add(listDeleteOrderMenuItem);
+                        popupMenu.add(DeleteOrderMenuItem);
 
                         // Lay du lieu tu order co id dc cap nhat
                         Order order = new Order();
@@ -243,24 +247,22 @@ public class QuanLyOrderController {
                             }
                         });
 
-                        processingOrders.addActionListener(new ActionListener() {
+                        DeleteOrderMenuItem.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent event) {
-                                setDataToTable("Processing");
-                            }
-                        });
-
-                        pendingOrders.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent event) {
-                                setDataToTable("Pending");
-                            }
-                        });
-
-                        listDeleteOrderMenuItem.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent event) {
-                                setDataToTable("Deleted");
+                                LocalDateTime currentDate = LocalDateTime.now();
+                                if (order.getShipCount() < 3 || order.getShipTime() != null) {
+                                    JOptionPane.showMessageDialog(null, "Không thể xóa");
+                                }
+                                if (ChronoUnit.DAYS.between(order.getOrderDate(), currentDate) > 7) {
+                                    System.out.println("Có thể xóa do đơn hàng đá quá số ngày quy định");
+                                    order.setDeleted(true);
+                                } else if (ChronoUnit.DAYS.between(order.getShipTime(), currentDate) > 7) {
+                                    System.out.println("Có thể xóa do đơn hàng đá quá số ngày quy định");
+                                    order.setDeleted(true);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Không thể xóa");
+                                }
                             }
                         });
 
@@ -299,10 +301,17 @@ public class QuanLyOrderController {
         });
     }
 
-    public void initFilter(final Shipper shipper) {
-        
-        jlbID.setText(shipper.getId()+"");
-        jlbName.setText(shipper.getName());
+    public void initFilter(final Shipper shipper, Customer customer, String type) {
+
+        if (type.equals("Shipper")) // Gọi hành động mặc định khi khởi tạo
+        {
+            jlbID.setText(shipper.getId() + "");
+            jlbName.setText(shipper.getName());
+        }
+        if (type.equals("Customer")) {
+            jlbID.setText(customer.getId() + "");
+            jlbName.setText(customer.getName());
+        }
 
         final int[] selectedMonthIndex = {LocalDate.now().getMonthValue() - 1};  // Sử dụng mảng để làm biến mutable
         jmcMonth.addPropertyChangeListener(new PropertyChangeListener() {
@@ -310,44 +319,110 @@ public class QuanLyOrderController {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals("month")) {
                     selectedMonthIndex[0] = jmcMonth.getMonth();
-//                List<Order> listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex[0] + 1,"");
-//                DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumnPending, null, "Pending");
-//                JTable table = new JTable(model);
-//                setupTable(table);
                 }
             }
         });
+
+        // Thiết lập giá trị mặc định cho jcbFillter
+        jcbFillter.setSelectedItem("Chưa xử lý");
 
         jcbFillter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<Order> listOrders = null;
-                String[] listColumn = null;
-                JTable table = new JTable();
-
-                String selectedValue = (String) jcbFillter.getSelectedItem();
-                String status = "Processing";  // Default status
-                if (selectedValue.equals("Chưa xử lý")) {
-                    status = "Pending";
-                    listColumn = listColumnPending;
-                } else if (selectedValue.equals("Thành công")) {
-                    status = "Completed";
-                    listColumn = listColumnCompleted;
-                } else if (selectedValue.equals("Đã xóa")) {
-                    status = "Deleted";
-                    listColumn = listColumnDeleted;
-                } else {
-                    listColumn = listColumnProcessing;
-                }
-
-                listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex[0] + 1, status);
-                DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, status);
-
-                setupTable(table);
-                initSearchListener();
-                initMouseListener(table);
+                updateTable(shipper, customer, type, selectedMonthIndex);
             }
         });
+
+        if (type.equals("Shipper")) // Gọi hành động mặc định khi khởi tạo
+        {
+            updateTable(shipper, customer, type, selectedMonthIndex);
+        }
+        if (type.equals("Customer")) {
+            updateTable(shipper, customer, type, selectedMonthIndex);
+        }
+
+    }
+
+    private void updateTable(Shipper shipper, Customer customer, String type, int[] selectedMonthIndex) {
+        String shipperororder = "";
+        if (type.equals("Shipper")) // Gọi hành động mặc định khi khởi tạo
+        {
+            shipperororder = "Shipper";
+        }
+        if (type.equals("Customer")) {
+            shipperororder = "Customer";
+        }
+        List<Order> listOrders = null;
+        String[] listColumn = null;
+        JTable table = new JTable();
+
+        String selectedValue = (String) jcbFillter.getSelectedItem();
+        String status = "Processing";  // Default status
+
+        if (selectedValue.equals("Chưa xử lý")) {
+            String[] listColumnPendingshipper = listColumnPending;
+            List<String> newColumns;
+            if ("Shipper".equals(type)) {
+                newColumns = Arrays.asList("CANCEL", "DELIVERY");
+                listColumnPendingshipper = AddColumn(listColumnPendingshipper, newColumns);
+            }
+            if ("Customer".equals(type)) {
+                newColumns = Arrays.asList("CANCEL");
+                listColumnPendingshipper = AddColumn(listColumnPendingshipper, newColumns);
+            }
+            status = "Pending";
+            listColumn = listColumnPendingshipper;
+        } else if (selectedValue.equals("Thành công")) {
+            status = "Completed";
+            listColumn = listColumnCompleted;
+        } else if (selectedValue.equals("Đã xóa")) {
+            status = "Deleted";
+            listColumn = listColumnDeleted;
+            if (type.equals("Shipper")) // Gọi hành động mặc định khi khởi tạo
+            {
+
+                listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex[0] + 1, status);
+                DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, status, shipperororder);
+                setupTable(table);
+                initSearchListener();
+                return;
+            }
+            if (type.equals("Customer")) {
+                listOrders = orderServiceDao.getOrderListForCustomer(customer, selectedMonthIndex[0] + 1, status);
+                DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, status, shipperororder);
+                setupTable(table);
+                initSearchListener();
+                return;
+            }
+
+        } else {
+            if (type.equals("Shipper")) {
+                String[] listColumnProcessingshipper = listColumnProcessing;
+                List<String> newColumns = Arrays.asList("DELETE", "COMPLETE");
+                listColumnProcessingshipper = AddColumn(listColumnProcessingshipper, newColumns);
+                listColumn = listColumnProcessingshipper;
+            } else if (type.equals("Customer")) {
+                listColumn = listColumnProcessing;
+
+            }
+
+        }
+
+        if (type.equals("Shipper")) // Gọi hành động mặc định khi khởi tạo
+        {
+            listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex[0] + 1, status);
+            System.out.println("" + listOrders.size());
+            DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, status, shipperororder);
+        }
+        if (type.equals("Customer")) {
+            listOrders = orderServiceDao.getOrderListForCustomer(customer, selectedMonthIndex[0] + 1, status);
+            System.out.println("" + listOrders.size());
+            DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumn, table, status, shipperororder);
+        }
+
+        setupTable(table);
+        initSearchListener();
+        initMouseListener(table);
     }
 
     private void refreshTable(JTable table) {
@@ -365,6 +440,7 @@ public class QuanLyOrderController {
         btnAdd.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                System.out.println("insert");
                 Order order = new Order();
 
                 InsertOrderJFrame insertOrderJFrame = new InsertOrderJFrame();
@@ -391,66 +467,106 @@ public class QuanLyOrderController {
         btnPrint.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                String filePath = "F:\\JAVA\\NETBEAN\\ShipperMaven\\src\\main\\java\\export\\Danh_sach_order.xlsx";
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Chọn nơi lưu tập tin Excel");
 
-                try (XSSFWorkbook workbook = new XSSFWorkbook()) {
-                    XSSFSheet spreadsheet = workbook.createSheet("Order");
+                // Tạo một FileFilter để chỉ chấp nhận các tập tin Excel
+                FileFilter filter = new FileNameExtensionFilter("Excel Files", "xlsx");
+                fileChooser.setFileFilter(filter);
 
-                    XSSFRow row = spreadsheet.createRow(2);
-                    row.setHeight((short) 500);
-                    Cell cell = row.createCell(0, CellType.STRING);
-                    cell.setCellValue("DANH SÁCH Order");
+                int userSelection = fileChooser.showSaveDialog(null);
 
-                    row = spreadsheet.createRow(3);
-                    row.setHeight((short) 500);
-                    String[] headers = {"ID", "Họ và tên", "Cân nặng", "Phí vận chuyển", "Giá", "Phường/Xã", "Quận/Huyện", "Tỉnh/Thành phố", "Khoảng cách", "Mô tả", "Ngày đặt hàng", "Ngày giao hàng dự kiến", "Đã xóa", "Tình trạng", "Shipper ID", "Khách hàng ID", "Số điện thoại", "Thời gian", "Số lượng vận chuyển", "Thời gian hoàn thành", "Xác nhận", "ID dịch vụ"};
-                    for (int i = 0; i < headers.length; i++) {
-                        cell = row.createCell(i, CellType.STRING);
-                        cell.setCellValue(headers[i]);
+                if (userSelection == JFileChooser.APPROVE_OPTION) {
+                    File fileToSave = fileChooser.getSelectedFile();
+                    String filePath = fileToSave.getAbsolutePath();
+
+                    if (!filePath.toLowerCase().endsWith(".xlsx")) {
+                        filePath += ".xlsx";
                     }
 
-                    int rowNum = 4;
+                    try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+                        XSSFSheet spreadsheet = workbook.createSheet("Order");
 
-                    OrderServiceDao orderServiceDao = new OrderServiceDaoImpl();
+                        XSSFRow row = spreadsheet.createRow(2);
+                        row.setHeight((short) 500);
+                        Cell cell = row.createCell(0, CellType.STRING);
+                        cell.setCellValue("DANH SÁCH ĐƠN HÀNG");
 
-                    List<Order> orderList = orderServiceDao.getList();
+                        row = spreadsheet.createRow(3);
+                        row.setHeight((short) 500);
+                        String[] listColumn = {
+                            "ORD_ID",
+                            "ORD_NAME",
+                            "ORD_WEIGHT",
+                            "ORD_SHIP_FEE",
+                            "ORD_PRICE",
+                            "ORD_WARD",
+                            "ORD_PROVINCE",
+                            "ORD_DISTRICT",
+                            "ORD_DISTANCE",
+                            "ORD_DESCRIPTION",
+                            "ORD_ORDER_DATE",
+                            "ORD_EXPECTED_DELIVERY_DATE",
+                            "SHIPPER_ID",
+                            "CUS_ID",
+                            "CUS_RESPOND",
+                            "ORD_IS_DELETED",
+                            "ORD_TIME",
+                            "ORD_SHIP_COUNT",
+                            "ORD_COMPLETED_TIME",
+                            "ORD_CONFIRM",
+                            "SV_ID"
+                        };
+                        for (int i = 0; i < listColumn.length; i++) {
+                            cell = row.createCell(i, CellType.STRING);
+                            cell.setCellValue(listColumn[i]);
+                            spreadsheet.autoSizeColumn(i);
+                        }
 
-                    for (Order order : orderList) {
-                        row = spreadsheet.createRow(rowNum++);
-                        row.setHeight((short) 400);
-                        row.createCell(0).setCellValue(order.getId());
-                        row.createCell(1).setCellValue(order.getName());
-                        row.createCell(2).setCellValue(order.getWeight());
-                        row.createCell(3).setCellValue(order.getShipFee());
-                        row.createCell(4).setCellValue(order.getPrice());
-                        row.createCell(5).setCellValue(order.getWard());
-                        row.createCell(6).setCellValue(order.getProvince());
-                        row.createCell(7).setCellValue(order.getDistinct());
-                        row.createCell(8).setCellValue(order.getDistance());
-                        row.createCell(9).setCellValue(order.getDescription());
-                        row.createCell(10).setCellValue(order.getOrderDate().toString());
-                        row.createCell(11).setCellValue(order.getExpectedDeliveryDate().toString());
-                        row.createCell(12).setCellValue(order.isDeleted());
-                        row.createCell(13).setCellValue(order.isRespond());
-                        row.createCell(14).setCellValue(order.getShipperId());
-                        row.createCell(15).setCellValue(order.getCusId());
-                        row.createCell(16).setCellValue(order.getShipTime().toString());
-                        row.createCell(17).setCellValue(order.getShipCount());
-                        row.createCell(18).setCellValue(order.getCompletedTime().toString());
-                        row.createCell(19).setCellValue(order.isConfirm());
-                        row.createCell(20).setCellValue(order.getServiceId());
+                        int rowNum = 4;
+
+                        OrderServiceDao orderServiceDao = new OrderServiceDaoImpl();
+
+                        List<Order> orderList = orderServiceDao.getList();
+
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        for (Order order : orderList) {
+                            row = spreadsheet.createRow(rowNum++);
+                            row.setHeight((short) 400);
+                            row.createCell(0).setCellValue(order.getId());
+                            row.createCell(1).setCellValue(order.getName());
+                            row.createCell(2).setCellValue(order.getWeight());
+                            row.createCell(3).setCellValue(order.getShipFee());
+                            row.createCell(4).setCellValue(order.getPrice());
+                            row.createCell(5).setCellValue(order.getWard());
+                            row.createCell(6).setCellValue(order.getProvince());
+                            row.createCell(7).setCellValue(order.getDistinct());
+                            row.createCell(8).setCellValue(order.getDistance());
+                            row.createCell(9).setCellValue(order.getDescription());
+                            row.createCell(10).setCellValue(order.getOrderDate());
+                            row.createCell(11).setCellValue(order.getExpectedDeliveryDate());
+                            row.createCell(12).setCellValue(order.getShipperId());
+                            row.createCell(13).setCellValue(order.getCusId());
+                            row.createCell(14).setCellValue(order.isRespond());
+                            row.createCell(15).setCellValue(order.isDeleted());
+                            row.createCell(16).setCellValue(order.getShipTime());
+                            row.createCell(17).setCellValue(order.getShipCount());
+                            row.createCell(18).setCellValue(order.getCompletedTime());
+                            row.createCell(19).setCellValue(order.isConfirm());
+                            row.createCell(20).setCellValue(order.getServiceId());
+                        }
+
+                        try (FileOutputStream out = new FileOutputStream(filePath)) {
+                            workbook.write(out);
+                        }
+                        showExportSuccessDialog("");
+
+                    } catch (IOException ex) {
+                        showExportSuccessDialog("không");
+                        ex.printStackTrace();
+                        // Xử lý ngoại lệ tại đây, ví dụ: thông báo cho người dùng, ghi log, vv.
                     }
-
-                    try (FileOutputStream out = new FileOutputStream(filePath)) {
-                        workbook.write(out);
-                    }
-                    showExportSuccessDialog("");
-
-                } catch (IOException ex) {
-                    showExportSuccessDialog("không");
-                    ex.printStackTrace();
                 }
-
             }
 
             @Override
@@ -465,43 +581,9 @@ public class QuanLyOrderController {
 
         });
 
-        jcbFillter.addActionListener((ActionListener) new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedItem = (String) jcbFillter.getSelectedItem();
-
-                if (selectedItem.equals("Chưa xử lý")) {
-
-                    setDataToTable("Pending");
-                } else if (selectedItem.equals("Đang vận chuyển")) {
-
-                    setDataToTable("Processing");
-                } else if (selectedItem.equals("Thành công")) {
-
-                    setDataToTable("Completed");
-                } else if (selectedItem.equals("Đã xóa")) {
-
-                    setDataToTable("Processing");
-                }
-            }
-
-        });
-
     }
 
-    private static void showExportSuccessDialog(String s) {
+    public static void showExportSuccessDialog(String s) {
         JOptionPane.showMessageDialog(null, "Xuất file " + s + "thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
-    //
-//  public void initTable(Shipper shipper) {
-//  jlbID.setText("" + shipper.getId());
-//  jlbName.setText(shipper.getName());
-//  int selectedMonthIndex = jmcMonth.getMonth();
-//  List<Order> listOrders = orderServiceDao.getOrderListForShipper(shipper, selectedMonthIndex + 1);
-//  DefaultTableModel model = new ClassTableModel().setTableOrder(listOrders, listColumnPending);
-//  JTable table = new JTable(model);
-//  setupTable(table);
-//  initSearchListener();
-//  initMonthChooserListener(shipper);
-//}
 }

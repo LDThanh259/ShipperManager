@@ -13,9 +13,9 @@ public class CustomerServiceDaoImpl implements CustomerServiceDao {
     }
 
     @Override
-    public List<Customer> getList() {
+    public List<Customer> getList(boolean is_delete) {
         // TODO Auto-generated method stub
-        return customerDao.getList();
+        return customerDao.getList(is_delete);
     }
 
     @Override
@@ -45,10 +45,10 @@ public class CustomerServiceDaoImpl implements CustomerServiceDao {
     @Override
     public int getNumOfOfCustomer() 
     {
-        return customerDao.getList().size();        
+        return customerDao.getList(false).size();        
     }
-
-	@Override
+    
+    @Override
 	public List<String> getListPhone() {
 
 		return customerDao.getListPhone();
@@ -65,6 +65,4 @@ public class CustomerServiceDaoImpl implements CustomerServiceDao {
 	{
 		return customerDao.getDataFromCusPhone(phoneNumber, customer);
 	}
-
-
 }

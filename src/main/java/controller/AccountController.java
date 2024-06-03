@@ -2,10 +2,18 @@ package controller;
 
 import Dao.AccountServiceDao;
 import Dao.AccountServiceDaoImpl;
+import model.Account;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.*;
-import model.Account;
+import java.io.*;
+import java.util.Base64;
+
 import view.MainJFrame;
 
 public class AccountController {
@@ -15,38 +23,37 @@ public class AccountController {
     private JPasswordField jpwfPassword;
     private JLabel jllbMsg;
     private JButton btnLogin;
+    private JCheckBox rememberMeCheckBox;
     private AccountServiceDao accountServiceDao = null;
 
-    public AccountController(JFrame jFrame, JTextField jtfUsername, JPasswordField jpwfPassword, JLabel jllbMsg, JButton btnLogin) {
+    private static final String CREDENTIALS_DIR = System.getProperty("user.home") + File.separator + "login";
+    private static final String CREDENTIALS_FILE = CREDENTIALS_DIR + File.separator + "credentials.txt";
+    private static final String KEY_FILE = CREDENTIALS_DIR + File.separator + "key.txt";
+    private SecretKey secretKey;
+
+    public AccountController(JFrame jFrame, JTextField jtfUsername, JPasswordField jpwfPassword, JLabel jllbMsg, JButton btnLogin, JCheckBox rememberMeCheckBox) {
         this.jFrame = jFrame;
         this.jtfUsername = jtfUsername;
         this.jpwfPassword = jpwfPassword;
         this.jllbMsg = jllbMsg;
         this.btnLogin = btnLogin;
+        this.rememberMeCheckBox = rememberMeCheckBox;
 
         accountServiceDao = new AccountServiceDaoImpl();
+
+        createCredentialsDirIfNeeded();
+        generateSecretKey();
+        loadCredentials();
     }
 
     public void setEvent() {
-        // Thêm sự kiện cho nút đăng nhập
-        btnLogin.addActionListener(new ActionListener() {
+        ActionListener loginAction = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                performLogin();
+                handleLogin();
             }
-        });
-
-        // Thêm sự kiện cho ô mật khẩu
-        jpwfPassword.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (!String.valueOf(jpwfPassword.getPassword()).isEmpty()) {
-                    performLogin();
-                } else {
-                    jllbMsg.setText("Vui lòng nhập mật khẩu");
-                }
-            }
-        });
+        };
+        btnLogin.addActionListener(loginAction);
 
         btnLogin.addMouseListener(new MouseAdapter() {
             @Override
@@ -64,21 +71,28 @@ public class AccountController {
                 if (jtfUsername.getText().isEmpty() || jpwfPassword.getPassword().length == 0) {
                     jllbMsg.setText("Vui lòng nhập đầy đủ thông tin");
                 } else {
-//                    jllbMsg.setText("");
+                    jllbMsg.setText("");
                 }
             }
         });
+
+        KeyAdapter enterKeyListener = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    handleLogin();
+                }
+            }
+        };
+        jtfUsername.addKeyListener(enterKeyListener);
+        jpwfPassword.addKeyListener(enterKeyListener);
     }
 
-    // Hàm thực hiện đăng nhập
-    private void performLogin() {
+    private void handleLogin() {
         String username = jtfUsername.getText();
         char[] passwordChars = jpwfPassword.getPassword();
         String password = new String(passwordChars);
 
-        System.out.println(username);
-        System.out.println(password);
-        
         if (username.isEmpty() || password.isEmpty()) {
             jllbMsg.setText("Vui lòng nhập đầy đủ thông tin");
             return;
@@ -88,6 +102,11 @@ public class AccountController {
         if (account == null) {
             jllbMsg.setText("Tên đăng nhập hoặc mật khẩu không chính xác");
         } else {
+            if (rememberMeCheckBox.isSelected()) {
+                saveCredentials(username, password);
+            } else {
+                clearCredentials();
+            }
             jFrame.dispose();
             MainJFrame mainJFrame = new MainJFrame();
             mainJFrame.setTitle("Quản lý Shipper");
@@ -96,7 +115,93 @@ public class AccountController {
             mainJFrame.setVisible(true);
         }
 
-        // Xóa mật khẩu từ bộ nhớ sau khi đã sử dụng xong
         java.util.Arrays.fill(passwordChars, ' ');
+    }
+
+    private void saveCredentials(String username, String password) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CREDENTIALS_FILE))) {
+            String encryptedUsername = encrypt(username);
+            String encryptedPassword = encrypt(password);
+            writer.write(encryptedUsername);
+            writer.newLine();
+            writer.write(encryptedPassword);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadCredentials() {
+        File file = new File(CREDENTIALS_FILE);
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String encryptedUsername = reader.readLine();
+                String encryptedPassword = reader.readLine();
+                String username = decrypt(encryptedUsername);
+                String password = decrypt(encryptedPassword);
+                jtfUsername.setText(username);
+                jpwfPassword.setText(password);
+                rememberMeCheckBox.setSelected(true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void clearCredentials() {
+        File file = new File(CREDENTIALS_FILE);
+        if (file.exists()) {
+            file.delete();
+        }
+    }
+
+    private void createCredentialsDirIfNeeded() {
+        File dir = new File(CREDENTIALS_DIR);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+    }
+
+    private void generateSecretKey() {
+        try {
+            File keyFile = new File(KEY_FILE);
+            if (keyFile.exists()) {
+                byte[] keyBytes = new byte[(int) keyFile.length()];
+                try (FileInputStream fis = new FileInputStream(keyFile)) {
+                    fis.read(keyBytes);
+                    secretKey = new SecretKeySpec(keyBytes, "AES");
+                }
+            } else {
+                KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+                keyGen.init(128);
+                secretKey = keyGen.generateKey();
+                try (FileOutputStream fos = new FileOutputStream(keyFile)) {
+                    fos.write(secretKey.getEncoded());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String encrypt(String strToEncrypt) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private String decrypt(String strToDecrypt) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

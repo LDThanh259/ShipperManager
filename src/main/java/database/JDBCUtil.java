@@ -17,10 +17,9 @@ public class JDBCUtil {
             String server = "LAPTOP-M9LQ60VB\\\\SQLEXPRESS";
             String user = "sa";
             String password = "123456789";
-//            String db = "QuanLyShipper";
-            String db = "newDatabaseOOP";
-            String url = "jdbc:sqlserver://" + server + ":1433;DatabaseName=" + db + ";encrypt=true;trustServerCertificate=true;";
-            c = DriverManager.getConnection(url, user, password);
+            String db = "Shipper1";
+            String url = "jdbc:sqlserver://" + server + ":1433;databaseName=" + db + ";encrypt=true;trustServerCertificate=true;useUnicode=true;characterEncoding=UTF-8;";
+             c = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

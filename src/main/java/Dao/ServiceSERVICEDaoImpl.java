@@ -55,4 +55,10 @@ public class ServiceSERVICEDaoImpl implements ServiceSERVICEDao {
 		return serviceDao.selectShipFeeforOrd(weight, distance);
 	}
 
+    @Override
+    public int getNumOfService() {
+                return serviceDao.getList().size();
+
+    }
+
 }

@@ -19,10 +19,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -41,6 +44,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.Shipper;
+//import model.Shipper;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -48,7 +53,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 //import view.IncomeByShipper;
 import view.InsertCustomerJFrame;
-//import view.ListOrderJFrame;
+import view.ListOrderOfCustomerJFrame;
+//import view.ListOrderOfCustomerJFrame;
 import view.UpdateOrDeleteCustomerJFrame;
 
 public class QuanLyCustomerController {
@@ -56,9 +62,10 @@ public class QuanLyCustomerController {
     private JPanel jpnView;
     private JButton btnAdd;
     private JTextField jtfSearch;
+    private JComboBox<String> jcbFillter;
     private JButton btnPrint;
     private CustomerServiceDao customerServiceDao = null;
-    private String[] listColumn = {"CUS_ID", "CUS_NAME", "CUS_PHONENUMBER", "CUS_EMAIL", "CUS_GENDER", "CUS_WARD", "CUS_PROVINCE", "CUS_DISTRICT"};
+    private String[] listColumn = {"CUS_ID", "CUS_NAME", "CUS_PHONENUMBER", "CUS_EMAIL", "CUS_GENDER", "CUS_WARD", "CUS_PROVINCE", "CUS_DISTRICT", "Edit"};
 
     private TableRowSorter<TableModel> rowSorter = null;
 
@@ -66,19 +73,23 @@ public class QuanLyCustomerController {
 
     }
 
-    public QuanLyCustomerController(JPanel jpnView, JButton btnAdd, JTextField jtfSearch, JButton btnPrint) {
+    public QuanLyCustomerController(JPanel jpnView, JButton btnAdd, JTextField jtfSearch, JComboBox<String> jcbFillter, JButton btnPrint) {
         this.jpnView = jpnView;
         this.btnAdd = btnAdd;
         this.jtfSearch = jtfSearch;
+        this.jcbFillter = jcbFillter;
         this.btnPrint = btnPrint;
         this.customerServiceDao = new CustomerServiceDaoImpl();
     }
 
-    public void setDataToTable() {
-        List<Customer> listItem = customerServiceDao.getList();
-        DefaultTableModel model = new ClassTableModel().setTableCustomer(listItem, listColumn);
-        JTable table = new JTable(model);
+    public void setDataToTable(boolean isDeleted) {
+        List<Customer> listItem = customerServiceDao.getList(isDeleted);
+//        DefaultTableModel model = new ClassTableModel().setTableCustomer(listItem, listColumn);
+//        JTable table = new JTable(model);
 
+        JTable table = new JTable();
+        ClassTableModel model = new ClassTableModel();
+        table.setModel(model.setTableCustomer(listItem, listColumn, table, "Customer",true));
         // TableRowSorter<TableModel> cho phep sap xep thu tu cac cot theo comparator
         //https://docs.oracle.com/javase/8/docs/api/javax/swing/table/TableRowSorter.html
         rowSorter = new TableRowSorter<>(table.getModel());
@@ -138,27 +149,23 @@ public class QuanLyCustomerController {
                         JPopupMenu popupMenu = new JPopupMenu();
                         JMenuItem editCustomerMenuItem = new JMenuItem("Chỉnh sửa thông tin khách hàng");
 //                        JMenuItem orderListMenuItem = new JMenuItem("Danh sách đơn hàng");
-//                        JMenuItem revenueMenuItem = new JMenuItem("Doanh thu");
-                        JMenuItem listDeleteCustomerMenuItem = new JMenuItem("Danh sách khách hàng đã xóa");
+                        JMenuItem orderListMenuItem = new JMenuItem("Danh sách đơn hàng mà khách hàng nhận");
 
                         popupMenu.add(editCustomerMenuItem);
 //                        popupMenu.add(orderListMenuItem);
-//                        popupMenu.add(revenueMenuItem);
-                        popupMenu.add(listDeleteCustomerMenuItem);
+
+                        popupMenu.add(orderListMenuItem);
 
                         //Shipper shipper = getShipperFromSelectedRow(selectedRowIndex, model);
                         Customer customer = new Customer();
                         customer.setId((int) model.getValueAt(selectedRowIndex, 0));
                         customer.setName((String) model.getValueAt(selectedRowIndex, 1));
-                        customer.setEmail((String) model.getValueAt(selectedRowIndex, 2));
-                        String genderString = (String) model.getValueAt(selectedRowIndex, 3);
-                        boolean gender = Boolean.valueOf(genderString);
-                        customer.setGender(gender);
-                        boolean phoneNumberBoolean = (boolean) model.getValueAt(selectedRowIndex, 4);
-                        String phoneNumberString = phoneNumberBoolean ? "Có" : "Không";
-                        customer.setDistinct((String) model.getValueAt(selectedRowIndex, 5));
+                        customer.setPhoneNumber((String) model.getValueAt(selectedRowIndex, 2));
+                        customer.setEmail((String) model.getValueAt(selectedRowIndex, 3));
+                        customer.setGender((boolean) model.getValueAt(selectedRowIndex, 4));
+                        customer.setWard((String) model.getValueAt(selectedRowIndex, 5));
                         customer.setProvince((String) model.getValueAt(selectedRowIndex, 6));
-                        customer.setWard((String) model.getValueAt(selectedRowIndex, 7));
+                        customer.setDistinct((String) model.getValueAt(selectedRowIndex, 7));
 
                         editCustomerMenuItem.addActionListener(new ActionListener() {
                             @Override
@@ -174,13 +181,14 @@ public class QuanLyCustomerController {
                             }
                         });
 
-//                        orderListMenuItem.addActionListener(new ActionListener() {
-//                            @Override
-//                            public void actionPerformed(ActionEvent e) {
-//                                // Xử lý sự kiện hiển thị danh sách đơn hàng
-//                                //ListOrderJFrame listOrderJFrame = new ListOrderJFrame(shipper);
-//                            }
-//                        });
+                        orderListMenuItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                //Xử lý sự kiện hiển thị danh sách đơn hàng
+                                ListOrderOfCustomerJFrame listOrderAndCustomerJFrameJFrame = new ListOrderOfCustomerJFrame(customer);
+                            }
+                        });
+
 //
 //                        revenueMenuItem.addActionListener(new ActionListener() {
 //                            @Override
@@ -239,6 +247,52 @@ public class QuanLyCustomerController {
 
         });
 
+        jcbFillter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedValue = (String) jcbFillter.getSelectedItem();
+                if (selectedValue.equals("Chưa xóa")) {
+                    System.out.println("Chưa xóa");
+                    setDataToTable(false);
+                } else {
+                    
+
+                    List<Customer> listItem = customerServiceDao.getList(true);
+                    
+                    // Remove the "Edit" column from the listColumn array
+                    List<String> listColumnWithoutEdit = new ArrayList<>(Arrays.asList(listColumn));
+                    listColumnWithoutEdit.remove("Edit");
+
+                    // Convert back to array
+                    String[] listColumnArray = listColumnWithoutEdit.toArray(new String[0]);
+
+                    // Set table with modified listColumn array
+                    JTable table = new JTable();
+                    ClassTableModel model = new ClassTableModel();
+                    table.setModel(model.setTableCustomer(listItem, listColumnArray, table, "Customer",false));
+                    rowSorter = new TableRowSorter<>(table.getModel());
+                    table.setRowSorter(rowSorter);
+
+                    // design
+                    table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+                    table.getTableHeader().setPreferredSize(new Dimension(100, 50));
+                    table.setRowHeight(50);
+                    table.validate();
+                    table.repaint();
+
+                    JScrollPane scroll = new JScrollPane();
+                    scroll.getViewport().add(table);
+                    scroll.setPreferredSize(new Dimension(1350, 400));
+                    jpnView.removeAll();
+                    jpnView.setLayout(new CardLayout());
+                    jpnView.add(scroll);
+                    jpnView.validate();
+                    jpnView.repaint();
+
+                }
+            }
+
+        });
         btnPrint.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -270,7 +324,7 @@ public class QuanLyCustomerController {
                         row = spreadsheet.createRow(3);
                         row.setHeight((short) 500);
                         //String[] headers = {"ID", "Họ và tên", "Ngày sinh", "Giới tính", "Ngày đầu làm việc", "Số điện thoại", "Email", "Địa chỉ", "Mô tả"};
-                        for (int i = 0; i < listColumn.length; i++) {
+                        for (int i = 0; i < listColumn.length-1; i++) {
                             cell = row.createCell(i, CellType.STRING);
                             cell.setCellValue(listColumn[i]);
                             spreadsheet.autoSizeColumn(i);
@@ -280,7 +334,7 @@ public class QuanLyCustomerController {
 
                         CustomerServiceDao customerServiceDao = new CustomerServiceDaoImpl();
 
-                        List<Customer> customerList = customerServiceDao.getList();
+                        List<Customer> customerList = customerServiceDao.getList(false);
 
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         for (Customer customer : customerList) {

@@ -2,6 +2,12 @@ package controller;
 
 //import Dao.OrderServiceDao;
 //import Dao.OrderServiceDaoImpl;
+import Dao.CustomerServiceDao;
+import Dao.CustomerServiceDaoImpl;
+import Dao.OrderServiceDao;
+import Dao.OrderServiceDaoImpl;
+import Dao.ServiceSERVICEDao;
+import Dao.ServiceSERVICEDaoImpl;
 import Dao.ShipperServiceDao;
 import Dao.ShipperServiceDaoImpl;
 import bean.DanhMucBean;
@@ -13,6 +19,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import view.CustomerJPanel;
 import view.ShipperOrOrderJPanel;
+import view.ThongkeJPanel;
 //import view.ThongKeJPanel;
 import view.TrangChuJPanel;
 
@@ -26,14 +33,23 @@ public class LoiTatController {
     private String kindSelected = "";
     private List<DanhMucBean> listLoiTat;
     private ShipperServiceDao shipperServiceDao = null;
-    //private OrderServiceDao orderServiceDao = null;
+    private OrderServiceDao orderServiceDao = null;
+        private ServiceSERVICEDao serviceServiceDao = null;
+
+    private CustomerServiceDao customerServiceDao = null;
 
     public LoiTatController(TrangChuJPanel root) {
         this.root = root;
         shipperServiceDao = new ShipperServiceDaoImpl();
-        //orderServiceDao = new OrderServiceDaoImpl();
+        orderServiceDao = new OrderServiceDaoImpl();
+        customerServiceDao = new CustomerServiceDaoImpl();
+        serviceServiceDao = new ServiceSERVICEDaoImpl();
         this.root.getNumOfShipper().setText("" + shipperServiceDao.getNumOfShipper());
-        //this.root.getNumOfOrder().setText("" + orderServiceDao.getNumOfOrder());
+        this.root.getNumOfOrder().setText("" + orderServiceDao.getNumOfOrder());
+        this.root.getNumOfCustomer().setText(""+ customerServiceDao.getNumOfOfCustomer());
+        this.root.getNumOfService().setText(serviceServiceDao.getNumOfService()+"");
+
+        //this.root.getNumOfOfCustomer().setText("" + customerServiceDao.getNumOfOfCustomer());
     }
 
     public void setEventLoiTat(List<DanhMucBean> listLoiTat) {
@@ -66,13 +82,15 @@ public class LoiTatController {
                 case "Order":
                     node = new ShipperOrOrderJPanel("Order");
                     break;
-
                 case "Customer":
                     node = new CustomerJPanel("Customer");
                     break;
-//                case "ThongKe":
-//                    node = new ThongKeJPanel();
-//                    break;
+                     case "Service":
+                    node = new ShipperOrOrderJPanel("Service");
+                    break;
+                case "ThongKe":
+                    node = new ThongkeJPanel();
+                    break;
                 default:
                     break;
             }

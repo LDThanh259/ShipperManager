@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +35,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -46,6 +50,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import view.IncomeForShipper;
 //import view.IncomeByShipper;
 import view.InsertShipperJFrame;
 import view.ListOrderJFrame;
@@ -84,7 +89,7 @@ public class QuanLyShipperController {
 //        JTable table = new JTable(model);
         JTable table = new JTable();
         ClassTableModel model = new ClassTableModel();
-        table.setModel(model.setTableShipper(listItem, listColumn, table,"Shipper"));
+        table.setModel(model.setTableShipper(listItem, listColumn, table,"Shipper",true));
 // Có thể cần thiết lập kích thước cột, v.v. ở đây
 
         // TableRowSorter<TableModel> cho phep sap xep thu tu cac cot theo comparator
@@ -191,7 +196,7 @@ public class QuanLyShipperController {
                         revenueMenuItem.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                //IncomeByShipper incomeByShipper = new IncomeByShipper(shipper);
+                                IncomeForShipper incomeForShipper = new IncomeForShipper(shipper);
                             }
                         });
 
@@ -254,14 +259,22 @@ public class QuanLyShipperController {
                     System.out.println("Chưa xóa");
                     setDataToTable(false);
                 } else {
-                    System.out.println("Đã xóa");
-                    List<Shipper> listItem = shipperServiceDao.getList(true);
+                     System.out.println("Đã xóa");
+                List<Shipper> listItem = shipperServiceDao.getList(true);
 
-                    JTable table = new JTable();
-                    ClassTableModel model = new ClassTableModel();
-                    table.setModel(model.setTableShipper(listItem, listColumn, table,"Shipper"));
-                    rowSorter = new TableRowSorter<>(table.getModel());
-                    table.setRowSorter(rowSorter);
+                // Remove the "Edit" column from the listColumn array
+                List<String> listColumnWithoutEdit = new ArrayList<>(Arrays.asList(listColumn));
+                listColumnWithoutEdit.remove("Edit");
+
+                // Convert back to array
+                String[] listColumnArray = listColumnWithoutEdit.toArray(new String[0]);
+
+                // Set table with modified listColumn array
+                JTable table = new JTable();
+                ClassTableModel model = new ClassTableModel();
+                table.setModel(model.setTableShipper(listItem, listColumnArray, table,"Shipper",false));
+                rowSorter = new TableRowSorter<>(table.getModel());
+                table.setRowSorter(rowSorter);
 
                     // design
                     table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
@@ -317,7 +330,7 @@ public class QuanLyShipperController {
                         row = spreadsheet.createRow(3);
                         row.setHeight((short) 500);
                         //String[] headers = {"ID", "Họ và tên", "Ngày sinh", "Giới tính", "Ngày đầu làm việc", "Số điện thoại", "Email", "Địa chỉ", "Mô tả"};
-                        for (int i = 0; i < listColumn.length; i++) {
+                        for (int i = 0; i < listColumn.length-1; i++) {
                             cell = row.createCell(i, CellType.STRING);
                             cell.setCellValue(listColumn[i]);
                             spreadsheet.autoSizeColumn(i);
